@@ -1,8 +1,6 @@
-"use client"
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Issue, IssuesState } from "@/types/Issue";
-import { fetchAPIGet } from "@/utils/helperAPI";
+import { Issue, IssuesState } from "~/types/Issue";
+import { fetchAPIGet } from "~/utils/helperAPI";
 const initialState: IssuesState = {
   issuesWatched: [],
   loading: false,

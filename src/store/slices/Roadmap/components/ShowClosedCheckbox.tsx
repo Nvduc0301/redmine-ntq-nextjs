@@ -1,7 +1,6 @@
-
-import { RootState } from "@/store/store";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "~/store/store";
 import { setTempShowClosed } from "../tempSettingsSlice";
 
 const ShowClosedCheckbox: React.FC = () => {

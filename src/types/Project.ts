@@ -11,6 +11,8 @@ export interface ProjectState {
   error?: string | null;
 }
 
+
+
 // Activity
 
 export interface Time {
@@ -43,11 +45,7 @@ export interface Project {
   identifier: string;
 }
 
-export interface ProjectState {
-  project: Project[];
-  loading?: boolean;
-  error?: string | null;
-}
+
 export interface VersionSelect {
   id: number;
   name: string;

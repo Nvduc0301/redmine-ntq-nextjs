@@ -1,9 +1,7 @@
-"use client"
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Project, ProjectState } from "@/types/Project";
-import { fetchAPIGet } from "@/utils/helperAPI";
-
+import { Project, ProjectState } from "~/types/Project";
+import { fetchAPIGet } from "~/utils/helperAPI";
 const initialState: ProjectState = {
   project: [],
   loading: false,

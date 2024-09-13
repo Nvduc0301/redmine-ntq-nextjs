@@ -1,9 +1,7 @@
-"use client"
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { TimeEntriesType } from "@/types/spentTime";
-import { SpentTimeState } from "@/types/spentTime";
-import { fetchAPIGet } from "@/utils/helperAPI";
+import { TimeEntriesType } from "~/types/spentTime";
+import { SpentTimeState } from "~/types/spentTime";
+import { fetchAPIGet } from "~/utils/helperAPI";
 const initialState: SpentTimeState = {
   SpentTime: [],
   loading: false,

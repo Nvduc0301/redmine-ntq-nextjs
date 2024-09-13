@@ -1,11 +1,9 @@
-"use client";
-
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowClosed } from "../showClosedSlice";
 import { setShowBug } from "../showBugSlice";
 import { setShowTask } from "../showTaskSlice";
-import { RootState } from "@/store/store";
+import { RootState } from "~/store/store";
 
 const ApplyButton: React.FC = () => {
   const dispatch = useDispatch();

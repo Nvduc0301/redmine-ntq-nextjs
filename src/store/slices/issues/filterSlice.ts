@@ -1,6 +1,6 @@
 // src/slices/filterSlice.ts
-import { RootState } from "@/store/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "~/store/store";
 
 export interface FilterState {
   showIssues: boolean;

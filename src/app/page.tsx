@@ -1,22 +1,32 @@
 "use client";
 
 import { useEffect } from "react";
-import { formatDateTime } from "@/utils/FormatDay";
-import Image from "next/image"
-import images from "@/assets/img/index";
-import { AppDispatch, RootState } from "@/store/store";
+// import { formatDateTime } from "~/utils/FormatDay";
+import Image from "next/image";
+import images from "~/assets/img";
+import { AppDispatch, RootState } from "~/store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProject } from "@/store/slices/issues/ProjectSlice ";
-
+import { fetchProject } from "~/store/slices/issues/ProjectSlice ";
+import { RingLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
+import { formatDateTime } from "~/utils/FormatDay";
 
 export default function Home() {
+  const router = useRouter();
+
   const dispatch: AppDispatch = useDispatch();
-  const { project, loading: loadingProject } = useSelector((state: RootState) => state.project);
+  const { project, loading: loadingProject } = useSelector(
+    (state: RootState) => state.project,
+  );
   useEffect(() => {
     if (project?.length === 0) {
       dispatch(fetchProject());
     }
   }, [dispatch, project?.length]);
+
+  const handleNavigation = (identifier: string, name: string) => {
+    router.push(`/projects/${identifier}/overview`);
+  };
 
   return (
     <div className="flex justify-between">
@@ -41,7 +51,9 @@ export default function Home() {
               {project.map((project: any) => (
                 <li className="text-xs" key={project.id}>
                   <button
-                    // onClick={() => handleNavigate(project?.identifier, project.name)}
+                    onClick={() =>
+                      handleNavigation(project?.identifier, project.name)
+                    }
                     className="text-[#169] hover:underline hover:text-[#b2290f]"
                   >
                     {project.name}

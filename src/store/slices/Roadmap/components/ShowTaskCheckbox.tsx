@@ -1,6 +1,6 @@
-import { RootState } from "@/store/store";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "~/store/store";
 import { setTempShowTask } from "../tempSettingsSlice";
 
 const ShowTaskCheckbox: React.FC = () => {

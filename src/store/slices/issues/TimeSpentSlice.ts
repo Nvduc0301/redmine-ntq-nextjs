@@ -1,10 +1,7 @@
-"use client"
-
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import axiosInstance from "~/services/api";
-import { TimeEntriesType } from "@/types/spentTime";
-import { fetchAPIGet } from "@/utils/helperAPI";
+import { TimeEntriesType } from "~/types/spentTime";
+import { fetchAPIGet } from "~/utils/helperAPI";
 
 interface SpentTimeState {
   timeSpent: TimeEntriesType[];

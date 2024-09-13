@@ -1,30 +1,37 @@
-import { MenuItems, MenuItems2 } from "@/const/Menu";
-import React from "react";
-import Link from "../../../node_modules/next/link";
+"use client";
 
-// interface HeaderProps {
-//   title: string;
-// }
+import { MenuItems, MenuItems2 } from "~/const/Menu";
+// import React from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { Projects } from "~/const/Project";
+
+interface HeaderProps {
+  title: string;
+}
 
 const Header: React.FC<HeaderProps> = () => {
-     console.log(MenuItems);
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   const isProjectDetailPage = location.pathname.includes("/projects/");
+  const pathname = usePathname();
+  const router = useRouter();
+  const isProjectDetailPage = pathname.includes("/projects/");
 
-//   const identifier = location.pathname.split("/")[2];
-//   const slug = location.pathname.split("/")[3];
+  const identifier = pathname.split("/")[2];
+  const slug = pathname.split("/")[3];
 
-    //   const handleNavigation = (slug: string) => {
-    //     navigate(`/projects/${identifier}/${slug}`, { state: { projectName: title } });
-    //   };
+  const handleNavigation = (slug: string) => {
+    router.push(`/projects/${identifier}/${slug}`);
+  };
 
   return (
     <div className="">
       <div className=" flex items-center justify-between p-2 bg-primary-dark h-5 text-10">
         <ul className="flex text-white gap-2 font-bold ">
           {MenuItems.map((item) => (
-            <Link key={item.id} href={item.href} className="hover:underline duration-150 list-none">
+            <Link
+              key={item.id}
+              href={item.href}
+              className="hover:underline duration-150 list-none"
+            >
               {item.label}
             </Link>
           ))}
@@ -37,7 +44,11 @@ const Header: React.FC<HeaderProps> = () => {
             </Link>
           </li>
           {MenuItems2.map((item) => (
-            <Link key={item.id} href={item.href} className="hover:underline duration-150 list-none">
+            <Link
+              key={item.id}
+              href={item.href}
+              className="hover:underline duration-150 list-none"
+            >
               {item.label}
             </Link>
           ))}
@@ -63,7 +74,7 @@ const Header: React.FC<HeaderProps> = () => {
           </div>
         </div>
 
-        {/* {isProjectDetailPage && (
+        {isProjectDetailPage && (
           <div className="flex gap-0.5 ml-2">
             {Projects.map((project) => (
               <button
@@ -75,7 +86,7 @@ const Header: React.FC<HeaderProps> = () => {
               </button>
             ))}
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );
