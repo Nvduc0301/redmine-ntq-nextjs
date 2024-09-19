@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { MenuItems, MenuItems2 } from "~/const/Menu";
+import { MenuItems, MenuItems2 } from '~/const/Menu';
 // import React from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Projects } from "~/const/Project";
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { Projects } from '~/const/Project';
 
 interface HeaderProps {
   title: string;
@@ -12,11 +12,19 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = () => {
   const pathname = usePathname();
+  // console.log(pathname.startsWith('/projects'));
   const router = useRouter();
-  const isProjectDetailPage = pathname.includes("/projects/");
 
-  const identifier = pathname.split("/")[2];
-  const slug = pathname.split("/")[3];
+  const excludedPaths = [
+    '/projects/fresher-_-reactjs-fresher/overview',
+    '/projects/fresher-_-reactjs-fresher/activity',
+  ];
+  const isProjectDetailPage = pathname.includes('/projects/');
+
+  const identifier = pathname.split('/')[2];
+  const slug = pathname.split('/')[3];
+  // console.log(excludedPaths.includes(pathname));
+  // console.log(isProjectDetailPage);
 
   const handleNavigation = (slug: string) => {
     router.push(`/projects/${identifier}/${slug}`);
@@ -80,7 +88,7 @@ const Header: React.FC<HeaderProps> = () => {
               <button
                 key={project.id}
                 onClick={() => handleNavigation(project.slug)}
-                className={`hover:underline text-xs duration-150 list-none px-3 py-1 font-bold ${slug === project.slug ? "bg-primary-sub_bg text-[#555]" : "bg-primary-light"}`}
+                className={`hover:underline text-xs duration-150 list-none px-3 py-1 font-bold ${slug === project.slug ? 'bg-primary-sub_bg text-[#555]' : 'bg-primary-light'}`}
               >
                 {project.name}
               </button>

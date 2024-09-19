@@ -1,5 +1,5 @@
-import axiosInstance from "./api";
-// import { projectID } from "~/utils/CommonData";
+import axiosInstance from './api';
+import { projectID } from '~/utils/CommonData';
 type CreateVersionBody = {
   name: string;
   description?: string;
@@ -8,10 +8,12 @@ type CreateVersionBody = {
   due_date?: string;
   sharing: string;
 };
-// export const CreateVersion = async (body: CreateVersionBody) => {
-//   try {
-//     await axiosInstance.post(`/projects/${projectID}/versions.json`, { version: body });
-//   } catch (err) {
-//     console.log("Error fetching issues:", err);
-//   }
-// };
+export const CreateVersion = async (body: CreateVersionBody) => {
+  try {
+    await axiosInstance.post(`/projects/${projectID}/versions.json`, {
+      version: body,
+    });
+  } catch (err) {
+    console.log('Error fetching issues:', err);
+  }
+};

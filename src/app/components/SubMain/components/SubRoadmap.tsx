@@ -1,53 +1,86 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "~/app/store";
-import images from "~/assets/img";
-import ApplyButton from "~/features/Roadmap/components/ApplyButton";
-import ShowBugCheckbox from "~/features/Roadmap/components/ShowBugCheckbox";
-import ShowClosedCheckbox from "~/features/Roadmap/components/ShowClosedCheckbox";
-import ShowTaskCheckbox from "~/features/Roadmap/components/ShowTaskCheckbox";
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import images from '~/assets/img';
+// import ApplyButton from "~/features/Roadmap/components/ApplyButton";
+import ApplyButton from '~/store/slices/Roadmap/components/ApplyButton';
+import ShowBugCheckbox from '~/store/slices/Roadmap/components/ShowBugCheckbox';
+import ShowClosedCheckbox from '~/store/slices/Roadmap/components/ShowClosedCheckbox';
+import ShowTaskCheckbox from '~/store/slices/Roadmap/components/ShowTaskCheckbox';
+import { RootState } from '~/store/store';
 
 const SubRoadmap = () => {
   const [isOpenArrow, setIsOpenArrow] = useState(false);
-  const projectVersions = useSelector((state: RootState) => state.projectVersion.versions);
-  const showClosed = useSelector((state: RootState) => state.showClosed.showClosed);
+  const projectVersions = useSelector(
+    (state: RootState) => state.projectVersion.versions
+  );
+  const showClosed = useSelector(
+    (state: RootState) => state.showClosed.showClosed
+  );
 
   const handleToggleArrow = () => {
     setIsOpenArrow(!isOpenArrow);
   };
 
-  const openVersions = projectVersions.filter((version) => version.status === "open");
-  const closedVersions = projectVersions.filter((version) => version.status === "closed");
+  const openVersions = projectVersions.filter(
+    (version) => version.status === 'open'
+  );
+  const closedVersions = projectVersions.filter(
+    (version) => version.status === 'closed'
+  );
 
   return (
     <div className="ml-5">
-      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">Roadmap</h3>
+      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">
+        Roadmap
+      </h3>
       <div className="mt-2 text-xs">
         <ShowBugCheckbox />
         <ShowTaskCheckbox />
         <ShowClosedCheckbox />
       </div>
       <ApplyButton />
-      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">Versions</h3>
+      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">
+        Versions
+      </h3>
       {openVersions.map((version) => (
-        <a key={version.id} rel="noreferrer noopener" className="text-primary hover:underline hover:text-[#b2290f] block text-xs">
+        <a
+          key={version.id}
+          rel="noreferrer noopener"
+          className="text-primary hover:underline hover:text-[#b2290f] block text-xs"
+        >
           {version.name}
         </a>
       ))}
       {showClosed &&
         closedVersions.map((version) => (
-          <a key={version.id} rel="noreferrer noopener" className="text-primary hover:underline hover:text-[#b2290f] block text-xs">
+          <a
+            key={version.id}
+            rel="noreferrer noopener"
+            className="text-primary hover:underline hover:text-[#b2290f] block text-xs"
+          >
             {version.name}
           </a>
         ))}
-      <a className="flex cursor-pointer mt-2.5" onClick={handleToggleArrow} rel="noreferrer noopener">
-        {!isOpenArrow ? <img src={images.arrow_rightgrey} alt="Arrow right" /> : <img src={images.arrow_downgrey} alt="Arrow down" />}
+      <a
+        className="flex cursor-pointer mt-2.5"
+        onClick={handleToggleArrow}
+        rel="noreferrer noopener"
+      >
+        {!isOpenArrow ? (
+          <Image src={images.arrow_rightgrey} alt="Arrow right" />
+        ) : (
+          <Image src={images.arrow_downgrey} alt="Arrow down" />
+        )}
         <p className="text-xs text-[#999]">Completed versions</p>
       </a>
       {!showClosed &&
         isOpenArrow &&
         closedVersions.map((version) => (
-          <a key={version.id} className="text-primary hover:underline hover:text-[#b2290f] block text-xs pt-2">
+          <a
+            key={version.id}
+            className="text-primary hover:underline hover:text-[#b2290f] block text-xs pt-2"
+          >
             {version.name}
           </a>
         ))}

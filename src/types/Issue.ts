@@ -7,7 +7,12 @@ export interface Issue {
   author?: { id: number; name: string };
   description?: string;
   created_on?: string;
-  custom_fields?: { id: number; name: string; value: string; multiple?: boolean }[];
+  custom_fields?: {
+    id: number;
+    name: string;
+    value: string;
+    multiple?: boolean;
+  }[];
   done_ratio?: number;
   priority?: { id: number; name: string };
   tracker: { id: number; name: string };
@@ -57,9 +62,10 @@ export interface IssueData {
   assigned_to_id?: string;
   fixed_version_id?: string;
   parent_issue_id: string;
-  start_date?: string;
-  due_date?: string;
+  start_date?: Date | string;
+  due_date?: Date | string;
   estimated_hours: string;
   done_ratio: string;
+  watchers: { id: number; label: string; checked: boolean }[];
   custom_field_values: CustomFieldValue[];
 }

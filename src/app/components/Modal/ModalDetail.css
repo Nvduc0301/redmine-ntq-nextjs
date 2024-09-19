@@ -1,0 +1,9 @@
+.icon {
+  /* background-image: url("../../../../assets/img/ui-icons_222222_256x240.png"); */
+  background-position: -94px -127px;
+  background-size: 256px 240px;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}

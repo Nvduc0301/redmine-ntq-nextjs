@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
-  timeout: 100000,
+  timeout: 1000,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use(
   },
   function (error) {
     return Promise.reject(error);
-  },
+  }
 );
 
 axiosInstance.interceptors.response.use(
@@ -27,23 +27,25 @@ axiosInstance.interceptors.response.use(
     if (error.response) {
       switch (error.response.status) {
         case 401:
-          console.error("Unauthorized: Access is denied.");
+          console.error('Unauthorized: Access is denied.');
           break;
         case 403:
-          console.error("Forbidden: Access is denied.");
+          console.error('Forbidden: Access is denied.');
           break;
         case 404:
-          console.error("Not Found: The requested resource was not found.");
+          console.error('Not Found: The requested resource was not found.');
           break;
         default:
-          console.error(`Error ${error.response.status}: ${error.response.data}`);
+          console.error(
+            `Error ${error.response.status}: ${error.response.data}`
+          );
           break;
       }
     } else {
-      console.error("Network error: No response from server.");
+      console.error('Network error: No response from server.');
     }
     return Promise.reject(error);
-  },
+  }
 );
 
 export default axiosInstance;

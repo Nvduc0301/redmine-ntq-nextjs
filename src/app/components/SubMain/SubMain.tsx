@@ -28,7 +28,11 @@ const SubMain = () => {
       return <SubActivity />;
     } else if (pathname.endsWith('/roadmap')) {
       return <SubRoadmap />;
-    } else if (pathname.endsWith('/issues')) {
+    } else if (
+      pathname.endsWith('/issues') ||
+      pathname.endsWith('/calendar') ||
+      pathname.endsWith('/gantt')
+    ) {
       return <SubIssues />;
     } else if (pathname.endsWith('/documents')) {
       return <SubDocuments />;

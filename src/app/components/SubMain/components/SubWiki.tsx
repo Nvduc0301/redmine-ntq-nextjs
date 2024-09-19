@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import Link from 'next/link';
+import React from 'react';
 
 const SubWiki = () => {
   return (
@@ -10,7 +10,7 @@ const SubWiki = () => {
           <Link
             className="text-[#169] hover:underline hover:text-[#c61a1a]"
             rel="noreferrer noopener"
-            to="/projects/fresher-_-reactjs-fresher/issues?set_filter=1"
+            href="/projects/fresher-_-reactjs-fresher/issues?set_filter=1"
           >
             Start page
           </Link>
@@ -19,7 +19,7 @@ const SubWiki = () => {
           <Link
             className="text-[#169] hover:underline hover:text-[#c61a1a]"
             rel="noreferrer noopener"
-            to="/projects/fresher-_-reactjs-fresher/issues/report"
+            href="/projects/fresher-_-reactjs-fresher/issues/report"
           >
             Index by title
           </Link>
@@ -29,7 +29,7 @@ const SubWiki = () => {
           <Link
             className="text-[#169] hover:underline hover:text-[#c61a1a]"
             rel="noreferrer noopener"
-            to="/projects/fresher-_-reactjs-fresher/issues/calendar"
+            href="/projects/fresher-_-reactjs-fresher/issues/calendar"
           >
             Index by date
           </Link>

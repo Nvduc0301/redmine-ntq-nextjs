@@ -1,34 +1,35 @@
-'use client'
+'use client';
 
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import filterSlice from "./slices/issues/filterSlice";
-import IssuesAssignedSlice from "./slices/issues/IssuesAssignedSlice";
-import IssuesReportSlice from "./slices/issues/IssuesReportSlice";
-import IssuesWatchedSlice from "./slices/issues/IssuesWatchedSlice";
-import ProjectSlice from "./slices/issues/ProjectSlice ";
-import SpentTimeSlice from "./slices/issues/SpentTimeSlice";
-import TimeSpentSlice from "./slices/issues/TimeSpentSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import filterSlice from './slices/issues/filterSlice';
+import IssuesAssignedSlice from './slices/issues/IssuesAssignedSlice';
+import IssuesReportSlice from './slices/issues/IssuesReportSlice';
+import IssuesWatchedSlice from './slices/issues/IssuesWatchedSlice';
+import issuesScheduleSlice from './slices/issues/issuesScheduleSlice';
+import ProjectSlice from './slices/issues/ProjectSlice ';
+import SpentTimeSlice from './slices/issues/SpentTimeSlice';
+import TimeSpentSlice from './slices/issues/TimeSpentSlice';
+import projectVersionSlice from './slices/Roadmap/projectVersionSlice';
 // import projectVersionSlice from "./slices/Roadmap/projectVersionSlice";
-import showBugSlice from "./slices/Roadmap/showBugSlice";
-import showClosedSlice from "./slices/Roadmap/showClosedSlice";
-import showTaskSlice from "./slices/Roadmap/showTaskSlice";
-import tempSettingsSlice from "./slices/Roadmap/tempSettingsSlice";
-import memberReducer from "./slices/users/memberReducer";
-
+import showBugSlice from './slices/Roadmap/showBugSlice';
+import showClosedSlice from './slices/Roadmap/showClosedSlice';
+import showTaskSlice from './slices/Roadmap/showTaskSlice';
+import tempSettingsSlice from './slices/Roadmap/tempSettingsSlice';
+import memberReducer from './slices/users/memberReducer';
 
 const store = configureStore({
   reducer: {
     issuesReport: IssuesReportSlice,
     issuesWatched: IssuesWatchedSlice,
     issuesAssigned: IssuesAssignedSlice,
-    issuesSchedule: IssuesWatchedSlice,
+    issuesSchedule: issuesScheduleSlice,
     SpentTime: SpentTimeSlice,
     showClosed: showClosedSlice,
     showBug: showBugSlice,
     showTask: showTaskSlice,
     tempSettings: tempSettingsSlice,
-    // projectVersion: projectVersionSlice,
+    projectVersion: projectVersionSlice,
     filter: filterSlice,
     timeSpent: TimeSpentSlice,
     project: ProjectSlice,
