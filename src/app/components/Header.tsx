@@ -1,9 +1,9 @@
 'use client';
 
-import { MenuItems, MenuItems2 } from '~/const/Menu';
-// import React from "react";
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+
+import { MenuItems, MenuItems2 } from '~/const/Menu';
 import { Projects } from '~/const/Project';
 
 interface HeaderProps {
@@ -12,19 +12,10 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = () => {
   const pathname = usePathname();
-  // console.log(pathname.startsWith('/projects'));
   const router = useRouter();
-
-  const excludedPaths = [
-    '/projects/fresher-_-reactjs-fresher/overview',
-    '/projects/fresher-_-reactjs-fresher/activity',
-  ];
   const isProjectDetailPage = pathname.includes('/projects/');
-
   const identifier = pathname.split('/')[2];
   const slug = pathname.split('/')[3];
-  // console.log(excludedPaths.includes(pathname));
-  // console.log(isProjectDetailPage);
 
   const handleNavigation = (slug: string) => {
     router.push(`/projects/${identifier}/${slug}`);

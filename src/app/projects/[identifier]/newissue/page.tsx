@@ -1,15 +1,15 @@
 'use client';
 
 import moment from 'moment';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { RingLoader } from 'react-spinners';
 import ModalCreateVersion from '~/app/components/Modal/ModalCreateVersion';
+import Image from 'next/image';
 import images from '~/assets/img';
-// import ModalCreateVersion from '~/pages/MyPage/components/TableIssue/ModalCreateVersion';
+
 import { CreateIssue, UploadFile } from '~/services/IssueService';
 import { getVersionSelect, getMembersSelect } from '~/services/ProjectService';
 import { IssueData } from '~/types/Issue';
@@ -32,6 +32,7 @@ import { projectID } from '~/utils/CommonData';
 import DescriptionInput from '~/utils/EditText';
 import Preview from '~/utils/Preview';
 import FileUpload from '~/utils/UploadFile';
+
 const textColor = 'text-primary-text_gray';
 const labelStyle = `${textColor} text-xs font-semibold mb-2 mr-1 `;
 const labelDataStyle = `${textColor} text-xs font-semibold mb-2 mr-1 w-28`;

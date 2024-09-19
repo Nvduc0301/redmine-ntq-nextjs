@@ -1,12 +1,20 @@
-import { IssueType } from "./Issue";
-import LogTime from "~/pages/MyPage/components/TotalTime/LogTime";
-import Schedule from "~/pages/MyPage/components/Schedule/Schedule";
-import TableIssue from "~/pages/MyPage/components/TableIssue/TableIssue";
-import TotalTime from "~/pages/MyPage/components/TotalTime/TotalTime";
-import SpentTime from "~/pages/MyPage/components/SpentTime/SpentTime";
-import LatestNews from "~/pages/MyPage/components/LatestNews/LatestNews";
-import Documents from "~/pages/MyPage/components/Document/Documents";
-export type ComponentName = "LogTime" | "Schedule" | "TableIssue" | "TotalTime" | "SpentTime" | "LatestNews" | "Documents";
+import Documents from '~/app/(my-page)/document/page';
+import LatestNews from '~/app/(my-page)/latest-news/page';
+import LogTime from '~/app/(my-page)/log-time/page';
+import Schedule from '~/app/(my-page)/schedule/page';
+import SpentTime from '~/app/(my-page)/spent-time/page';
+import TableIssue from '~/app/(my-page)/table-issue/page';
+import TotalTime from '~/app/(my-page)/total-time/page';
+import { IssueType } from './Issue';
+
+export type ComponentName =
+  | 'LogTime'
+  | 'Schedule'
+  | 'TableIssue'
+  | 'TotalTime'
+  | 'SpentTime'
+  | 'LatestNews'
+  | 'Documents';
 export const componentMap: ComponentMap = {
   LogTime,
   Schedule,

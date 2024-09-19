@@ -1,9 +1,55 @@
+'use client';
 
-export default function MyPage() {
-    return (
-      <div>
-        <h1>MyPage</h1>
-      </div>
-    );
-  }
-  
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import DragAndDropMyPage from '../components/DragAndDrop/DragAndDropMyPage';
+
+const MyPage = () => {
+  const [items, setItems] = useState<any>({});
+  const [hasItems, setHasItems] = useState(false);
+
+  useEffect(() => {
+    const itemFromLocalStorage = localStorage.getItem('items');
+    const parsedItems = JSON.parse(itemFromLocalStorage || '[]');
+
+    setItems(parsedItems);
+
+    const hasContent =
+      (parsedItems.A && parsedItems.A.length > 0) ||
+      (parsedItems.B && parsedItems.B.length > 0) ||
+      (parsedItems.C && parsedItems.C.length > 0);
+
+    setHasItems(hasContent);
+  }, []);
+
+  return (
+    <div>
+      {hasItems ? (
+        <div>
+          <div className="flex justify-between mb-2.5">
+            <h2 className="text-[#555] text-xl font-semibold ">My page</h2>
+            <Link
+              href={'/my-page/page_layout'}
+              className="text-primary text-11 hover:underline hover:text-red-400"
+            >
+              Personalize this page
+            </Link>
+          </div>
+          <DragAndDropMyPage items={items} hasBorder={false} />
+        </div>
+      ) : (
+        <div className="flex justify-between">
+          <h2 className="text-[#555] text-xl text-5 font-semibold">My page</h2>
+          <Link
+            href={'/my-page/page_layout'}
+            className="text-primary text-11 hover:underline hover:text-red-400"
+          >
+            Personalize this page
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MyPage;
