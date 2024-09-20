@@ -94,7 +94,6 @@ const ModalDetail: React.FC<IDragProps> = ({
   zIndex,
   onClick,
 }) => {
-  console.log(issue);
   const [showRelatedIssueForm, setShowRelatedIssueForm] = useState(false);
   const pathname = usePathname();
 
@@ -231,7 +230,9 @@ const ModalDetail: React.FC<IDragProps> = ({
           <button
             onClick={() => modal(issue)}
             className="icon bg-white w-5 h-5 rounded-sm me-1"
-          ></button>
+          >
+            <Image src={images.close} alt="avatar" className="w-full h-full" />
+          </button>
         </div>
         <div className="detail overflow-auto h-[600px]">
           <div className="bg-yellow-50 border p-2 m-2">
