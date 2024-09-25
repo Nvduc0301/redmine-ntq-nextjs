@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import { formatDate } from '~/utils/FormatDay';
 import { groupIssuesByDate } from '~/utils/GroupByDate';
-import { HeaderTotalData } from '~/const/MyPage';
+import { HEADER_TOTAL_DATA } from '~/const/MyPage';
 import { AppDispatch, RootState } from '~/store/store';
 import { fetchSpentTime } from '~/store/slices/issues/SpentTimeSlice';
 
@@ -54,7 +54,7 @@ const TotalTime: React.FC = () => {
           <table className="min-w-full divide-gray-200 border border-gray-300">
             <thead className="bg-primary-sub_bg h-7">
               <tr>
-                {HeaderTotalData.map((data) => (
+                {HEADER_TOTAL_DATA.map((data) => (
                   <th
                     key={data.id}
                     className="p-1 text-xs border border-primary-border"

@@ -1,11 +1,13 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "~/store/store";
-import { setTempShowClosed } from "../tempSettingsSlice";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setTempShowClosed } from '~/store/slices/Roadmap/tempSettingsSlice';
+import { RootState } from '~/store/store';
 
 const ShowClosedCheckbox: React.FC = () => {
   const dispatch = useDispatch();
-  const tempShowClosed = useSelector((state: RootState) => state.tempSettings.tempShowClosed);
+  const tempShowClosed = useSelector(
+    (state: RootState) => state.tempSettings.tempShowClosed
+  );
 
   return (
     <label className="flex items-end">

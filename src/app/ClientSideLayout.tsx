@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import SubMain from './components/SubMain/SubMain';
+import SubMain from '~/components/layout/SubMain/SubMain';
 // import SubMain from './components/SubMain';
 
 interface ClientSideLayoutProps {
@@ -21,7 +21,6 @@ const ClientSideLayout: React.FC<ClientSideLayoutProps> = ({ children }) => {
   const isProjectPath =
     path.startsWith('/projects') && !excludedPaths.includes(path);
 
-  console.log(isProjectPath);
   return (
     <div className="flex justify-between mt-2">
       <main

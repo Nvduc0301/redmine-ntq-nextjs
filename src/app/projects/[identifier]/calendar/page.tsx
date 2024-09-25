@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
-import { DaysOfWeek } from '~/const/MyPage';
+import { DAYS_OF_WEEK } from '~/const/MyPage';
 // import CustomTooltip from '../../MyPage/components/Schedule/CustomTooltip';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -14,9 +14,9 @@ import images from '~/assets/img';
 import { AppDispatch, RootState } from '~/store/store';
 import Link from 'next/link';
 import Image from 'next/image';
-import Select from '~/app/components/Select/Select';
+import Select from '~/components/common/Select/Select';
 import { fetchIssuesSchedule } from '~/store/slices/issues/issuesScheduleSlice';
-import CustomTooltip from '~/app/components/Schedule/CustomTooltip';
+import CustomTooltip from '~/components/features/Schedule/CustomTooltip';
 const statusOptions = [
   { value: '', label: 'All' },
   { value: 'open', label: 'Open' },
@@ -191,7 +191,7 @@ const Calendar: React.FC = () => {
             <thead className="bg-[#eeeeee] h-7">
               <tr>
                 <th className="w-7"></th>
-                {DaysOfWeek.map((day) => (
+                {DAYS_OF_WEEK.map((day) => (
                   <th key={day.id} scope="col" className="p-1 text-xs">
                     {day.label}
                   </th>
@@ -201,7 +201,7 @@ const Calendar: React.FC = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {daysArray
                 .reduce((rows, day, index) => {
-                  if (index % DaysOfWeek.length === 0) {
+                  if (index % DAYS_OF_WEEK.length === 0) {
                     rows.push([]);
                   }
                   rows[rows.length - 1].push(day);
@@ -234,8 +234,8 @@ const Calendar: React.FC = () => {
                               className="min-h-16 p-4 bg-yellow-50 border border-gray-300 text-left mb-2 cursor-pointer"
                             >
                               <div className=" text-11">
-                                <img
-                                  src={task.img}
+                                <Image
+                                  src={images.add}
                                   alt=""
                                   className="mx-1 inline align-middle"
                                 />

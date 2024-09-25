@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { MenuItems, MenuItems2 } from '~/const/Menu';
-import { Projects } from '~/const/Project';
+import { MENU_ITEM_1, MENU_ITEM_2 } from '~/const/Menu';
+import { PROJECT_TAB } from '~/const/Project';
 
 interface HeaderProps {
   title: string;
@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = () => {
     <div className="">
       <div className=" flex items-center justify-between p-2 bg-primary-dark h-5 text-10">
         <ul className="flex text-white gap-2 font-bold ">
-          {MenuItems.map((item) => (
+          {MENU_ITEM_1.map((item) => (
             <Link
               key={item.id}
               href={item.href}
@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = () => {
               duc.nguyen14@ntq-solution.com.vn
             </Link>
           </li>
-          {MenuItems2.map((item) => (
+          {MENU_ITEM_2.map((item) => (
             <Link
               key={item.id}
               href={item.href}
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = () => {
 
         {isProjectDetailPage && (
           <div className="flex gap-0.5 ml-2">
-            {Projects.map((project) => (
+            {PROJECT_TAB.map((project) => (
               <button
                 key={project.id}
                 onClick={() => handleNavigation(project.slug)}

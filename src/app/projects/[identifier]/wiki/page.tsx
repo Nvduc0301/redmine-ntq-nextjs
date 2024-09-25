@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import images from '~/assets/img';
-import FileUpload from '~/utils/UploadFile';
 import { useState } from 'react';
+import FileUpload from '../newissue/UploadFile';
 const buttonStyle =
   'border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2] ';
 const Wiki = () => {

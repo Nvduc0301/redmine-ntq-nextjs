@@ -4,16 +4,16 @@ import './globals.css';
 import { ReduxProvider } from './providers/ReduxProvider';
 
 import ClientSideLayout from './ClientSideLayout';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Footer from '~/components/layout/Footer';
+import Header from '~/components/layout/Header';
 
 const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
+  src: '../assets/fonts/GeistVF.woff',
   variable: '--font-geist-sans',
   weight: '100 900',
 });
 const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
+  src: '../assets/fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
   weight: '100 900',
 });

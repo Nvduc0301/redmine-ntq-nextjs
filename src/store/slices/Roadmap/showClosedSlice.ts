@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface ShowClosedState {
   showClosed: boolean;
@@ -9,7 +9,7 @@ const initialState: ShowClosedState = {
 };
 
 const showClosedSlice = createSlice({
-  name: "showClosed",
+  name: 'showClosed',
   initialState,
   reducers: {
     toggleShowClosed(state) {

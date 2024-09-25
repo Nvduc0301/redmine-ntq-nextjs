@@ -2,12 +2,12 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import images from '~/assets/img';
-// import ApplyButton from "~/features/Roadmap/components/ApplyButton";
-import ApplyButton from '~/store/slices/Roadmap/components/ApplyButton';
-import ShowBugCheckbox from '~/store/slices/Roadmap/components/ShowBugCheckbox';
-import ShowClosedCheckbox from '~/store/slices/Roadmap/components/ShowClosedCheckbox';
-import ShowTaskCheckbox from '~/store/slices/Roadmap/components/ShowTaskCheckbox';
+
 import { RootState } from '~/store/store';
+import ApplyButton from './components/ApplyButton';
+import ShowBugCheckbox from './components/ShowBugCheckbox';
+import ShowClosedCheckbox from './components/ShowClosedCheckbox';
+import ShowTaskCheckbox from './components/ShowTaskCheckbox';
 
 const SubRoadmap = () => {
   const [isOpenArrow, setIsOpenArrow] = useState(false);

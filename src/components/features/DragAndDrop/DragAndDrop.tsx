@@ -5,44 +5,54 @@ import images from '~/assets/img';
 import './DragAndDrop.css';
 import {
   componentMap,
-  Item,
+  ItemDrag,
   ItemsState,
   Option,
+  SpecificTypeName,
 } from '~/types/ItemDragAndDrop';
+import { getFromLocalStorage, setToLocalStorage } from '~/utils/LocalStorage';
+import { LOCAL_STORAGE_ITEMS_KEY } from '~/const/MagicConstant';
 
-interface DragAndDropProps {
+type DragAndDropProps = {
   hasBorder: boolean;
   items: ItemsState;
   setItems: React.Dispatch<React.SetStateAction<ItemsState>>;
   setOptions: React.Dispatch<React.SetStateAction<Option[]>>;
-}
-const DragAndDrop: React.FC<DragAndDropProps> = ({
-  hasBorder,
-  items,
-  setItems,
-  setOptions,
-}) => {
-  // const [items, setItems] = useState<ItemsState>(initialItems);
-  const [draggingItem, setDraggingItem] = useState<Item | null>(null);
+};
+
+const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
+  const { hasBorder, items, setItems, setOptions } = props;
+
+  const [draggingItem, setDraggingItem] = useState<ItemDrag | null>(null);
   const [draggingStyle, setDraggingStyle] = useState<React.CSSProperties>({});
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDragging, setIsDragging] = useState<Boolean>(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
-  const isMouseDownRef = useRef(false);
+  const isMouseDownRef = useRef<Boolean>(false);
   const [itemSources, setItemSources] = useState<{
-    [itemId: string]: 'A' | 'B' | 'C';
+    [itemId: string]: SpecificTypeName;
   }>({});
-  const [currentList, setCurrentList] = useState<'A' | 'B' | 'C'>('A');
+  const [currentList, setCurrentList] = useState<SpecificTypeName>('A');
 
   // Sử dụng useEffect để load dữ liệu từ localStorage khi component mount
   useEffect(() => {
-    const storedItems = localStorage.getItem('items');
-    if (storedItems) {
-      setItems(JSON.parse(storedItems));
-    }
+    const defaultItems: ItemsState = {
+      A: [],
+      B: [],
+      C: [],
+    };
+
+    // Lấy dữ liệu từ localStorage và merge với defaultItems
+    const storedItems = getFromLocalStorage<Record<string, ItemDrag[]>>(
+      LOCAL_STORAGE_ITEMS_KEY,
+      {}
+    );
+    const mergedItems: ItemsState = { ...defaultItems, ...storedItems };
+
+    setItems(mergedItems);
   }, []);
 
-  const onDrop = (item: Item, targetList: 'A' | 'B' | 'C') => {
+  const onDrop = (item: ItemDrag, targetList: SpecificTypeName) => {
     const sourceList = itemSources[item.id];
     if (sourceList === targetList) {
       setDraggingItem(null);
@@ -58,7 +68,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
         [targetList]: [...prevItems[targetList], item],
       };
       // Lưu vào localStorage ngay sau khi cập nhật
-      localStorage.setItem('items', JSON.stringify(updatedItems));
+      setToLocalStorage(LOCAL_STORAGE_ITEMS_KEY, updatedItems);
       return updatedItems;
     });
 
@@ -75,8 +85,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
 
   const onDragStart = (
     e: React.MouseEvent,
-    item: Item,
-    list: 'A' | 'B' | 'C'
+    item: ItemDrag,
+    list: SpecificTypeName
   ) => {
     e.preventDefault();
     const target = e.target as HTMLElement;
@@ -118,8 +128,8 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
   const getCurrentDropTarget = (
     x: number,
     y: number
-  ): 'A' | 'B' | 'C' | null => {
-    const targets: ('A' | 'B' | 'C')[] = ['A', 'B', 'C'];
+  ): SpecificTypeName | null => {
+    const targets: SpecificTypeName[] = ['A', 'B', 'C'];
     for (const target of targets) {
       if (checkDropTarget(x, y, target)) {
         return target;
@@ -182,13 +192,10 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
             }));
 
             // Cập nhật localStorage
-            localStorage.setItem(
-              'items',
-              JSON.stringify({
-                ...items,
-                [currentDropTarget]: newItems,
-              })
-            );
+            setToLocalStorage(LOCAL_STORAGE_ITEMS_KEY, {
+              ...items,
+              [currentDropTarget]: newItems,
+            });
           }
         }
       }
@@ -206,7 +213,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
   const checkDropTarget = (
     x: number,
     y: number,
-    targetList: 'A' | 'B' | 'C'
+    targetList: SpecificTypeName
   ) => {
     const targetMap: { [key: string]: HTMLElement | null } = {
       A: containerRef.current!.querySelector('#table-A'),
@@ -248,20 +255,41 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
     };
   }, [isDragging]);
 
-  const handleCloseItem = (itemId: string, targetList: 'A' | 'B' | 'C') => {
-    const storedItems = JSON.parse(localStorage.getItem('items') || '{}');
+  const handleCloseItem = (itemId: string, targetList: SpecificTypeName) => {
+    // Bước 1: Lấy dữ liệu từ localStorage cho ItemsState
+    const storedItems = getFromLocalStorage<Record<string, ItemDrag[]>>(
+      LOCAL_STORAGE_ITEMS_KEY,
+      {}
+    );
 
+    // Bước 2: Cập nhật danh sách items sau khi xóa
     const updatedList = storedItems[targetList].filter(
-      (item: { id: string }) => item.id !== itemId
+      (item: ItemDrag) => item.id !== itemId
     );
-    storedItems[targetList] = updatedList;
-    localStorage.setItem('items', JSON.stringify(storedItems));
 
-    const addedItems = JSON.parse(localStorage.getItem('addedOptions') || '[]');
-    const updatedAddedItems = addedItems.filter(
-      (item: string) => item !== itemId
+    // Bước 3: Cập nhật lại storedItems với updatedList
+    storedItems[targetList] = updatedList;
+
+    // Lưu lại vào localStorage
+    setToLocalStorage(LOCAL_STORAGE_ITEMS_KEY, storedItems);
+
+    // Bước 4: Cập nhật lại trạng thái items trong component
+    setItems((prevItems) => ({
+      ...prevItems,
+      [targetList]: updatedList,
+    }));
+
+    // Bước 5: Xóa itemId khỏi addedOptions
+    const addedItems = getFromLocalStorage<string[]>(
+      'LOCAL_STORAGE_ADDED_OPTIONS_KEY',
+      []
     );
-    localStorage.setItem('addedOptions', JSON.stringify(updatedAddedItems));
+    const updatedAddedItems = addedItems.filter((itemId) => itemId !== itemId);
+
+    // Lưu lại updatedAddedItems vào localStorage
+    setToLocalStorage('LOCAL_STORAGE_ADDED_OPTIONS_KEY', updatedAddedItems);
+
+    // Cập nhật lại trạng thái options
     setOptions((prevOptions) =>
       prevOptions.map((option) => ({
         ...option,
@@ -270,14 +298,9 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
           : option.isAdded,
       }))
     );
-
-    // Cập nhật lại trạng thái items thay vì reload
-    setItems((prevItems) => ({
-      ...prevItems,
-      [targetList]: updatedList,
-    }));
   };
-  const renderItems = (items: Item[], targetList: 'A' | 'B' | 'C') => {
+
+  const renderItems = (items: ItemDrag[], targetList: SpecificTypeName) => {
     return items.map((item) => {
       const Component =
         componentMap[item.componentName as keyof typeof componentMap];
@@ -306,12 +329,21 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const renderComponent = (
-    Component: React.ElementType,
-    props: React.PropsWithChildren<any>
-  ) => {
-    return <Component {...props} />;
+  const renderComponent = (item: ItemDrag) => {
+    const Component =
+      componentMap[item.componentName as keyof typeof componentMap];
+
+    const componentProps = {
+      id: item.id,
+      ...item.data,
+    };
+
+    return Component ? (
+      <Component
+        key={item.id}
+        {...componentProps} // Đảm bảo rằng id luôn được truyền
+      />
+    ) : null;
   };
 
   return (
@@ -323,9 +355,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
     >
       {isDragging && draggingItem && (
         <div style={draggingStyle} className="item dragging">
-          {renderComponent(componentMap[draggingItem.componentName], {
-            data: draggingItem.data,
-          })}
+          {renderComponent(draggingItem)}
         </div>
       )}
 

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter, usePathname } from 'next/navigation';
-import { activityItems } from '~/const/Project';
+import { ACTIVITY_ITEMS } from '~/const/Project';
 import { FilterState, setFilters } from '~/store/slices/issues/filterSlice';
 // import { setFilters, FilterState } from "~/features/issues/filterSlice";
 import { RootState } from '~/store/store';
+import { setToLocalStorage } from '~/utils/LocalStorage';
 
 type ActivityItem = {
   id: string;
@@ -22,7 +23,7 @@ const SubActivity: React.FC = () => {
   const [localFilters, setLocalFilters] = useState<FilterState>(filters);
 
   useEffect(() => {
-    localStorage.setItem('filters', JSON.stringify(filters));
+    setToLocalStorage('filters', filters);
   }, [filters]);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +59,7 @@ const SubActivity: React.FC = () => {
     <form onSubmit={handleSubmit}>
       <h3 className="text-[#666] text-sm mt-3.5 mb-2.5">Activity</h3>
       <ul className="text-xs">
-        {activityItems.map((item: ActivityItem) => (
+        {ACTIVITY_ITEMS.map((item: ActivityItem) => (
           <li
             key={item.id}
             className="flex items-center gap-1.5 text-[#169] cursor-pointer hover:underline hover:text-[#b2290f]"

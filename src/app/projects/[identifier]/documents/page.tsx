@@ -1,5 +1,5 @@
 import React from 'react';
-import Nodata from '~/app/components/Nodata/Nodata';
+import Nodata from '~/components/common/Nodata/Nodata';
 
 const Documents = () => {
   return (

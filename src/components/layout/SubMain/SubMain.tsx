@@ -4,16 +4,15 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 
 import SubProject from './SubProject/SubProject';
-import SubOverview from './components/SubOverview';
-import SubActivity from './components/SubActivity';
-import SubRoadmap from './components/SubRoadmap';
-import SubIssues from './components/SubIssues';
-import SubDocuments from './components/SubDocuments';
-import SubWiki from './components/SubWiki';
+import SubOverview from './components/SubOverview/SubOverview';
+import SubActivity from './components/SubActivity/SubActivity';
+import SubRoadmap from './components/SubRoadmap/SubRoadmap';
+import SubIssues from './components/SubIssues/SubIssues';
+import SubDocuments from './components/SubDocuments/SubDocuments';
+import SubWiki from './components/SubWiki/SubWiki';
 
 const SubMain = () => {
   const pathname = usePathname();
-  console.log(pathname);
 
   const renderContent = () => {
     // Xử lý logic render dựa trên `pathname`

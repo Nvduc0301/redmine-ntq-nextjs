@@ -7,7 +7,7 @@ import images from '~/assets/img';
 
 import {
   ComponentMap,
-  Item,
+  ItemDrag,
   ItemsState,
   Option,
 } from '~/types/ItemDragAndDrop';
@@ -16,7 +16,8 @@ import TableIssue from '~/app/(my-page)/table-issue/page';
 import SpentTime from '~/app/(my-page)/spent-time/page';
 import Documents from '~/app/(my-page)/document/page';
 import LatestNews from '~/app/(my-page)/latest-news/page';
-import DragAndDrop from '~/app/components/DragAndDrop/DragAndDrop';
+import DragAndDrop from '~/components/features/DragAndDrop/DragAndDrop';
+import { getFromLocalStorage, setToLocalStorage } from '~/utils/LocalStorage';
 
 const componentMap: { [key: string]: React.ReactNode } = {
   Schedule: <Schedule />,
@@ -48,9 +49,7 @@ const MyPageLayoutPage = () => {
 
   useEffect(() => {
     // Đọc danh sách options đã thêm từ localStorage
-    const addedOptions: string[] = JSON.parse(
-      localStorage.getItem('addedOptions') || '[]'
-    );
+    const addedOptions = getFromLocalStorage<string[]>('addedOptions', []);
     setOptions((prevOptions) =>
       prevOptions.map((option) =>
         addedOptions.includes(option.value)
@@ -59,10 +58,12 @@ const MyPageLayoutPage = () => {
       )
     );
     // Đọc dữ liệu items từ localStorage
-    const storedItems = localStorage.getItem('items');
-    if (storedItems) {
-      setItems(JSON.parse(storedItems));
-    }
+    const storedItems = getFromLocalStorage<ItemsState>('items', {
+      A: [],
+      B: [],
+      C: [],
+    });
+    setItems(storedItems);
   }, []);
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -85,19 +86,21 @@ const MyPageLayoutPage = () => {
 
           if (newComponent) {
             setItems((prevItems) => {
-              const newItem: Item = {
+              const newItem: ItemDrag = {
                 id: selectedValue,
                 componentName: componentName,
                 label: selectedLabel,
               };
 
               // Kiểm tra nếu item đã tồn tại trong localStorage
-              const storedItems: ItemsState = JSON.parse(
-                localStorage.getItem('items') || '{"A": [], "B": [], "C": []}'
-              );
+              const storedItems = getFromLocalStorage<ItemsState>('items', {
+                A: [],
+                B: [],
+                C: [],
+              });
 
               const itemAlreadyExists = storedItems.A.some(
-                (item: Item) => item.id === selectedValue
+                (item: ItemDrag) => item.id === selectedValue
               );
 
               if (!itemAlreadyExists) {
@@ -132,14 +135,15 @@ const MyPageLayoutPage = () => {
             );
 
             // Lưu danh sách options đã thêm vào localStorage
-            const addedOptions = JSON.parse(
-              localStorage.getItem('addedOptions') || '[]'
+            const addedOptions = getFromLocalStorage<string[]>(
+              'addedOptions',
+              []
             );
             if (!addedOptions.includes(selectedValue)) {
-              localStorage.setItem(
-                'addedOptions',
-                JSON.stringify([...addedOptions, selectedValue])
-              );
+              setToLocalStorage('addedOptions', [
+                ...addedOptions,
+                selectedValue,
+              ]);
             }
 
             // Xóa trạng thái tạm thời

@@ -12,7 +12,7 @@ import {
   OPTION_ACTIVITY,
   OPTION_CATEGORY,
 } from '~/const/MyPage';
-import Select from '~/app/components/Select/Select';
+import Select from '~/components/common/Select/Select';
 
 type FormValues = {
   selectedProject: string;

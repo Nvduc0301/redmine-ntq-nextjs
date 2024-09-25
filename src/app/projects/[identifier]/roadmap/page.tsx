@@ -9,36 +9,10 @@ import {
   getProjectVersions,
   getProjectVersionsIssues,
 } from '~/services/RoadmapService';
-// import { setProjectVersions } from '~/features/Roadmap/projectVersionSlice';
 import { RingLoader } from 'react-spinners'; // Import RingLoader
 import { RootState } from '~/store/store';
 import { setProjectVersions } from '~/store/slices/Roadmap/projectVersionSlice';
-
-interface Issue {
-  fixed_version: {
-    id: number;
-  };
-  tracker: {
-    id: number;
-    name: string;
-  };
-  id: number;
-  subject: string;
-  estimated_hours: number;
-  done_ratio: number;
-}
-
-export interface ProjectVersion {
-  id: number;
-  name: string;
-  due_date: string;
-  description: string;
-  status: string;
-}
-
-interface ProjectVersionsIssuesResponse {
-  issues: Issue[];
-}
+import { Issue, ProjectVersionsIssuesResponse } from '~/types/Project';
 
 interface RoadmapProps {
   identifier: string;
@@ -61,23 +35,23 @@ const Roadmap: React.FC<RoadmapProps> = ({ identifier }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchProjectVersions = async () => {
-      try {
-        setLoading(true);
-        const { data: projectVersionsData, projectId } =
-          await getProjectVersions(identifier);
-        dispatch(setProjectVersions(projectVersionsData));
-        setLoading(false);
-        if (projectId) {
-          await fetchProjectVersionsIssues(projectId);
-        }
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-
     fetchProjectVersions();
   }, [dispatch, identifier]);
+
+  const fetchProjectVersions = async () => {
+    try {
+      setLoading(true);
+      const { data: projectVersionsData, projectId } =
+        await getProjectVersions(identifier);
+      dispatch(setProjectVersions(projectVersionsData));
+      setLoading(false);
+      if (projectId) {
+        await fetchProjectVersionsIssues(projectId);
+      }
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
   const fetchProjectVersionsIssues = async (projectId: number) => {
     try {

@@ -1,14 +1,21 @@
-// src/api/projectService.js
+import { Settings } from './../types/Project';
 import { fetchAPIGet } from '~/utils/helperAPI';
-import axiosInstance from './api';
-import { Member, VersionSelect } from '~/types/Project';
-import { projectID } from '~/utils/CommonData';
-// import { projectID } from "~/utils/CommonData";
-const customLabels = [
-  { value: '', label: '' },
-  { value: '2803', label: '<<me>>' },
-];
-export const getProjects = async () => {
+import {
+  GroupMemberSelect,
+  Issue,
+  Member,
+  Project,
+  Time,
+  TrackerItem,
+  Versions,
+  VersionSelect,
+  Wikis,
+} from '~/types/Project';
+import { PROJECT_ID } from '~/const/MagicConstant';
+import { customLabels } from '~/utils/MetaData';
+import { axiosInstance } from './api';
+
+export const getProjects = async (): Promise<Project[]> => {
   try {
     const response = await axiosInstance.get('/projects.json');
     return response.data.projects;
@@ -18,7 +25,7 @@ export const getProjects = async () => {
   }
 };
 
-export const getMembers = async (identifier: string) => {
+export const getMembers = async (identifier: string): Promise<Member[]> => {
   try {
     const data = await fetchAPIGet(`/projects/${identifier}/memberships.json`);
     return data.memberships;
@@ -27,9 +34,9 @@ export const getMembers = async (identifier: string) => {
     throw error;
   }
 };
-export const getMembersSelect = async () => {
+export const getMembersSelect = async (): Promise<GroupMemberSelect> => {
   try {
-    const data = await fetchAPIGet(`/projects/${projectID}/memberships.json`);
+    const data = await fetchAPIGet(`/projects/${PROJECT_ID}/memberships.json`);
     const memberships = data.memberships?.map((membership: Member) => ({
       value: membership.user.id,
       label: membership.user.name,
@@ -42,9 +49,9 @@ export const getMembersSelect = async () => {
     throw error;
   }
 };
-export const getVersionSelect = async () => {
+export const getVersionSelect = async (): Promise<Versions[]> => {
   try {
-    const data = await fetchAPIGet(`/projects/${projectID}/versions.json`);
+    const data = await fetchAPIGet(`/projects/${PROJECT_ID}/versions.json`);
     let version = data.versions
       ?.filter((version: VersionSelect) => version.status === 'open')
       .map((version: VersionSelect) => ({
@@ -59,7 +66,9 @@ export const getVersionSelect = async () => {
   }
 };
 
-export const getTrackerQuantity = async (identifier: string) => {
+export const getTrackerQuantity = async (
+  identifier: string
+): Promise<TrackerItem[]> => {
   try {
     const data = await fetchAPIGet('/issues.json', `identifier=${identifier}`);
     return data.issues;
@@ -71,7 +80,7 @@ export const getTrackerQuantity = async (identifier: string) => {
 
 // activity
 
-export const timeEntries = async (identifier: string) => {
+export const timeEntries = async (identifier: string): Promise<Time[]> => {
   try {
     const data = await fetchAPIGet(
       '/time_entries.json',
@@ -84,7 +93,7 @@ export const timeEntries = async (identifier: string) => {
   }
 };
 
-export const getWiki = async (identifier: string) => {
+export const getWiki = async (identifier: string): Promise<Wikis[]> => {
   try {
     const data = await fetchAPIGet(`projects/${identifier}/wiki/Wiki.json`);
     return data.wiki_page;
@@ -94,7 +103,7 @@ export const getWiki = async (identifier: string) => {
   }
 };
 
-export const getUserDetail = async (user_id: string) => {
+export const getUserDetail = async (user_id: string): Promise<Member[]> => {
   try {
     const data = await fetchAPIGet(`users/${user_id}.json`);
     return data.user;
@@ -106,7 +115,7 @@ export const getUserDetail = async (user_id: string) => {
 
 // Issues
 
-export const getIssuesDetail = async (user_id: string) => {
+export const getIssuesDetail = async (user_id: string): Promise<Issue[]> => {
   try {
     const data = await fetchAPIGet(`issues/${user_id}.json`);
     return data.issue;
@@ -118,7 +127,7 @@ export const getIssuesDetail = async (user_id: string) => {
 
 // Settings
 
-export const getVersions = async (identifier: string) => {
+export const getVersions = async (identifier: string): Promise<Settings[]> => {
   try {
     const data = await fetchAPIGet(`projects/${identifier}/versions.json`);
     return data.versions;

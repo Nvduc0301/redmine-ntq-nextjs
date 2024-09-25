@@ -1,37 +1,22 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { getMembers, getTrackerQuantity } from "~/services/ProjectService";
-import Image from "next/image";
-import images from "~/assets/img";
-import { RingLoader } from "react-spinners";
-import Link from "next/link";
-import { setLocalMembers } from "~/store/slices/users/memberSlice";
-import { useDispatch } from "react-redux";
-import { usePathname } from "next/navigation";
-
-interface Member {
-  id: number;
-  project: { id: number; name: string };
-  roles: { id: number; name: string }[];
-  user: { id: number; name: string };
-}
-
-interface TrackerItem {
-  id: number;
-  tracker: {
-    id: number;
-    name: string;
-  };
-}
-
+import React, { useEffect, useState } from 'react';
+import { getMembers, getTrackerQuantity } from '~/services/ProjectService';
+import Image from 'next/image';
+import images from '~/assets/img';
+import { RingLoader } from 'react-spinners';
+import Link from 'next/link';
+import { setLocalMembers } from '~/store/slices/users/memberSlice';
+import { useDispatch } from 'react-redux';
+import { usePathname } from 'next/navigation';
+import { Member, TrackerItem } from '~/types/Project';
 interface OverviewProps {
   identifier: string;
 }
 
 const Overview: React.FC<OverviewProps> = () => {
   const pathname = usePathname();
-  const identifier = pathname.split("/")[2];
+  const identifier = pathname.split('/')[2];
   const [members, setMembers] = useState<Member[]>([]);
   const [trackerQuantity, setTrackerQuantity] = useState<TrackerItem[]>([]);
 
@@ -39,39 +24,39 @@ const Overview: React.FC<OverviewProps> = () => {
   const dispatch = useDispatch();
 
   const links = [
-    { href: `/projects/${identifier}/issues`, text: "View all issues" },
-    { href: `/projects/${identifier}/calendar`, text: "Calendar" },
-    { href: `/projects/${identifier}/gantt`, text: "Gantt" },
+    { href: `/projects/${identifier}/issues`, text: 'View all issues' },
+    { href: `/projects/${identifier}/calendar`, text: 'Calendar' },
+    { href: `/projects/${identifier}/gantt`, text: 'Gantt' },
   ];
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [membersResult, trackerResult] = await Promise.all([
-          getMembers(identifier),
-          getTrackerQuantity(identifier),
-        ]);
-        setMembers(membersResult);
-        setTrackerQuantity(trackerResult);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-
     fetchData();
   }, [identifier, dispatch]);
+
+  const fetchData = async () => {
+    try {
+      const [membersResult, trackerResult] = await Promise.all([
+        getMembers(identifier),
+        getTrackerQuantity(identifier),
+      ]);
+      setMembers(membersResult);
+      setTrackerQuantity(trackerResult);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
   dispatch(setLocalMembers(members));
 
   const filterMembersByRole = (roleName: string) => {
     return members.filter((member) =>
-      member.roles.some((role) => role.name === roleName),
+      member.roles.some((role) => role.name === roleName)
     );
   };
 
-  const managers = filterMembersByRole("Manager");
-  const developers = filterMembersByRole("Developer");
+  const managers = filterMembersByRole('Manager');
+  const developers = filterMembersByRole('Developer');
 
   const trackerCount = trackerQuantity.reduce<Record<string, number>>(
     (acc, issue) => {
@@ -83,7 +68,7 @@ const Overview: React.FC<OverviewProps> = () => {
       }
       return acc;
     },
-    {},
+    {}
   );
 
   return (
@@ -125,7 +110,7 @@ const Overview: React.FC<OverviewProps> = () => {
                     rel="noreferrer noopener"
                   >
                     {link.text}
-                    {index < links.length - 1 && " |"}
+                    {index < links.length - 1 && ' |'}
                   </a>
                 ))}
               </div>
@@ -148,7 +133,7 @@ const Overview: React.FC<OverviewProps> = () => {
                       key={manager.id}
                       rel="noreferrer noopener"
                     >
-                      {manager.user.name},{" "}
+                      {manager.user.name},{' '}
                     </Link>
                   ))}
                 </p>
@@ -161,7 +146,7 @@ const Overview: React.FC<OverviewProps> = () => {
                       key={developer.id}
                       rel="noreferrer noopener"
                     >
-                      {developer.user.name},{" "}
+                      {developer.user.name},{' '}
                     </Link>
                   ))}
                 </p>

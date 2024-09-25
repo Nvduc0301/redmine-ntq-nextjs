@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import images from '~/assets/img';
 import { getVersions } from '~/services/ProjectService';
+import { Settings } from '~/types/Project';
 import { formatDate } from '~/utils/FormatDay';
 import Link from 'next/link';
 
@@ -11,37 +12,23 @@ interface SettingsProps {
   identifier: string;
 }
 
-interface Settings {
-  id: number;
-  version: string;
-  name: string;
-  sharing: string;
-  status: string;
-  date: string;
-  description: string;
-  updated_on: string;
-  created_on: string;
-  due_date: string;
-  project: { id: number; name: string };
-}
-
 const Settings: React.FC<SettingsProps> = ({ identifier }) => {
   const [versions, setVersions] = useState<Settings[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchVersions = async () => {
-      try {
-        const response = await getVersions(identifier);
-        setVersions(response);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
     fetchVersions();
   }, [identifier]);
 
-  console.log(versions, loading);
+  const fetchVersions = async () => {
+    try {
+      const response = await getVersions(identifier);
+      setVersions(response);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <h2 className="text-xl text-[#555] mb-2.5 font-medium">Settings</h2>

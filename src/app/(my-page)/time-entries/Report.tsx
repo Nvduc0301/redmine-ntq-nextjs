@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import Select from '~/app/components/Select/Select';
+import Select from '~/components/common/Select/Select';
 import images from '~/assets/img';
 
 import { OPTIONS_TIME, OPTIONS_ADD } from '~/const/MyPage';

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Member {
   id: number;
@@ -7,16 +7,12 @@ interface Member {
   user: { id: number; name: string };
 }
 
-interface MembersState {
-  members: Member[];
-}
-
-const initialState: MembersState = {
-  members: [],
+const initialState = {
+  members: [] as Member[],
 };
 
 const memberSlice = createSlice({
-  name: "members",
+  name: 'members',
   initialState,
   reducers: {
     setLocalMembers(state, action: PayloadAction<Member[]>) {

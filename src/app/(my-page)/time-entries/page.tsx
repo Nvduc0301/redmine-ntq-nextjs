@@ -15,7 +15,7 @@ import { fetchTimeSpent } from '~/store/slices/issues/TimeSpentSlice';
 import Link from 'next/link';
 import images from '~/assets/img';
 import Image from 'next/image';
-import Select from '~/app/components/Select/Select';
+import Select from '~/components/common/Select/Select';
 import Detail from './Detail';
 import Report from './Report';
 

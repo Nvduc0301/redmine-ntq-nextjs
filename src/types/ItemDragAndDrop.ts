@@ -7,14 +7,6 @@ import TableIssue from '~/app/(my-page)/table-issue/page';
 import TotalTime from '~/app/(my-page)/total-time/page';
 import { IssueType } from './Issue';
 
-export type ComponentName =
-  | 'LogTime'
-  | 'Schedule'
-  | 'TableIssue'
-  | 'TotalTime'
-  | 'SpentTime'
-  | 'LatestNews'
-  | 'Documents';
 export const componentMap: ComponentMap = {
   LogTime,
   Schedule,
@@ -24,7 +16,7 @@ export const componentMap: ComponentMap = {
   LatestNews,
   Documents,
 };
-export interface Item {
+export interface ItemDrag {
   id: string;
   content?: string;
   componentName: keyof ComponentMap;
@@ -34,9 +26,9 @@ export interface Item {
 }
 
 export interface ItemsState {
-  A: Item[];
-  B: Item[];
-  C: Item[];
+  A: ItemDrag[];
+  B: ItemDrag[];
+  C: ItemDrag[];
 }
 export interface Option {
   label: string;
@@ -53,3 +45,5 @@ export type ComponentMap = {
   LatestNews: React.FC;
   Documents: React.FC;
 };
+
+export type SpecificTypeName = 'A' | 'B' | 'C';

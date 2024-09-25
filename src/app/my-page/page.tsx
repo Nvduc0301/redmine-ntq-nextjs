@@ -2,15 +2,20 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import DragAndDropMyPage from '../components/DragAndDrop/DragAndDropMyPage';
+import DragAndDropMyPage from '~/components/features/DragAndDrop/DragAndDropMyPage';
+import { ItemsState } from '~/types/ItemDragAndDrop';
+import { getFromLocalStorage } from '~/utils/LocalStorage';
 
 const MyPage = () => {
-  const [items, setItems] = useState<any>({});
+  const [items, setItems] = useState<ItemsState>({ A: [], B: [], C: [] });
   const [hasItems, setHasItems] = useState(false);
 
   useEffect(() => {
-    const itemFromLocalStorage = localStorage.getItem('items');
-    const parsedItems = JSON.parse(itemFromLocalStorage || '[]');
+    const parsedItems = getFromLocalStorage<ItemsState>('items', {
+      A: [],
+      B: [],
+      C: [],
+    });
 
     setItems(parsedItems);
 

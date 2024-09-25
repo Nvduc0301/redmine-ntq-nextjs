@@ -12,9 +12,9 @@ import { formatDateTime } from '~/utils/FormatDay';
 
 // import ModalDetail from '~/pages/MyPage/components/TableIssue/ModalDetail';
 // import { ZIndexContext } from '~/pages/MyPage/components/TableIssue/ModalContext';
-import Select from '~/app/components/Select/Select';
-import { ZIndexContext } from '~/app/components/Modal/ModalContext';
-import ModalDetail from '~/app/components/Modal/ModalDetail';
+import Select from '~/components/common/Select/Select';
+import { ZIndexContext } from '~/components/common/Modal/ModalContext';
+import ModalDetail from '~/components/common/Modal/ModalDetail';
 
 const Issues = () => {
   const [issues, setIssues] = useState<Issue[]>([]);
@@ -108,19 +108,19 @@ const Issues = () => {
   const { zIndexCounter, incrementZIndex } = useContext(ZIndexContext);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        const result = await getIssueSchedule();
-        setIssues(result);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-
     fetchProjects();
   }, []);
+
+  const fetchProjects = async () => {
+    try {
+      setLoading(true);
+      const result = await getIssueSchedule();
+      setIssues(result);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
   // handle option
 

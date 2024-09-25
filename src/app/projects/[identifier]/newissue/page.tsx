@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { RingLoader } from 'react-spinners';
-import ModalCreateVersion from '~/app/components/Modal/ModalCreateVersion';
+import ModalCreateVersion from '~/components/common/Modal/ModalCreateVersion';
 import Image from 'next/image';
 import images from '~/assets/img';
 
@@ -28,20 +28,18 @@ import {
   selectOptions,
 } from '~/types/NewIssue';
 import { GroupMemberSelect, Versions } from '~/types/Project';
-import { projectID } from '~/utils/CommonData';
-import DescriptionInput from '~/utils/EditText';
-import Preview from '~/utils/Preview';
-import FileUpload from '~/utils/UploadFile';
+import DescriptionInput from '~/app/projects/[identifier]/newissue/EditText';
+import FileUpload from './UploadFile';
+import Preview from './Preview';
+import { PROJECT_ID } from '~/const/MagicConstant';
+import { statusOptions } from '~/utils/MetaData';
 
 const textColor = 'text-primary-text_gray';
 const labelStyle = `${textColor} text-xs font-semibold mb-2 mr-1 `;
 const labelDataStyle = `${textColor} text-xs font-semibold mb-2 mr-1 w-28`;
 const buttonStyle =
   'border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2] ';
-const statusOptions = [
-  { label: 'Bug', value: 1 },
-  { label: 'Task', value: 4 },
-];
+
 interface FileObj {
   file: File;
   description: string;
@@ -96,7 +94,7 @@ const NewIssue = () => {
   };
   useEffect(() => {
     fetchVersions();
-  }, [refresh]); // Thay đổi refresh sẽ trigger lại việc fetch data
+  }, [refresh]);
 
   const fetchVersions = async () => {
     try {
@@ -108,19 +106,20 @@ const NewIssue = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const members = await getMembersSelect();
-        if (members) {
-          setAssignee(members);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, [refresh]);
+
+  const fetchData = async () => {
+    try {
+      const members = await getMembersSelect();
+      if (members) {
+        setAssignee(members);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   const handleVersionCreated = () => {
     setRefresh((prev) => prev + 1);
     handleCloseModal();
@@ -136,7 +135,7 @@ const NewIssue = () => {
       start_date: data.start_date
         ? moment(data.start_date).format('YYYY-MM-DD')
         : undefined,
-      project_id: projectID,
+      project_id: PROJECT_ID,
       description: description,
       // custom_fields:
     };
@@ -148,7 +147,6 @@ const NewIssue = () => {
             UploadFile(fileObj.file)
           );
           const tokens = await Promise.all(uploadPromises);
-          console.log(tokens);
 
           // Xử lý tiếp các tokens nếu cần thiết, ví dụ thêm vào formattedData nếu cần
           // formattedData.tokens = tokens;

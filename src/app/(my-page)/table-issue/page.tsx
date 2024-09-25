@@ -8,23 +8,13 @@ import { fetchIssuesAssigned } from '~/store/slices/issues/IssuesAssignedSlice';
 import { fetchIssuesReport } from '~/store/slices/issues/IssuesReportSlice';
 import { fetchIssuesWatched } from '~/store/slices/issues/IssuesWatchedSlice';
 import { Issue } from '~/types/Issue';
-import { ZIndexContext } from '~/app/components/Modal/ModalContext';
-import ModalDetail from '~/app/components/Modal/ModalDetail';
+import { ZIndexContext } from '~/components/common/Modal/ModalContext';
+import ModalDetail from '~/components/common/Modal/ModalDetail';
+import { tableHeaders, tableNames } from '~/utils/MetaData';
 
-const tableHeaders = [
-  { key: '#', label: '#' },
-  { key: 'Project', label: 'Project' },
-  { key: 'Tracker', label: 'Tracker' },
-  { key: 'Subject', label: 'Subject' },
-];
 const tableCellClasses =
   'p-1 text-center text-xs border border-primary-border hover:underline';
-const tableNames = {
-  issuesAssigned: 'Issues assigned to me',
-  issuesReport: 'Reported issues',
-  issuesWatched: 'Watched issues',
-  default: 'Issues',
-};
+
 const getTableName = (id: string): string => {
   switch (id) {
     case '1':
@@ -113,8 +103,6 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
     loading = loadingWatched;
   }
 
-  console.log(modals);
-
   return (
     <>
       <div className="text-start mb-2">
@@ -134,15 +122,17 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
         ) : (
           <table className="min-w-full divide-gray-200 border border-gray-300">
             <thead className="bg-primary-sub_bg h-7">
-              {tableHeaders.map((header) => (
-                <th
-                  key={header.key}
-                  scope="col"
-                  className="p-1 text-xs border border-primary-border"
-                >
-                  {header.label}
-                </th>
-              ))}
+              <tr>
+                {tableHeaders.map((header) => (
+                  <th
+                    key={header.key}
+                    scope="col"
+                    className="p-1 text-xs border border-primary-border"
+                  >
+                    {header.label}
+                  </th>
+                ))}
+              </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 h-6">
               {displayedData?.map((issue, index: number) => {

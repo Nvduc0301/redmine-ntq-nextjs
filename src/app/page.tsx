@@ -1,22 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 // import { formatDateTime } from "~/utils/FormatDay";
-import Image from "next/image";
-import images from "~/assets/img";
-import { AppDispatch, RootState } from "~/store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProject } from "~/store/slices/issues/ProjectSlice ";
-import { RingLoader } from "react-spinners";
-import { useRouter } from "next/navigation";
-import { formatDateTime } from "~/utils/FormatDay";
+import Image from 'next/image';
+import images from '~/assets/img';
+import { AppDispatch, RootState } from '~/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProject } from '~/store/slices/issues/ProjectSlice ';
+import { RingLoader } from 'react-spinners';
+import { useRouter } from 'next/navigation';
+import { formatDateTime } from '~/utils/FormatDay';
+import { Project } from '~/types/Project';
 
 export default function Home() {
   const router = useRouter();
 
   const dispatch: AppDispatch = useDispatch();
   const { project, loading: loadingProject } = useSelector(
-    (state: RootState) => state.project,
+    (state: RootState) => state.project
   );
   useEffect(() => {
     if (project?.length === 0) {
@@ -48,7 +49,7 @@ export default function Home() {
             </div>
           ) : (
             <ul className="pl-10 pt-3 list-disc">
-              {project.map((project: any) => (
+              {project.map((project: Project) => (
                 <li className="text-xs" key={project.id}>
                   <button
                     onClick={() =>

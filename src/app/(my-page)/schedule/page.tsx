@@ -7,8 +7,10 @@ import { RingLoader } from 'react-spinners';
 import { getStartOfWeek, isToday } from '~/utils/FormatDay';
 import { fetchIssuesSchedule } from '~/store/slices/issues/issuesScheduleSlice';
 import { AppDispatch, RootState } from '~/store/store';
-import CustomTooltip from '~/app/components/Schedule/CustomTooltip';
-import { DaysOfWeek } from '~/const/MyPage';
+import CustomTooltip from '~/components/features/Schedule/CustomTooltip';
+import { DAYS_OF_WEEK } from '~/const/MyPage';
+import Image from 'next/image';
+import images from '~/assets/img';
 
 const Schedule: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -33,7 +35,7 @@ const Schedule: React.FC = () => {
           <thead className="bg-primary-sub_bg h-7">
             <tr>
               <th className="w-7"></th>
-              {DaysOfWeek.map((day) => (
+              {DAYS_OF_WEEK.map((day) => (
                 <th key={day.id} scope="col" className="p-1 text-xs">
                   {day.label}
                 </th>
@@ -64,8 +66,8 @@ const Schedule: React.FC = () => {
                       >
                         <div className="text-xs">
                           {task.project.name} -
-                          <img
-                            src={task.img}
+                          <Image
+                            src={images.attachment}
                             alt=""
                             className="mx-1 inline align-middle"
                           />

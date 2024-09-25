@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation';
 import images from '~/assets/img';
 import { OverviewProps, Time, Wikis } from '~/types/Project';
 import { RootState } from '~/store/store';
-import Nodata from '~/app/components/Nodata/Nodata';
+import Nodata from '~/components/common/Nodata/Nodata';
 import { getIssueSchedule } from '~/services/IssueService';
 import { getWiki, timeEntries } from '~/services/ProjectService';
 import { Issue } from '~/types/Issue';
@@ -42,28 +42,42 @@ const Activity: React.FC<OverviewProps> = () => {
   const pathname = usePathname();
   const identifier = pathname.split('/')[2];
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const [issuesResult, timeResult, wikiEdit] = await Promise.all([
-          getIssueSchedule(),
-          timeEntries(identifier),
-          getWiki(identifier),
-        ]);
-        setIssues(issuesResult);
-        setTime(timeResult);
-        // Ensure wikiEdit is an array
-        if (Array.isArray(wikiEdit)) {
-          setWikis(wikiEdit);
-        } else {
-          setWikis([wikiEdit]);
-        }
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
     fetchProjects();
   }, [identifier]);
+
+  const fetchProjects = async () => {
+    try {
+      const [issuesResult, timeResult, wikiEdit] = await Promise.all([
+        getIssueSchedule(),
+        timeEntries(identifier),
+        getWiki(identifier),
+      ]);
+      setIssues(issuesResult);
+      setTime(timeResult);
+      // Ensure wikiEdit is an array
+      if (Array.isArray(wikiEdit)) {
+        setWikis(wikiEdit);
+      } else {
+        setWikis([wikiEdit]);
+      }
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   fetchProjects();
+  // }, []);
+
+  // const fetchProjects = async () => {
+  //   try {
+  //     const result = await getIssueSchedule();
+  //     setIssues(result);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // };
 
   const groupByDate = (data: DataSample[]) => {
     const groupedData = data.reduce(

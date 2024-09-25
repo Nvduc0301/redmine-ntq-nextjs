@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
-import Select from '~/app/components/Select/Select';
+import Select from '~/components/common/Select/Select';
 import images from '~/assets/img';
 import { OPTIONS_FILTER_ISSUES, OPTIONS_STATUS_1 } from '~/const/Project';
 

@@ -1,16 +1,10 @@
-import axiosInstance from './api';
-import { projectID } from '~/utils/CommonData';
-type CreateVersionBody = {
-  name: string;
-  description?: string;
-  status: string;
-  wiki_page_title: string;
-  due_date?: string;
-  sharing: string;
-};
+import { CreateVersionBody } from '~/types/Project';
+import { PROJECT_ID } from '~/const/MagicConstant';
+import { axiosInstance } from './api';
+
 export const CreateVersion = async (body: CreateVersionBody) => {
   try {
-    await axiosInstance.post(`/projects/${projectID}/versions.json`, {
+    await axiosInstance.post(`/projects/${PROJECT_ID}/versions.json`, {
       version: body,
     });
   } catch (err) {

@@ -18,19 +18,18 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
   const [sortedData, setSortedData] = useState<TimeEntriesType[]>([]);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const result = await getIssueSchedule();
-        setIssues(result);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-
     fetchProjects();
   }, []);
 
-  // console.log(selectedColumns);
+  const fetchProjects = async () => {
+    try {
+      const result = await getIssueSchedule();
+      setIssues(result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   const convertColumn = (list: string[]) => {
     return list.map((item, index) => ({
       id: index + 1,
@@ -100,10 +99,8 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
     }
   };
 
-  console.log(data);
   // Group date
   const groupedIssues = groupIssuesByDate(data);
-  console.log(groupedIssues);
 
   // total time
   const totalHours = Object.values(groupedIssues).reduce(
