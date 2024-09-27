@@ -89,7 +89,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                 {Object.entries(trackerCount).map(([trackerName, count]) => (
                   <li key={trackerName} className="">
                     <a
-                      className="text-primary cursor-pointer pr-1.5 hover:underline hover:text-[#b2290f]"
+                      className="text-blue-300 cursor-pointer pr-1.5 hover:underline hover:text-[#b2290f]"
                       rel="noreferrer noopener"
                     >
                       {trackerName}
@@ -103,7 +103,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                   <a
                     key={index}
                     href={link.href}
-                    className="pl-1 text-primary cursor-pointer hover:underline hover:text-[#b2290f]"
+                    className="pl-1 text-blue-300 cursor-pointer hover:underline hover:text-[#b2290f]"
                     rel="noreferrer noopener"
                   >
                     {link.text}
@@ -126,7 +126,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                   {filterMembersByRole(MANAGER).map((manager) => (
                     <Link
                       href={`/users/${manager.user.id}`}
-                      className="text-primary cursor-pointer  hover:underline hover:text-[#b2290f]"
+                      className="text-blue-300 cursor-pointer  hover:underline hover:text-[#b2290f]"
                       key={manager.id}
                       rel="noreferrer noopener"
                     >
@@ -139,7 +139,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                   {filterMembersByRole(DEVELOPER).map((developer) => (
                     <Link
                       href={`/users/${developer.user.id}`}
-                      className="text-primary cursor-pointer  hover:underline hover:text-[#b2290f]"
+                      className="text-blue-300 cursor-pointer  hover:underline hover:text-[#b2290f]"
                       key={developer.id}
                       rel="noreferrer noopener"
                     >

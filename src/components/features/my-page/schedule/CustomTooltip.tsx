@@ -8,7 +8,7 @@ const CustomTooltip: React.FC<Issue> = (issue) => {
         <Image src={images.add} alt="" />
         <a
           href="#"
-          className="text-primary-blue hover:text-red-500 hover:underline"
+          className="text-blue-600 hover:text-red-500 hover:underline"
           rel="noreferrer noopener"
         >
           {issue?.tracker.name} #{issue.id}
@@ -20,7 +20,7 @@ const CustomTooltip: React.FC<Issue> = (issue) => {
         <Image src={images.add} alt="" />
         <a
           href="#"
-          className="text-primary-blue hover:text-red-500 hover:underline"
+          className="text-blue-600 hover:text-red-500 hover:underline"
           rel="noreferrer noopener"
         >
           {issue?.project.name}

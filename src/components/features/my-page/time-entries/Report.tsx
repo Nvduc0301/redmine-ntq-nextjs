@@ -30,7 +30,7 @@ const Report = () => {
       />
 
       <a
-        className="flex items-center gap-1 text-primary text-11 hover:underline hover:text-red-400"
+        className="flex items-center gap-1 text-blue-300 text-11 hover:underline hover:text-red-400"
         href="my/page_layout"
         rel="noreferrer noopener"
       >

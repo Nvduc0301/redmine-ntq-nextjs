@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = () => {
 
   return (
     <div className="">
-      <div className=" flex items-center justify-between p-2 bg-primary-dark h-5 text-10">
+      <div className=" flex items-center justify-between p-2 bg-blue-400 h-5 text-10">
         <ul className="flex text-white gap-2 font-bold ">
           {MENU_ITEM_1.map((item) => (
             <Link
@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = () => {
         </ul>
       </div>
 
-      <div className="flex flex-col justify-between h-88  text-white bg-primary ">
+      <div className="flex flex-col justify-between h-88  text-white bg-blue-300 ">
         <div className="flex justify-between items-start pt-1 px-2 pb-5 ">
           {/* <h1 className="text-2xl font-bold">{title || "NTQ Redmine"}</h1> */}
           <h1 className="text-2xl font-bold">NTQ Redmine</h1>
@@ -79,7 +79,7 @@ const Header: React.FC<HeaderProps> = () => {
               <button
                 key={project.id}
                 onClick={() => handleNavigation(project.slug)}
-                className={`hover:underline text-xs duration-150 list-none px-3 py-1 font-bold ${slug === project.slug ? 'bg-primary-sub_bg text-[#555]' : 'bg-primary-light'}`}
+                className={`hover:underline text-xs duration-150 list-none px-3 py-1 font-bold ${slug === project.slug ? 'bg-primary-sub_bg text-[#555]' : 'bg-blue-200'}`}
               >
                 {project.name}
               </button>

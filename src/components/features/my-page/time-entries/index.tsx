@@ -141,7 +141,7 @@ const SpentTimeDetail: React.FC = () => {
     <div>
       <div className="flex justify-between my-1">
         <Link
-          className="text-primary text-11 hover:underline hover:text-red-400"
+          className="text-blue-300 text-11 hover:underline hover:text-red-400"
           href="my-page/page_layout"
           rel="noreferrer noopener"
         >
@@ -149,7 +149,7 @@ const SpentTimeDetail: React.FC = () => {
         </Link>
         <Link
           href="/log-time"
-          className="flex items-center gap-1 text-primary text-11 hover:underline hover:text-red-400"
+          className="flex items-center gap-1 text-blue-300 text-11 hover:underline hover:text-red-400"
           rel="noreferrer noopener"
         >
           <Image src={images.logtime} alt="add" />

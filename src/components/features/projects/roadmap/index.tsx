@@ -110,7 +110,7 @@ const RoadmapPage: React.FC<RoadmapProps> = (props) => {
         Roadmap
         <a className="flex items-center">
           <Image src={images.add} className="mr-1" alt="Add" />
-          <p className="text-primary text-xs font-normal">New version</p>
+          <p className="text-blue-300 text-xs font-normal">New version</p>
         </a>
       </h2>
       {loading ? ( // Conditional rendering for loading state

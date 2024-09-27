@@ -46,21 +46,21 @@ const ProjectPage = () => {
             <h2 className="text-xl font-semibold text-[#555]">Projects</h2>
             <div className="text-11">
               <a
-                className="text-primary hover:underline hover:text-[#b2290f]"
+                className="text-blue-300 hover:underline hover:text-[#b2290f]"
                 href="/issues"
               >
                 View all issues
               </a>{' '}
               |{' '}
               <a
-                className="text-primary hover:underline hover:text-[#b2290f]"
+                className="text-blue-300 hover:underline hover:text-[#b2290f]"
                 href="/time_entries"
               >
                 Overall spent time
               </a>{' '}
               |{' '}
               <a
-                className="text-primary hover:underline hover:text-[#b2290f]"
+                className="text-blue-300 hover:underline hover:text-[#b2290f]"
                 href="/activity"
               >
                 Overall activity

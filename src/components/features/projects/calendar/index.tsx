@@ -229,7 +229,7 @@ const CalendarPage: React.FC = () => {
                                 />
                                 <a
                                   href="#"
-                                  className="text-primary-blue"
+                                  className="text-blue-600"
                                   rel="noreferrer noopener"
                                 >
                                   {task?.tracker.name} #{task.id}

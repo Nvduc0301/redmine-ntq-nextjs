@@ -30,7 +30,7 @@ const RelatedIssues: React.FC<IssueTableProps> = ({
           filteredIssues.map((issue) => (
             <tr key={issue.id}>
               <td className="flex items-center border border-[#cccccc] max-w-full">
-                <a className="text-primary hover:underline hover:text-[#b2290f] text-xs">
+                <a className="text-blue-300 hover:underline hover:text-[#b2290f] text-xs">
                   {issue.tracker.name} #{issue.id}
                 </a>
                 <div className="text-xs text-[#484848]">: {issue.subject}</div>

@@ -3,23 +3,17 @@
 import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import SubMain from '~/components/layout/SubMain/SubMain';
+import { EXCLUDEDPATHS } from '~/const/MagicConstant';
 // import SubMain from './components/SubMain';
 
 interface ClientSideLayoutProps {
   children: ReactNode;
 }
 
-const excludedPaths = [
-  '/projects/fresher-_-reactjs-fresher/files',
-  '/projects/fresher-_-reactjs-fresher/settings',
-  '/projects/fresher-_-reactjs-fresher/newissue',
-  '/projects/fresher-_-reactjs-fresher/new_versions',
-];
-
 const ClientSideLayout: React.FC<ClientSideLayoutProps> = ({ children }) => {
   const path = usePathname(); // Lấy URL hiện tại
   const isProjectPath =
-    path.startsWith('/projects') && !excludedPaths.includes(path);
+    path.startsWith('/projects') && !EXCLUDEDPATHS.includes(path);
 
   return (
     <div className="flex justify-between mt-2">

@@ -44,7 +44,7 @@ const TotalTime: React.FC = () => {
             </h2>
             <Link
               href="/log-time"
-              className="flex items-center gap-1 text-primary text-11 hover:underline hover:text-red-400"
+              className="flex items-center gap-1 text-blue-300 text-11 hover:underline hover:text-red-400"
               rel="noreferrer noopener"
             >
               <Image src={images.add} alt="add" />

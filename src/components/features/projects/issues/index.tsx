@@ -440,7 +440,7 @@ const IssuesPage = () => {
           <div className="flex items-center gap-1 justify-end text-11 mb-2">
             <span>Also available in: CSV</span>
             <a
-              className="flex items-center gap-1 text-primary hover:underline hover:text-red-400"
+              className="flex items-center gap-1 text-blue-300 hover:underline hover:text-red-400"
               href=""
               rel="noreferrer noopener"
             >
@@ -450,14 +450,14 @@ const IssuesPage = () => {
             <span>|</span>
             <a
               href=""
-              className="text-primary  text-11 hover:underline hover:text-red-400"
+              className="text-blue-300  text-11 hover:underline hover:text-red-400"
             >
               CSV
             </a>
             <span>|</span>
             <a
               href=""
-              className="text-primary  text-11 hover:underline hover:text-red-400"
+              className="text-blue-300  text-11 hover:underline hover:text-red-400"
             >
               PDF
             </a>

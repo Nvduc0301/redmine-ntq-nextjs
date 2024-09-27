@@ -48,21 +48,21 @@ const SubOverview = () => {
           </p>
           <p className="my-3 text-xs">
             <Link
-              className="text-primary hover:underline hover:text-[#b2290f]"
+              className="text-blue-300 hover:underline hover:text-[#b2290f]"
               href="/projects/fresher-_-reactjs-fresher/time_entries/new"
             >
               Log time
             </Link>{' '}
             |
             <Link
-              className="text-primary hover:underline hover:text-[#b2290f]"
+              className="text-blue-300 hover:underline hover:text-[#b2290f]"
               href="/projects/fresher-_-reactjs-fresher/time_entries"
             >
               Details
             </Link>{' '}
             |
             <Link
-              className="text-primary hover:underline hover:text-[#b2290f]"
+              className="text-blue-300 hover:underline hover:text-[#b2290f]"
               href="/projects/fresher-_-reactjs-fresher/time_entries/report"
             >
               Report

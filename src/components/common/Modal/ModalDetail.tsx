@@ -11,13 +11,6 @@ import Link from 'next/link';
 
 const modalWidth = 600;
 const modalHeight = 650;
-const linkcss =
-  'text-[#1c63d5] cursor-pointer text-sm hover:underline hover:text-red-500';
-const buttoncss =
-  'bg-white p-2 border-2 rounded text-[#628db6] font-bold text-xs hover:border-primary-lightBlue';
-const divGrid = 'flex justify-between mt-2';
-const divGrid2 = 'w-1/2 text-left';
-const textSize = 'text-xs';
 
 const customFields = [
   { label: 'Bug Type', name: 'Bug Type' },
@@ -29,9 +22,13 @@ const customFields = [
 ];
 
 const renderInfoItem = (label: string, value: string | JSX.Element) => (
-  <div className={divGrid} key={label} style={{ position: 'relative' }}>
-    <strong className={divGrid2}>{label}:</strong>
-    <span className={`${divGrid2} flex items-center`}>
+  <div
+    className="flex justify-between mt-2"
+    key={label}
+    style={{ position: 'relative' }}
+  >
+    <strong className="w-1/2 text-left">{label}:</strong>
+    <span className="w-1/2 text-left flex items-center">
       {label === '% Done' && (
         <div className="relative w-1/2 h-2 me-1 bg-gray-300 rounded">
           <div
@@ -56,9 +53,12 @@ const renderSection = (
     <hr className="border-[#ddd]" />
     <div className="py-2 text-start">
       <div className="flex items-center justify-between">
-        <h3 className={`font-bold ${textSize}`}>{title}</h3>
+        <h3 className="font-bold text-xs">{title}</h3>
         {isLink && (
-          <button onClick={onClick} className={linkcss}>
+          <button
+            onClick={onClick}
+            className="text-[#1c63d5] cursor-pointer text-sm hover:underline hover:text-red-500"
+          >
             {content}
           </button>
         )}
@@ -220,10 +220,10 @@ const ModalDetail: React.FC<IDragProps> = ({
         ref={modalRef}
         style={modalStylePosition}
       >
-        <div className="flex justify-between items-center m-1 bg-primary-lightBlue">
+        <div className="flex justify-between items-center m-1 bg-blue-100">
           <h2
             style={{ marginRight: 'auto' }}
-            className={`${textSize} p-2 text-white font-bold`}
+            className={`text-xs p-2 text-white font-bold`}
           >
             Quick View - #{issue.id} {issue.subject}
           </h2>
@@ -244,7 +244,7 @@ const ModalDetail: React.FC<IDragProps> = ({
                 <h3 className="font-bold text-start text-sm">
                   {issue.subject}
                 </h3>
-                <p className={textSize}>
+                <p className="text-xs">
                   Added by
                   {links.map((link, index) =>
                     renderLink(link.to, link.text, index)
@@ -252,12 +252,12 @@ const ModalDetail: React.FC<IDragProps> = ({
                 </p>
               </div>
             </div>
-            <div className={`grid grid-cols-2 gap-x-2 ${textSize} m-1`}>
+            <div className={`grid grid-cols-2 gap-x-2 text-xs m-1`}>
               {infoItems.map((item) => renderInfoItem(item.label, item.value))}
               {customFields.map((field, index) => (
-                <div className={divGrid} key={index}>
-                  <strong className={divGrid2}>{field.label}:</strong>
-                  <span className={divGrid2}>
+                <div className="flex justify-between mt-2" key={index}>
+                  <strong className="w-1/2 text-left">{field.label}:</strong>
+                  <span className="w-1/2 text-left">
                     {getFieldValue(issue.custom_fields, field.name)}
                   </span>
                 </div>
@@ -309,7 +309,11 @@ const ModalDetail: React.FC<IDragProps> = ({
         </div>
         <div className="bg-primary-sub_bg flex justify-end items-center gap-2 p-2">
           {buttons.map((button, index) => (
-            <button key={index} className={buttoncss} onClick={button.onClick}>
+            <button
+              key={index}
+              className="bg-white p-2 border-2 rounded text-[#628db6] font-bold text-xs hover:border-blue-100"
+              onClick={button.onClick}
+            >
               {button.label}
             </button>
           ))}

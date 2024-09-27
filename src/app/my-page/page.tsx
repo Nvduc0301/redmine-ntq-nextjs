@@ -39,7 +39,7 @@ const MyPage = () => {
             <h2 className="text-[#555] text-xl font-semibold ">My page</h2>
             <Link
               href={'/my-page/page_layout'}
-              className="text-primary text-11 hover:underline hover:text-red-400"
+              className="text-blue-300 text-11 hover:underline hover:text-red-400"
             >
               Personalize this page
             </Link>
@@ -51,7 +51,7 @@ const MyPage = () => {
           <h2 className="text-[#555] text-xl text-5 font-semibold">My page</h2>
           <Link
             href={'/my-page/page_layout'}
-            className="text-primary text-11 hover:underline hover:text-red-400"
+            className="text-blue-300 text-11 hover:underline hover:text-red-400"
           >
             Personalize this page
           </Link>

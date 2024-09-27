@@ -66,7 +66,7 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
     <div className="fixed inset-0 flex items-center justify-center">
       <div className="fixed inset-0 bg-black opacity-50"></div>
       <div className="bg-white fixed border rounded w-[600px]">
-        <div className="flex justify-between items-center m-1 bg-primary-lightBlue">
+        <div className="flex justify-between items-center m-1 bg-blue-100">
           <h2
             style={{ marginRight: 'auto' }}
             className={`${textSize} p-2 text-white font-bold`}

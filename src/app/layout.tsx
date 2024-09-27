@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { ReduxProvider } from './providers/ReduxProvider';
+import { ReduxProvider } from '../store/providers/ReduxProvider';
 
-import ClientSideLayout from './ClientSideLayout';
+import ClientSideLayout from '../components/layout/ClientSideLayout';
 import Footer from '~/components/layout/Footer';
 import Header from '~/components/layout/Header';
 

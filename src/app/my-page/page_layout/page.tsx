@@ -19,6 +19,7 @@ import Documents from '~/components/features/my-page/document';
 import LatestNews from '~/components/features/my-page/latest-news';
 import DragAndDrop from '~/components/basics/DragAndDrop/DragAndDrop';
 import TableIssue from '~/components/features/my-page/table-issue';
+import { LOCAL_STORAGE_ITEMS_KEY } from '~/const/MagicConstant';
 
 const componentMap: { [key: string]: React.ReactNode } = {
   Schedule: <Schedule />,
@@ -118,7 +119,7 @@ const MyPageLayoutPage = () => {
                   ThirdSpace: storedItems.ThirdSpace,
                 };
 
-                localStorage.setItem('items', JSON.stringify(newStoredItems));
+                setToLocalStorage(LOCAL_STORAGE_ITEMS_KEY, newStoredItems);
 
                 return updatedItems;
               }

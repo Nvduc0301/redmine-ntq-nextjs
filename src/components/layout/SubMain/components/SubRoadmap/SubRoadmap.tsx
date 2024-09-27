@@ -47,7 +47,7 @@ const SubRoadmap = () => {
         <a
           key={version.id}
           rel="noreferrer noopener"
-          className="text-primary hover:underline hover:text-[#b2290f] block text-xs"
+          className="text-blue-300 hover:underline hover:text-[#b2290f] block text-xs"
         >
           {version.name}
         </a>
@@ -57,7 +57,7 @@ const SubRoadmap = () => {
           <a
             key={version.id}
             rel="noreferrer noopener"
-            className="text-primary hover:underline hover:text-[#b2290f] block text-xs"
+            className="text-blue-300 hover:underline hover:text-[#b2290f] block text-xs"
           >
             {version.name}
           </a>
@@ -79,7 +79,7 @@ const SubRoadmap = () => {
         closedVersions.map((version) => (
           <a
             key={version.id}
-            className="text-primary hover:underline hover:text-[#b2290f] block text-xs pt-2"
+            className="text-blue-300 hover:underline hover:text-[#b2290f] block text-xs pt-2"
           >
             {version.name}
           </a>

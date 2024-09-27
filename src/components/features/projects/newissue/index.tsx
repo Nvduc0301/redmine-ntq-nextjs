@@ -530,7 +530,7 @@ const NewIssuePage: React.FC = () => {
                 </div>
                 <a className="flex items-center">
                   <Image src={images.add} className="w-4 h-3 pr-1" alt="add" />
-                  <p className="text-primary hover:underline hover:text-[#b2290f] text-[0.6rem]">
+                  <p className="text-blue-300 hover:underline hover:text-[#b2290f] text-[0.6rem]">
                     Search for watchers to add
                   </p>
                 </a>
@@ -548,7 +548,7 @@ const NewIssuePage: React.FC = () => {
           </button>
         </>
       </form>
-      <a className="text-primary hover:underline hover:text-primary-red text-xs">
+      <a className="text-blue-300 hover:underline hover:text-primary-red text-xs">
         Preview
       </a>
       <Preview description={description} />

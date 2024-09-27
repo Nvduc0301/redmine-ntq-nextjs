@@ -123,7 +123,7 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
       <div className="text-start mb-2">
         <Link
           href="#"
-          className="font-semibold text-primary-darkBlue hover:underline hover:text-primary-red"
+          className="font-semibold text-blue-500 hover:underline hover:text-primary-red"
           rel="noreferrer noopener"
         >
           {tableName} <span>{`(${displayedData.length})`}</span>
@@ -154,7 +154,7 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
                 const rowBgColor = ['Urgent', 'Immediate'].includes(
                   issue.priority!.name
                 )
-                  ? 'bg-primary-pink'
+                  ? 'bg-red-100'
                   : index % 2 === 0
                     ? 'bg-white'
                     : 'bg-gray-100';
