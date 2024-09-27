@@ -1,10 +1,11 @@
-import Documents from '~/app/(my-page)/document/page';
-import LatestNews from '~/app/(my-page)/latest-news/page';
-import LogTime from '~/app/(my-page)/log-time/page';
-import Schedule from '~/app/(my-page)/schedule/page';
-import SpentTime from '~/app/(my-page)/spent-time/page';
-import TableIssue from '~/app/(my-page)/table-issue/page';
-import TotalTime from '~/app/(my-page)/total-time/page';
+import Documents from '~/components/features/my-page/document';
+import LatestNews from '~/components/features/my-page/latest-news';
+import LogTime from '~/components/features/my-page/log-time';
+import Schedule from '~/components/features/my-page/schedule';
+import SpentTime from '~/components/features/my-page/spent-time/page';
+import TableIssue from '~/components/features/my-page/table-issue/page';
+import TotalTime from '~/components/features/my-page/total-time/page';
+
 import { IssueType } from './Issue';
 
 export const componentMap: ComponentMap = {
@@ -16,32 +17,32 @@ export const componentMap: ComponentMap = {
   LatestNews,
   Documents,
 };
-export interface ItemDrag {
+export type ItemDrag = {
   id: string;
   content?: string;
   componentName: keyof ComponentMap;
   component?: React.ReactNode;
   data?: IssueType;
   label?: string;
-}
+};
 
-export interface ItemsState {
+export type ItemsState = {
   A: ItemDrag[];
   B: ItemDrag[];
   C: ItemDrag[];
-}
-export interface Option {
+};
+export type Option = {
   label: string;
   value: string;
   componentName?: string;
   isAdded?: boolean;
-}
+};
 export type ComponentMap = {
-  LogTime: () => JSX.Element;
+  LogTime: React.FC;
   Schedule: React.FC<{ id: string }>;
   TableIssue: React.FC<{ id: string }>;
   TotalTime: React.FC;
-  SpentTime: () => JSX.Element;
+  SpentTime: React.FC;
   LatestNews: React.FC;
   Documents: React.FC;
 };

@@ -1,4 +1,4 @@
-'use client'; // Đây là Client Component vì chúng ta dùng React hooks
+'use client';
 
 import { Provider } from 'react-redux';
 import store from '~/store/store';

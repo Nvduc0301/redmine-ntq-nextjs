@@ -11,13 +11,14 @@ import {
   ItemsState,
   Option,
 } from '~/types/ItemDragAndDrop';
-import Schedule from '~/app/(my-page)/schedule/page';
-import TableIssue from '~/app/(my-page)/table-issue/page';
-import SpentTime from '~/app/(my-page)/spent-time/page';
-import Documents from '~/app/(my-page)/document/page';
-import LatestNews from '~/app/(my-page)/latest-news/page';
-import DragAndDrop from '~/components/features/DragAndDrop/DragAndDrop';
+
 import { getFromLocalStorage, setToLocalStorage } from '~/utils/LocalStorage';
+import Schedule from '~/components/features/my-page/schedule';
+import TableIssue from '~/components/features/my-page/table-issue/page';
+import SpentTime from '~/components/features/my-page/spent-time/page';
+import Documents from '~/components/features/my-page/document';
+import LatestNews from '~/components/features/my-page/latest-news';
+import DragAndDrop from '~/components/basics/DragAndDrop/DragAndDrop';
 
 const componentMap: { [key: string]: React.ReactNode } = {
   Schedule: <Schedule />,
