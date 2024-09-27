@@ -4,10 +4,14 @@ import Documents from '~/components/features/my-page/document';
 import LatestNews from '~/components/features/my-page/latest-news';
 import LogTime from '~/components/features/my-page/log-time';
 import Schedule from '~/components/features/my-page/schedule';
-import SpentTime from '~/components/features/my-page/spent-time/page';
-import TableIssue from '~/components/features/my-page/table-issue/page';
-import TotalTime from '~/components/features/my-page/total-time/page';
-import { ItemDrag, ItemsState } from '~/types/ItemDragAndDrop';
+import SpentTime from '~/components/features/my-page/spent-time';
+import TableIssue from '~/components/features/my-page/table-issue';
+import TotalTime from '~/components/features/my-page/total-time';
+import {
+  ItemDrag,
+  ItemsState,
+  SpecificTypeName,
+} from '~/types/ItemDragAndDrop';
 
 import './DragAndDrop.css';
 
@@ -27,8 +31,10 @@ const componentsMap = {
 };
 
 const DragAndDrop: React.FC<DragAndDropProps> = ({ items, hasBorder }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const renderItems = (items: ItemDrag[] | [], targetList: 'A' | 'B' | 'C') => {
+  const renderItems = (
+    items: ItemDrag[] | [],
+    targetList: SpecificTypeName
+  ) => {
     return items.map((item) => {
       const Component =
         componentsMap[item.componentName as keyof typeof componentsMap];
@@ -44,12 +50,12 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ items, hasBorder }) => {
 
   return (
     <div className="App">
-      {items.A.length > 0 && (
+      {items.FirstSpace.length > 0 && (
         <div
           className={`table_primary ${hasBorder ? 'with-border' : ''}`}
           id="table-A"
         >
-          {renderItems(items.A, 'A')}
+          {renderItems(items.FirstSpace, 'FirstSpace')}
         </div>
       )}
       <div className="table_side-wrapper">
@@ -57,13 +63,13 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({ items, hasBorder }) => {
           className={`table_side ${hasBorder ? 'with-border' : ''}`}
           id="table-B"
         >
-          {renderItems(items.B, 'B')}
+          {renderItems(items.SecondSpace, 'FirstSpace')}
         </div>
         <div
           className={`table_side ${hasBorder ? 'with-border' : ''}`}
           id="table-C"
         >
-          {renderItems(items.C, 'C')}
+          {renderItems(items.ThirdSpace, 'ThirdSpace')}
         </div>
       </div>
     </div>

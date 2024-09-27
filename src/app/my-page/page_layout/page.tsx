@@ -14,11 +14,11 @@ import {
 
 import { getFromLocalStorage, setToLocalStorage } from '~/utils/LocalStorage';
 import Schedule from '~/components/features/my-page/schedule';
-import TableIssue from '~/components/features/my-page/table-issue/page';
-import SpentTime from '~/components/features/my-page/spent-time/page';
+import SpentTime from '~/components/features/my-page/spent-time';
 import Documents from '~/components/features/my-page/document';
 import LatestNews from '~/components/features/my-page/latest-news';
 import DragAndDrop from '~/components/basics/DragAndDrop/DragAndDrop';
+import TableIssue from '~/components/features/my-page/table-issue';
 
 const componentMap: { [key: string]: React.ReactNode } = {
   Schedule: <Schedule />,
@@ -42,9 +42,9 @@ const MyPageLayoutPage = () => {
   const [options, setOptions] = useState<Option[]>(initialOptions);
 
   const [items, setItems] = useState<ItemsState>({
-    A: [],
-    B: [],
-    C: [],
+    FirstSpace: [],
+    SecondSpace: [],
+    ThirdSpace: [],
   });
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
@@ -60,9 +60,9 @@ const MyPageLayoutPage = () => {
     );
     // Đọc dữ liệu items từ localStorage
     const storedItems = getFromLocalStorage<ItemsState>('items', {
-      A: [],
-      B: [],
-      C: [],
+      FirstSpace: [],
+      SecondSpace: [],
+      ThirdSpace: [],
     });
     setItems(storedItems);
   }, []);
@@ -95,27 +95,27 @@ const MyPageLayoutPage = () => {
 
               // Kiểm tra nếu item đã tồn tại trong localStorage
               const storedItems = getFromLocalStorage<ItemsState>('items', {
-                A: [],
-                B: [],
-                C: [],
+                FirstSpace: [],
+                SecondSpace: [],
+                ThirdSpace: [],
               });
 
-              const itemAlreadyExists = storedItems.A.some(
+              const itemAlreadyExists = storedItems.FirstSpace?.some(
                 (item: ItemDrag) => item.id === selectedValue
               );
 
               if (!itemAlreadyExists) {
                 const updatedItems: ItemsState = {
-                  A: [...prevItems.A, newItem],
-                  B: prevItems.B,
-                  C: prevItems.C,
+                  FirstSpace: [...prevItems.FirstSpace, newItem],
+                  SecondSpace: prevItems.SecondSpace,
+                  ThirdSpace: prevItems.ThirdSpace,
                 };
 
                 // Cập nhật localStorage chỉ khi item chưa tồn tại
                 const newStoredItems: ItemsState = {
-                  A: [...storedItems.A, newItem],
-                  B: storedItems.B,
-                  C: storedItems.C,
+                  FirstSpace: [...storedItems.FirstSpace, newItem],
+                  SecondSpace: storedItems.SecondSpace,
+                  ThirdSpace: storedItems.ThirdSpace,
                 };
 
                 localStorage.setItem('items', JSON.stringify(newStoredItems));

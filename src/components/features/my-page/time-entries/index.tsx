@@ -4,12 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RingLoader } from 'react-spinners';
 
-import {
-  OPTIONS_DATE,
-  OPTIONS_USER_1,
-  OPTIONS_USER_2,
-  OPTIONS_FILTER,
-} from '~/const/MyPage';
 import { AppDispatch, RootState } from '~/store/store';
 import { fetchTimeSpent } from '~/store/slices/issues/TimeSpentSlice';
 import Link from 'next/link';
@@ -18,92 +12,28 @@ import Image from 'next/image';
 import Select from '~/components/common/Select/Select';
 import Detail from './Detail';
 import Report from './Report';
+import {
+  AVAILABLE_COLUMNS,
+  OPTIONS_DATE,
+  OPTIONS_FILTER,
+  OPTIONS_USER_1,
+  OPTIONS_USER_2,
+  SELECTED_COLUMNS,
+} from './const';
 
-const SpentTimeDetail = () => {
+const SpentTimeDetail: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { timeSpent, loading: loadingSpent } = useSelector(
     (state: RootState) => state.timeSpent
   );
   const [tabPage, setTabPage] = useState<number>(0);
-  const [isOptions, setIsOptions] = useState(false);
-  const [isFilters, setIsFilters] = useState(false);
+  const [isOptions, setIsOptions] = useState<boolean>(false);
+  const [isFilters, setIsFilters] = useState<boolean>(false);
 
-  const [availableColumns, setAvailableColumns] = useState([
-    'product category',
-    'target',
-    'similar',
-    'cause',
-    'solution',
-    'process',
-    'from customer',
-    'version',
-    'functionId',
-    'bug type',
-    'severity',
-    'testCaseId',
-    'purpose',
-    'department',
-    'duplicate issue',
-    'tested ok',
-    'qna related',
-    'difficulty',
-    'test on staging ok',
-    'defect origin',
-    'qc activity',
-    'defect type',
-    'cause category',
-    'main pic',
-    'reviewer',
-    'defect author',
-    'release date',
-    'merge to cr',
-    'customer',
-    'expected revenue ($)',
-    '% success',
-    'sale',
-    'why not find out?',
-    'next due date',
-    'next action',
-    'builded',
-    'current state',
-    'test checklist',
-    'reproduce?',
-    'after refactor',
-    'swat',
-    'test environment',
-    'late release',
-    'release note',
-    'dev_ self tested ok?',
-    'contract type',
-    'project line',
-    'business domain',
-    'technology',
-    'project size (mm)',
-    'team size (mm)',
-    'is degrade?',
-    'cause (lost/closed/pending)',
-    'new customer?',
-    'reopen count',
-    'new customer info',
-    'customer type',
-    'pic os',
-    'đánh giá của am',
-    'đánh giá của os',
-    'market',
-    'certainty',
-    "opp's type",
-    'service offering',
-    'release ok',
-  ]);
-  const [selectedColumns, setSelectedColumns] = useState([
-    'Project',
-    'Date',
-    'User',
-    'Activity',
-    'Issues',
-    'Comment',
-    'Hours',
-  ]);
+  const [availableColumns, setAvailableColumns] =
+    useState<string[]>(AVAILABLE_COLUMNS);
+  const [selectedColumns, setSelectedColumns] =
+    useState<string[]>(SELECTED_COLUMNS);
   const [columnsDetail, setColumnsDetail] = useState<string[]>(selectedColumns);
   const [selectedValue, setSelectedValue] = useState<string[]>([]);
 
@@ -162,15 +92,6 @@ const SpentTimeDetail = () => {
     ];
 
     setSelectedColumns(newSelectedColumns);
-    // const newSelectedColumns = [...selectedColumns];
-
-    // // Ensure selectedValue is always treated as an array
-    // const selectedArray = Array.isArray(selectedValue) ? selectedValue : [selectedValue];
-
-    // const columnsToMove = selectedArray.filter((value) => newSelectedColumns.includes(value));
-    // const otherColumns = newSelectedColumns.filter((col) => !columnsToMove.includes(col));
-
-    // setSelectedColumns([...otherColumns, ...columnsToMove]);
   };
 
   const moveUp = () => {

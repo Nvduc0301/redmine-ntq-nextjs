@@ -7,22 +7,26 @@ import { getFromLocalStorage } from '~/utils/LocalStorage';
 import DragAndDropMyPage from '~/components/basics/DragAndDrop/DragAndDropMyPage';
 
 const MyPage = () => {
-  const [items, setItems] = useState<ItemsState>({ A: [], B: [], C: [] });
+  const [items, setItems] = useState<ItemsState>({
+    FirstSpace: [],
+    SecondSpace: [],
+    ThirdSpace: [],
+  });
   const [hasItems, setHasItems] = useState(false);
 
   useEffect(() => {
     const parsedItems = getFromLocalStorage<ItemsState>('items', {
-      A: [],
-      B: [],
-      C: [],
+      FirstSpace: [],
+      SecondSpace: [],
+      ThirdSpace: [],
     });
 
     setItems(parsedItems);
 
     const hasContent =
-      (parsedItems.A && parsedItems.A.length > 0) ||
-      (parsedItems.B && parsedItems.B.length > 0) ||
-      (parsedItems.C && parsedItems.C.length > 0);
+      (parsedItems.FirstSpace && parsedItems.FirstSpace.length > 0) ||
+      (parsedItems.SecondSpace && parsedItems.SecondSpace.length > 0) ||
+      (parsedItems.ThirdSpace && parsedItems.ThirdSpace.length > 0);
 
     setHasItems(hasContent);
   }, []);

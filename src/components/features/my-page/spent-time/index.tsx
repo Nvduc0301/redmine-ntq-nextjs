@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-
-import TotalTime from '../total-time/page';
+import TotalTime from '../total-time';
 
 const SpentTime: React.FC = () => {
   return (

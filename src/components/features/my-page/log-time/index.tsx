@@ -16,7 +16,7 @@ import Select from '~/components/common/Select/Select';
 import { MESSAGES } from './const';
 import { FormValues } from './type';
 
-const LogTime: React.FC = () => {
+const LogTimePage: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -204,4 +204,4 @@ const LogTime: React.FC = () => {
   );
 };
 
-export default LogTime;
+export default LogTimePage;

@@ -2,8 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import Select from '~/components/common/Select/Select';
 import images from '~/assets/img';
-
-import { OPTIONS_TIME, OPTIONS_ADD } from '~/const/MyPage';
+import { OPTIONS_ADD, OPTIONS_TIME } from './const';
 
 const Report = () => {
   return (

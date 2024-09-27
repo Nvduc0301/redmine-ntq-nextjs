@@ -6,15 +6,16 @@ import { groupIssuesByDate } from '~/utils/GroupByDate';
 import { getIssueSchedule } from '~/services/IssueService';
 import { Issue } from '~/types/Issue';
 import Image from 'next/image';
+import { HEADERS, IMAGE_ALTS, SORT_ORDER } from './const';
 
-interface DetailProps {
+type DetailProps = {
   data: TimeEntriesType[];
   selectedColumns: string[];
-}
+};
 
 const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
   const [issues, setIssues] = useState<Issue[]>([]);
-  const [sortOrder, setSortOrder] = useState<'up' | 'down'>('up');
+  const [sortOrder, setSortOrder] = useState<string>(SORT_ORDER.INCREASE);
   const [sortedData, setSortedData] = useState<TimeEntriesType[]>([]);
 
   useEffect(() => {
@@ -46,19 +47,23 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
 
   const sortData = (
     data: TimeEntriesType[],
-    order: 'up' | 'down'
+    order: string
   ): TimeEntriesType[] => {
     return data.slice().sort((a, b) => {
       const dateA = new Date(a.spent_on);
       const dateB = new Date(b.spent_on);
-      return order === 'up'
+      return order === SORT_ORDER.INCREASE
         ? dateB.getTime() - dateA.getTime()
         : dateA.getTime() - dateB.getTime();
     });
   };
 
   const handleSort = () => {
-    setSortOrder(sortOrder === 'up' ? 'down' : 'up');
+    setSortOrder(
+      sortOrder === SORT_ORDER.INCREASE
+        ? SORT_ORDER.DECREASE
+        : SORT_ORDER.INCREASE
+    );
   };
 
   const renderCellContent = (
@@ -67,15 +72,15 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
     issue: Issue | undefined
   ) => {
     switch (header.label) {
-      case 'Date':
+      case HEADERS.DATE:
         return formatDate(item.spent_on, true);
-      case 'Project':
+      case HEADERS.PROJECT:
         return item.project.name;
-      case 'User':
+      case HEADERS.USER:
         return item.user.name;
-      case 'Activity':
+      case HEADERS.ACTIVITY:
         return item.activity.name;
-      case 'Issues':
+      case HEADERS.ISSUES:
         return item.issue?.id ? (
           <>
             <a
@@ -90,20 +95,17 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
             <div className="">{issue ? issue.subject : 'API issue'}</div>
           </>
         ) : null;
-      case 'Comment':
+      case HEADERS.COMMENT:
         return item.comments;
-      case 'Hours':
+      case HEADERS.HOURS:
         return item.hours.toFixed(2);
       default:
         return '';
     }
   };
 
-  // Group date
-  const groupedIssues = groupIssuesByDate(data);
-
   // total time
-  const totalHours = Object.values(groupedIssues).reduce(
+  const totalHours = Object.values(groupIssuesByDate(data)).reduce(
     (sum, { totalHours }) => sum + totalHours,
     0
   );
@@ -117,21 +119,27 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
         <thead>
           <tr>
             <th className=" p-1 text-xs border border-primary-border">
-              <Image src={images.check} alt="check" />
+              <Image src={images.check} alt={IMAGE_ALTS.CHECK} />
             </th>
             {MENU_HEADER_TABLE.map((header) => (
               <th
                 key={header.id}
                 className="text-[#169] hover:underline hover:text-[#c61a1a] p-1 text-xs border border-primary-border cursor-pointer"
-                onClick={header.label === 'Date' ? handleSort : undefined}
+                onClick={header.label === HEADERS.DATE ? handleSort : undefined}
               >
                 {header.label}
-                {header.label === 'Date' && (
+                {header.label === HEADERS.DATE && (
                   <Image
                     src={
-                      sortOrder === 'up' ? images.arrow_up : images.arrow_down
+                      sortOrder === SORT_ORDER.INCREASE
+                        ? images.arrow_up
+                        : images.arrow_down
                     }
-                    alt={sortOrder === 'up' ? 'Sort up' : 'Sort down'}
+                    alt={
+                      sortOrder === SORT_ORDER.INCREASE
+                        ? IMAGE_ALTS.SORT_UP
+                        : IMAGE_ALTS.SORT_DOWN
+                    }
                     className="inline ml-1"
                   />
                 )}
@@ -162,10 +170,10 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
                 ))}
                 <td className="flex justify-center items-end pb-3 gap-1 p-1 text-xs border border-primary-border ">
                   <a href="" className="h-full" rel="noreferrer noopener">
-                    <Image src={images.edit} alt="edit" />
+                    <Image src={images.edit} alt={IMAGE_ALTS.EDIT} />
                   </a>
                   <a href="" className="h-full" rel="noreferrer noopener">
-                    <Image src={images.remove} alt="delete" />
+                    <Image src={images.remove} alt={IMAGE_ALTS.DELETE} />
                   </a>
                 </td>
               </tr>
@@ -184,7 +192,7 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
           href=""
           rel="noreferrer noopener"
         >
-          <Image src={images.feed} alt="feed" />
+          <Image src={images.feed} alt={IMAGE_ALTS.FEED} />
           Atom
         </a>
         <span>|</span>

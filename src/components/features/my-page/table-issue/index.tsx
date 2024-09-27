@@ -12,22 +12,18 @@ import { ZIndexContext } from '~/components/common/Modal/ModalContext';
 import ModalDetail from '~/components/common/Modal/ModalDetail';
 import { tableHeaders, tableNames } from '~/utils/MetaData';
 import { ISSUETABLE } from './const';
+import { ModalState } from './type';
 
 // Type definition for the modal state
-type ModalState = {
-  issue: Issue;
-  mousePosition: { x: number; y: number };
-  zIndex: number;
-};
 
 // Utility function to get the table name based on the ID
 const getTableName = (id: string): string => {
   switch (id) {
-    case 'assigned':
+    case ISSUETABLE.ASSIGNED:
       return tableNames.issuesAssigned;
-    case 'report':
+    case ISSUETABLE.REPORT:
       return tableNames.issuesReport;
-    case 'watched':
+    case ISSUETABLE.WATCHED:
       return tableNames.issuesWatched;
     default:
       return tableNames.default;
@@ -56,15 +52,14 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
 
   // Memoized table name
   const tableName = useMemo(() => getTableName(id), [id]);
-  console.log(tableName);
 
   // Fetch data when the component mounts or when `id` changes
   useEffect(() => {
-    if (id === 'assigned' && issuesAssigned?.length === 0) {
+    if (id === ISSUETABLE.ASSIGNED && issuesAssigned?.length === 0) {
       dispatch(fetchIssuesAssigned());
-    } else if (id === 'report' && issuesReport?.length === 0) {
+    } else if (id === ISSUETABLE.REPORT && issuesReport?.length === 0) {
       dispatch(fetchIssuesReport());
-    } else if (id === 'watched' && issuesWatched?.length === 0) {
+    } else if (id === ISSUETABLE.WATCHED && issuesWatched?.length === 0) {
       dispatch(fetchIssuesWatched());
     }
   }, [id, issuesAssigned, issuesReport, issuesWatched, dispatch]);
@@ -72,11 +67,11 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
   // Utility function to determine which data to display
   const getDisplayedData = (id: string) => {
     switch (id) {
-      case 'assigned':
+      case ISSUETABLE.ASSIGNED:
         return { data: issuesAssigned || [], loading: loadingAssigned };
-      case 'report':
+      case ISSUETABLE.REPORT:
         return { data: issuesReport || [], loading: loadingReport };
-      case 'watched':
+      case ISSUETABLE.WATCHED:
         return { data: issuesWatched || [], loading: loadingWatched };
       default:
         return { data: [], loading: false };
@@ -84,8 +79,6 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
   };
 
   const { data: displayedData, loading } = getDisplayedData(id);
-
-  console.log(displayedData);
 
   // Handle double-click event to open a modal
   const onDoubleClick = (

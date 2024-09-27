@@ -2,9 +2,9 @@ import Documents from '~/components/features/my-page/document';
 import LatestNews from '~/components/features/my-page/latest-news';
 import LogTime from '~/components/features/my-page/log-time';
 import Schedule from '~/components/features/my-page/schedule';
-import SpentTime from '~/components/features/my-page/spent-time/page';
-import TableIssue from '~/components/features/my-page/table-issue/page';
-import TotalTime from '~/components/features/my-page/total-time/page';
+import SpentTime from '~/components/features/my-page/spent-time';
+import TableIssue from '~/components/features/my-page/table-issue';
+import TotalTime from '~/components/features/my-page/total-time';
 
 import { IssueType } from './Issue';
 
@@ -27,9 +27,9 @@ export type ItemDrag = {
 };
 
 export type ItemsState = {
-  A: ItemDrag[];
-  B: ItemDrag[];
-  C: ItemDrag[];
+  FirstSpace: ItemDrag[];
+  SecondSpace: ItemDrag[];
+  ThirdSpace: ItemDrag[];
 };
 export type Option = {
   label: string;
@@ -47,4 +47,4 @@ export type ComponentMap = {
   Documents: React.FC;
 };
 
-export type SpecificTypeName = 'A' | 'B' | 'C';
+export type SpecificTypeName = keyof ItemsState;

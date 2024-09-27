@@ -32,14 +32,14 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
   const [itemSources, setItemSources] = useState<{
     [itemId: string]: SpecificTypeName;
   }>({});
-  const [currentList, setCurrentList] = useState<SpecificTypeName>('A');
+  const [currentList, setCurrentList] = useState<string>('A');
 
   // Sử dụng useEffect để load dữ liệu từ localStorage khi component mount
   useEffect(() => {
     const defaultItems: ItemsState = {
-      A: [],
-      B: [],
-      C: [],
+      FirstSpace: [],
+      SecondSpace: [],
+      ThirdSpace: [],
     };
 
     // Lấy dữ liệu từ localStorage và merge với defaultItems
@@ -129,7 +129,11 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
     x: number,
     y: number
   ): SpecificTypeName | null => {
-    const targets: SpecificTypeName[] = ['A', 'B', 'C'];
+    const targets: SpecificTypeName[] = [
+      'FirstSpace',
+      'SecondSpace',
+      'ThirdSpace',
+    ];
     for (const target of targets) {
       if (checkDropTarget(x, y, target)) {
         return target;
@@ -216,9 +220,9 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
     targetList: SpecificTypeName
   ) => {
     const targetMap: { [key: string]: HTMLElement | null } = {
-      A: containerRef.current!.querySelector('#table-A'),
-      B: containerRef.current!.querySelector('#table-B'),
-      C: containerRef.current!.querySelector('#table-C'),
+      FirstSpace: containerRef.current!.querySelector('#table-A'),
+      SecondSpace: containerRef.current!.querySelector('#table-B'),
+      ThirdSpace: containerRef.current!.querySelector('#table-C'),
     };
 
     const target = targetMap[targetList];
@@ -266,6 +270,7 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
     const updatedList = storedItems[targetList].filter(
       (item: ItemDrag) => item.id !== itemId
     );
+    console.log(updatedList);
 
     // Bước 3: Cập nhật lại storedItems với updatedList
     storedItems[targetList] = updatedList;
@@ -285,23 +290,21 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
       []
     );
     const updatedAddedItems = addedItems.filter((itemId) => itemId !== itemId);
-
+    console.log(updatedAddedItems);
     // Lưu lại updatedAddedItems vào localStorage
     setToLocalStorage('LOCAL_STORAGE_ADDED_OPTIONS_KEY', updatedAddedItems);
 
     // Cập nhật lại trạng thái options
+
     setOptions((prevOptions) =>
-      prevOptions.map((option) => ({
-        ...option,
-        isAdded: updatedAddedItems.includes(option.value)
-          ? true
-          : option.isAdded,
-      }))
+      prevOptions.map((option) =>
+        option.value === itemId ? { ...option, isAdded: false } : option
+      )
     );
   };
 
   const renderItems = (items: ItemDrag[], targetList: SpecificTypeName) => {
-    return items.map((item) => {
+    return items?.map((item) => {
       const Component =
         componentMap[item.componentName as keyof typeof componentMap];
       return (
@@ -364,20 +367,20 @@ const DragAndDrop: React.FC<DragAndDropProps> = (props: DragAndDropProps) => {
           className={`table_primary ${hasBorder ? 'with-border' : ''}`}
           id="table-A"
         >
-          {renderItems(items.A, 'A')}
+          {renderItems(items.FirstSpace, 'FirstSpace')}
         </div>
         <div className="table_side-wrapper">
           <div
             className={`table_side ${hasBorder ? 'with-border' : ''}`}
             id="table-B"
           >
-            {renderItems(items.B, 'B')}
+            {renderItems(items.SecondSpace, 'SecondSpace')}
           </div>
           <div
             className={`table_side ${hasBorder ? 'with-border' : ''}`}
             id="table-C"
           >
-            {renderItems(items.C, 'C')}
+            {renderItems(items.ThirdSpace, 'ThirdSpace')}
           </div>
         </div>
       </div>

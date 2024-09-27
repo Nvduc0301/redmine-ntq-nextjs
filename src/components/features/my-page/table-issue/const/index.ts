@@ -1,5 +1,5 @@
 export const ISSUETABLE = {
-  ASSIGNED: 'issuesAssigned',
-  REPORT: 'issuesReport',
-  WATCHED: 'issuesWatched',
+  ASSIGNED: '1',
+  REPORT: '2',
+  WATCHED: '3',
 };
