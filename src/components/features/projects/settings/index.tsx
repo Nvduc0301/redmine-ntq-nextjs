@@ -33,50 +33,50 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ identifier }) => {
 
   return (
     <div>
-      <h2 className="text-xl text-[#555] mb-2.5 font-medium">Settings</h2>
-      <ul className="flex items-center gap-2 text-xs font-semibold text-[#484848] px-2 border-b mb-4">
-        <li className="bg-[#fff] relative top-[0.5px] border-t-1 border-x-1  rounded-tl-md rounded-tr-md p-1 z-100 cursor-pointer ">
+      <h2 className="text-xl text-gray-500 mb-2.5 font-medium">Settings</h2>
+      <ul className="flex items-center gap-2 text-xs font-semibold text-black-500 px-2 border-b mb-4">
+        <li className="bg-white relative top-[0.5px] border-t-1 border-x-1  rounded-tl-md rounded-tr-md p-1 z-100 cursor-pointer ">
           Versions
         </li>
       </ul>
       <table className="w-full text-xs">
         <thead>
-          <tr className="bg-[#eee]">
+          <tr className="bg-gray-200">
             {HEADER_SETTINGS.map((setting) => (
-              <th className="border border-[#d7d7d7]">{setting.label}</th>
+              <th className="border border-gray-350">{setting.label}</th>
             ))}
-            <th className="border border-[#d7d7d7]"></th>
+            <th className="border border-gray-350"></th>
           </tr>
         </thead>
         <tbody>
           {versions.map((version: Settings) => (
             <tr key={version.id}>
-              <td className="text-[#169] hover:underline hover:text-[#b2290f] border border-[#d7d7d7] text-center">
+              <td className="text-blue-800 hover:underline hover:text-red-600 border border-gray-350 text-center">
                 <Link href={`/versions/${version.id}`} title={version.name}>
                   {version.name}
                 </Link>
               </td>
-              <td className="border border-[#d7d7d7] text-center">
+              <td className="border border-gray-350 text-center">
                 {formatDate(version.due_date, true)}
               </td>
-              <td className="border border-[#d7d7d7] text-center">
+              <td className="border border-gray-350 text-center">
                 {version.description}
               </td>
-              <td className="border border-[#d7d7d7] text-center">
+              <td className="border border-gray-350 text-center">
                 {version.status}
               </td>
-              <td className="border border-[#d7d7d7] text-center">
+              <td className="border border-gray-350 text-center">
                 {version.sharing}
               </td>
-              <td className="text-[#169] hover:underline hover:text-[#b2290f] border border-[#d7d7d7] text-center">
+              <td className="text-blue-800 hover:underline hover:text-red-600 border border-gray-350 text-center">
                 <Link href={`/versions/${version.id}`} title={version.name}>
                   {version.description}
                 </Link>
               </td>
-              <td className="flex items-center gap-1.5 justify-center border border-[#d7d7d7]">
+              <td className="flex items-center gap-1.5 justify-center border border-gray-350">
                 <Link
                   href="/attachments/43995"
-                  className="flex items-center gap-1 text-[#169] hover:underline hover:text-[#b2290f]"
+                  className="flex items-center gap-1 text-blue-800 hover:underline hover:text-red-600"
                   rel="nofollow"
                 >
                   <Image alt="Edit" src={images.edit} />
@@ -84,7 +84,7 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ identifier }) => {
                 </Link>
                 <Link
                   href="/attachments/43995"
-                  className="flex items-center gap-1 text-[#169] hover:underline hover:text-[#b2290f]"
+                  className="flex items-center gap-1 text-blue-800 hover:underline hover:text-red-600"
                   rel="nofollow"
                 >
                   <Image alt="Delete" src={images.remove} />
@@ -101,13 +101,13 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ identifier }) => {
           className="flex items-center gap-1"
         >
           <Image src={images.add} alt="add" />
-          <span className="text-[#169] hover:underline hover:text-[#b2290f]">
+          <span className="text-blue-800 hover:underline hover:text-red-600">
             New version
           </span>
         </Link>
         <Link
           href=""
-          className="text-[#169] hover:underline hover:text-[#b2290f]"
+          className="text-blue-800 hover:underline hover:text-red-600"
         >
           Close completed versions
         </Link>

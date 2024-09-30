@@ -70,7 +70,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
 
   return (
     <div>
-      <h2 className="text-[#555] text-lg text-5 font-semibold">Overview</h2>
+      <h2 className="text-gray-500 text-lg text-5 font-semibold">Overview</h2>
       {loading ? (
         <div className="flex justify-center items-center h-24">
           <RingLoader color="#34d2c8" speedMultiplier={2} />
@@ -81,15 +81,13 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
             <div className="p-2.5">
               <div className="flex items-center">
                 <Image className="pr-1.5" src={images.ticket} alt="ticket" />
-                <h3 className="text-primary-text font-medium">
-                  Issue tracking
-                </h3>
+                <h3 className="text-gray-600 font-medium">Issue tracking</h3>
               </div>
               <ul className="text-xs pl-10 pt-2.5 list-disc">
                 {Object.entries(trackerCount).map(([trackerName, count]) => (
                   <li key={trackerName} className="">
                     <a
-                      className="text-blue-300 cursor-pointer pr-1.5 hover:underline hover:text-[#b2290f]"
+                      className="text-blue-300 cursor-pointer pr-1.5 hover:underline hover:text-red-600"
                       rel="noreferrer noopener"
                     >
                       {trackerName}
@@ -103,7 +101,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                   <a
                     key={index}
                     href={link.href}
-                    className="pl-1 text-blue-300 cursor-pointer hover:underline hover:text-[#b2290f]"
+                    className="pl-1 text-blue-300 cursor-pointer hover:underline hover:text-red-600"
                     rel="noreferrer noopener"
                   >
                     {link.text}
@@ -118,7 +116,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
             <div className="p-2.5">
               <div className="flex pb-3 items-center">
                 <Image className="pr-1.5" src={images.group} alt="group" />
-                <h3 className="text-primary-text font-medium">Members</h3>
+                <h3 className="text-gray-600 font-medium">Members</h3>
               </div>
               <div className="text-xs">
                 <p className="break-words max-w-[550px]">
@@ -126,7 +124,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                   {filterMembersByRole(MANAGER).map((manager) => (
                     <Link
                       href={`/users/${manager.user.id}`}
-                      className="text-blue-300 cursor-pointer  hover:underline hover:text-[#b2290f]"
+                      className="text-blue-300 cursor-pointer  hover:underline hover:text-red-600"
                       key={manager.id}
                       rel="noreferrer noopener"
                     >
@@ -139,7 +137,7 @@ const OverviewPage: React.FC<OverviewProps> = (props) => {
                   {filterMembersByRole(DEVELOPER).map((developer) => (
                     <Link
                       href={`/users/${developer.user.id}`}
-                      className="text-blue-300 cursor-pointer  hover:underline hover:text-[#b2290f]"
+                      className="text-blue-300 cursor-pointer  hover:underline hover:text-red-600"
                       key={developer.id}
                       rel="noreferrer noopener"
                     >

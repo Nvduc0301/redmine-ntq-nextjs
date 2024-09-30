@@ -10,28 +10,6 @@ const config: Config = {
     extend: {
       colors: {
         // color Mainstream
-        primary: {
-          // DEFAULT: '#628db7',
-          // light: '#507AAA',
-          // dark: '#3d5b75',
-          // blue: '#116699',
-          text: '#505050',
-          border: '#dcdcdc',
-          sub_bg: '#eeeeee',
-          bgError: '#ffe3e3',
-          bgLogin: '#ffebc1',
-          borderLogin: '#fdbf3b',
-          borderError: '#ee7878',
-          // lightBlue: '#8db0d8',
-          // darkBlue: '#159',
-          red: '#c61a1a',
-          // pink: '#ffc4c4',
-          gray: '[#f6f7f8]',
-          loading: '34d2c8',
-          text_gray: '#555',
-          bg_gray: '#fcfcfc',
-        },
-
         blue: {
           100: '#8db0d8', // light blue variant
           200: '#507AAA', // primary light
@@ -39,33 +17,58 @@ const config: Config = {
           400: '#3d5b75', // primary dark
           500: '#159', // dark blue variant
           600: '#116699', // primary blue
+          700: '#1c63d5',
+          800: '#169',
         },
         red: {
           100: '#ffc4c4', // pink variant
+          150: '#ffd4d4', // pink variant
           200: '#ff9999', // lighter red
-          300: '#ff6666', // mid-tone red
-          400: '#c61a1a', // primary red
+          300: '#ee7878', // error border
+          400: '#ff6666', // mid-tone red
+          500: '#c61a1a', // primary red
+          600: '#b2290f',
+          700: '#bb0000',
         },
         gray: {
+          50: '#f6f6f6',
           100: '#f6f7f8', // primary gray
+          150: '#f6f7f9', // primary gray
           200: '#eeeeee', // sub background gray
+          250: '#f2f2f2', // sub background gray
           300: '#dcdcdc', // border gray
+          350: '#d7d7d7',
           400: '#fcfcfc', // background gray
-          500: '#555', // text gray
+          450: '#c3c2c2',
+          500: '#555',
+          550: '#ddd',
+          600: '#505050', // primary text color
+          700: '#cccccc',
+          800: '#999',
+        },
+        black: {
+          200: '#666',
+          300: '#888',
+          400: '#808080',
+          500: '#484848',
+          700: '#222',
         },
         yellow: {
-          100: '#ffebc1', // background login yellow
-          200: '#fdbf3b', // border login yellow
+          100: '#ffffdd',
+          200: '#ffebc1', // background login yellow
+          300: '#fdbf3b', // border login yellow
         },
         orange: {
           100: '#ffe3e3', // error background
-          200: '#ee7878', // error border
+
+          400: '#FFEBC1',
+          600: '#FDBF3B',
+          700: '#A6750C',
         },
         green: {
-          100: '#34d2c8', // loading green
-        },
-        text: {
-          100: '#505050', // primary text color
+          100: '#34d2c8',
+          200: '#ccccbb',
+          300: '#d3edd3', // loading green
         },
       },
       borderWidth: {

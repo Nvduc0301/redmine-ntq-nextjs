@@ -28,13 +28,13 @@ const TableIssue: React.FC<TableProps> = ({
     <table className="min-w-full divide-y divide-gray-200">
       <thead>
         <tr>
-          <th className=" p-1 text-xs border border-primary-border">
+          <th className=" p-1 text-xs border border-gray-300">
             <Image src={images.check} alt="check" />
           </th>
           {MENU_HEADER_TABLE.map((header) => (
             <th
               key={header.id}
-              className="text-[#169] hover:underline hover:text-[#c61a1a] p-1 text-xs border border-primary-border cursor-pointer"
+              className="text-blue-800 hover:underline hover:text-red-500 p-1 text-xs border border-gray-300 cursor-pointer"
               onClick={header.label === '#' ? handleSort : undefined}
             >
               {header.label}
@@ -61,24 +61,24 @@ const TableIssue: React.FC<TableProps> = ({
           const isUrgent = item.priority?.name === 'Urgent';
           const bgColor = isUrgent
             ? isEven
-              ? 'bg-[#ffc4c4]'
-              : 'bg-[#ffd4d4]'
+              ? 'bg-red-100'
+              : 'bg-red-150'
             : isEven
-              ? 'bg-[#f6f7f9]'
-              : 'bg-[#fff]';
+              ? 'bg-gray-150'
+              : 'bg-white';
           return (
             <tr
-              className={`${bgColor} bg-[#ffc4c] hover:bg-[#ffffdd]`}
+              className={`${bgColor}  hover:bg-yellow-100`}
               key={item.id}
               onDoubleClick={(e) => onDoubleClick(item, e)}
             >
-              <td className="p-1 text-left text-xs border border-primary-border">
+              <td className="p-1 text-left text-xs border border-gray-300">
                 <input type="checkbox" />
               </td>
               {MENU_HEADER_TABLE.map((column) => (
                 <td
                   key={column.id}
-                  className="p-1 text-center text-xs border border-primary-border"
+                  className="p-1 text-center text-xs border border-gray-300"
                 >
                   {renderCellContent(item, column.label)}
                 </td>

@@ -39,7 +39,7 @@ const TotalTime: React.FC = () => {
       ) : (
         <>
           <div className="flex justify-between my-3">
-            <h2 className=" font-bold text-[#505050]">
+            <h2 className=" font-bold text-gray-600">
               Total time:<span>{totalHours.toFixed(2)}</span>
             </h2>
             <Link
@@ -52,12 +52,12 @@ const TotalTime: React.FC = () => {
             </Link>
           </div>
           <table className="min-w-full divide-gray-200 border border-gray-300">
-            <thead className="bg-primary-sub_bg h-7">
+            <thead className="bg-gray-200 h-7">
               <tr>
                 {HEADER_TOTAL_DATA.map((data) => (
                   <th
                     key={data.id}
-                    className="p-1 text-xs border border-primary-border"
+                    className="p-1 text-xs border border-gray-300"
                   >
                     {data.label}
                   </th>
@@ -68,34 +68,34 @@ const TotalTime: React.FC = () => {
               {Object.keys(groupedIssues).map((date) => {
                 return (
                   <React.Fragment key={date}>
-                    <tr className={'hover:bg-[#ffffdd] bg-[#f6f7f8]'}>
-                      <td className="p-1 text-center text-xs font-medium text-gray-900 border border-primary-border">
+                    <tr className={'hover:bg-yellow-100 bg-gray-100'}>
+                      <td className="p-1 text-center text-xs font-medium text-gray-900 border border-gray-300">
                         {formatDate(date)}
                       </td>
                       <td
                         colSpan={2}
-                        className="col-span p-1 text-left text-xs border border-primary-border"
+                        className="col-span p-1 text-left text-xs border border-gray-300"
                       ></td>
-                      <td className="p-1 text-center text-xs border border-primary-border">
+                      <td className="p-1 text-center text-xs border border-gray-300">
                         {groupedIssues[date].totalHours.toFixed(2)}
                       </td>
-                      <td className="p-1 text-center text-xs border border-primary-border"></td>
+                      <td className="p-1 text-center text-xs border border-gray-300"></td>
                     </tr>
                     {groupedIssues[date].issues.map((issue) => (
-                      <tr key={issue.id} className={'hover:bg-[#ffffdd]'}>
-                        <td className="p-1 text-center text-xs font-medium text-gray-900 border border-primary-border">
+                      <tr key={issue.id} className={'hover:bg-yellow-100'}>
+                        <td className="p-1 text-center text-xs font-medium text-gray-900 border border-gray-300">
                           {issue.activity.name}
                         </td>
-                        <td className="p-1 text-center text-xs border border-primary-border">
+                        <td className="p-1 text-center text-xs border border-gray-300">
                           {issue.project.name}
                         </td>
-                        <td className="p-1 text-left text-xs border border-primary-border">
+                        <td className="p-1 text-left text-xs border border-gray-300">
                           {issue.comments}
                         </td>
-                        <td className="p-1 text-center text-xs border border-primary-border">
+                        <td className="p-1 text-center text-xs border border-gray-300">
                           {issue.hours.toFixed(2)}
                         </td>
-                        <td className="flex justify-center gap-1 p-1 text-xs border border-primary-border">
+                        <td className="flex justify-center gap-1 p-1 text-xs border border-gray-300">
                           <Link href="" rel="noreferrer noopener">
                             <Image src={images.edit} alt="edit" />
                           </Link>

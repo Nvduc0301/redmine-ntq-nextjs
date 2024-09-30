@@ -1,59 +1,3 @@
-import { StaticImageData } from 'next/image';
-
-export const textValue = {
-  Strong: '**', // **bold**
-  Italic: '__', // __italic__
-  Underline: '++', // ++underline++
-  Delete: '--', // --deleted--
-  Quote: '>', // ??quote??
-  RemoveQuote: '',
-  InlineCode: '@@', // @@inline code@@
-  Pre: '<pre></pre>', // <pre>code block</pre>
-  H1: 'h1.', // h1. Heading 1
-  H2: 'h2.', // h2. Heading 2
-  H3: 'h3.', // h3. Heading 3
-  ListDot: '*', // * List itemOptions
-  ListNum: '#', // # Numbered list
-  Link: '[[]]', // [[link]]
-  Image: '!!', // !image
-};
-export const textName = {
-  Strong: 'Strong',
-  Italic: 'Italic',
-  Underline: 'Underline',
-  Delete: 'Delete',
-  Quote: 'Quote',
-  InlineCode: 'InlineCode',
-  Pre: 'Pre',
-  H1: 'H1',
-  H2: 'H2',
-  H3: 'H3',
-  ListDot: 'ListDot',
-  ListNum: 'ListNum',
-  RemoveQuote: 'removeQuote',
-  Link: 'Link',
-  Image: 'Image',
-  Help: 'Help',
-};
-export const customFront = [
-  textName.H1,
-  textName.H2,
-  textName.H3,
-  textName.ListDot,
-  textName.ListNum,
-  textName.Quote,
-  textName.RemoveQuote,
-];
-export const customText = [
-  textName.Strong,
-  textName.Italic,
-  textName.Underline,
-  textName.Delete,
-  textName.Pre,
-  textName.InlineCode,
-  textName.Image,
-  textName.Link,
-];
 export const selectOptions = [
   { value: '1.1', label: '1.1 REQ_Missing or incomplete' },
   { value: '2.1', label: '2.1 DES_Missing or incomplete' },
@@ -79,11 +23,6 @@ export interface ItemOptions {
   value: string;
 }
 
-export interface ButtonData {
-  id: number;
-  backgroundImage: StaticImageData;
-  formatText: string;
-}
 export const IsDegree = [
   {
     label: 'No',

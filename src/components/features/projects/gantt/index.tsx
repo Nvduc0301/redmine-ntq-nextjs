@@ -116,8 +116,8 @@ const GanttPage = () => {
 
   return (
     <div>
-      <h1 className="text-[#555] text-xl font-semibold mb-3">Gantt</h1>
-      <fieldset className="flex text-xs text-[#484848] py-2 px-3 border-t">
+      <h1 className="text-gray-500 text-xl font-semibold mb-3">Gantt</h1>
+      <fieldset className="flex text-xs text-black-500 py-2 px-3 border-t">
         <legend
           className="flex items-center cursor-pointer"
           onClick={toggleFilter}
@@ -142,7 +142,7 @@ const GanttPage = () => {
                   <td className="flex items-center gap-1 w-4/12">
                     <Select
                       value="selectedValue"
-                      className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+                      className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
                       onChange={() => {
                         return 'selectedValue';
                       }}
@@ -159,7 +159,7 @@ const GanttPage = () => {
                 <span className="text-nowrap">Add filter</span>
                 <Select
                   value="selectedValue"
-                  className="h-6 text-xs text-black max-w-[204px] w-full font-medium border border-primary-border rounded-none mr-2 min-w-[210px] "
+                  className="h-6 text-xs text-black max-w-[204px] w-full font-medium border border-gray-300 rounded-none mr-2 min-w-[210px] "
                   onChange={() => {
                     return 'selectedValue';
                   }}
@@ -172,7 +172,7 @@ const GanttPage = () => {
           </>
         )}
       </fieldset>
-      <fieldset className="flex text-xs text-[#484848] py-2 px-3">
+      <fieldset className="flex text-xs text-black-500 py-2 px-3">
         <legend
           className="flex items-center cursor-pointer"
           onClick={toggleOption}
@@ -193,7 +193,7 @@ const GanttPage = () => {
               </div>
               <Select
                 size={10}
-                className="h-full w-[150px] text-13 border border-[#d7d7d7]"
+                className="h-full w-[150px] text-13 border border-gray-350"
                 defaultValue={[]}
                 multiple
                 value={selectedValue}
@@ -206,13 +206,13 @@ const GanttPage = () => {
             </div>
             <div className="flex flex-col gap-0.5 mx-1">
               <input
-                className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 py-0.5 px-1.5"
+                className="bg-gray-250 text-black-700 border border-gray-700 w-8 py-0.5 px-1.5"
                 type="button"
                 value="→"
                 onClick={moveRight}
               />
               <input
-                className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 py-0.5 px-1.5"
+                className="bg-gray-250 text-black-700 border border-gray-700 w-8 py-0.5 px-1.5"
                 type="button"
                 value="←"
                 onClick={moveLeft}
@@ -224,7 +224,7 @@ const GanttPage = () => {
               </div>
               <Select
                 size={10}
-                className="h-full w-[150px] text-13 border border-[#d7d7d7]"
+                className="h-full w-[150px] text-13 border border-gray-350"
                 multiple
                 value={selectedValue}
                 defaultValue={[]}
@@ -237,26 +237,26 @@ const GanttPage = () => {
             </div>
             <div className="flex flex-col gap-0.5 ml-1">
               <input
-                className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                 type="button"
                 value="⇈"
                 onClick={moveTop}
               />
               <input
-                className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                 type="button"
                 value="↑"
                 onClick={moveUp}
               />
 
               <input
-                className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                 type="button"
                 value="↓"
                 onClick={moveDown}
               />
               <input
-                className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                 type="button"
                 value="⇊"
                 onClick={moveBottom}
@@ -266,25 +266,25 @@ const GanttPage = () => {
         )}
       </fieldset>
       <div className="flex items-center gap-1 my-4 ">
-        <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+        <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-500 cursor-pointer text-primaryText hover:text-hoverText ">
           <Image src={images.check} alt="check" />
           <span>Apply</span>
         </span>
-        <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+        <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-500 cursor-pointer text-primaryText hover:text-hoverText ">
           <Image src={images.reload} alt="reload" />
           <span>Clear</span>
         </span>
-        <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+        <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-500 cursor-pointer text-primaryText hover:text-hoverText ">
           <Image src={images.save} alt="reload" />
           <span>Save</span>
         </span>
       </div>
 
       <div className="flex items-center justify-between text-11">
-        <span className="text-[#169] hover:underline hover:text-[#c61a1a]">
+        <span className="text-blue-800 hover:underline hover:text-red-500">
           « Previous
         </span>
-        <span className="text-[#169] hover:underline hover:text-[#c61a1a]">
+        <span className="text-blue-800 hover:underline hover:text-red-500">
           Next »
         </span>
       </div>
@@ -292,14 +292,14 @@ const GanttPage = () => {
         <span>Also available in:</span>
         <a
           href=""
-          className="text-[#169]  text-11 hover:underline hover:text-[#c61a1a]"
+          className="text-blue-800  text-11 hover:underline hover:text-red-500"
         >
           PDF
         </a>
         <span>|</span>
         <a
           href=""
-          className="text-[#169]  text-11 hover:underline hover:text-[#c61a1a]"
+          className="text-blue-800  text-11 hover:underline hover:text-red-500"
         >
           PNG
         </a>

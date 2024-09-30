@@ -8,12 +8,12 @@ const SpentTime: React.FC = () => {
       <div className="flex items-center gap-1 font-semibold">
         <Link
           href="/time-entries"
-          className="text-[#159]  hover:underline hover:text-[#c61a1a]"
+          className="text-blue-500  hover:underline hover:text-red-500"
           rel="noreferrer noopener"
         >
           Spent time
         </Link>
-        <span className="text-[#555555]">(last 7 days)</span>
+        <span className="text-gray-500">(last 7 days)</span>
       </div>
       <TotalTime />
     </div>

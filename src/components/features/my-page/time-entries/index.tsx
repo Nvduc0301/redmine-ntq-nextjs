@@ -156,14 +156,14 @@ const SpentTimeDetail: React.FC = () => {
           <span>Log time</span>
         </Link>
       </div>
-      <h1 className="text-[#555] text-xl font-semibold mb-3">Spent time</h1>
+      <h1 className="text-gray-500 text-xl font-semibold mb-3">Spent time</h1>
       {loadingSpent ? (
         <div className="flex justify-center items-center h-24">
           <RingLoader color="#34d2c8" speedMultiplier={2} />
         </div>
       ) : (
         <>
-          <fieldset className="flex text-xs text-[#484848] py-2 px-3 border-t">
+          <fieldset className="flex text-xs text-black-500 py-2 px-3 border-t">
             <legend
               className="flex items-center cursor-pointer"
               onClick={() => toggleState(setIsFilters)}
@@ -188,7 +188,7 @@ const SpentTimeDetail: React.FC = () => {
                       <td className="flex items-center gap-1 w-1/6">
                         <Select
                           value="selectedValue"
-                          className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+                          className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
                           onChange={() => {
                             return 'selectedValue';
                           }}
@@ -206,7 +206,7 @@ const SpentTimeDetail: React.FC = () => {
                       <td className="flex items-center gap-1 w-1/4">
                         <Select
                           value="selectedValue"
-                          className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+                          className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
                           onChange={() => {
                             return 'selectedValue';
                           }}
@@ -217,7 +217,7 @@ const SpentTimeDetail: React.FC = () => {
                       <td className="flex items-center gap-1 w-5/12">
                         <Select
                           value="selectedValue"
-                          className="h-6 text-xs text-black font-medium border border-primary-border rounded-none w-full"
+                          className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none w-full"
                           onChange={() => {
                             return 'selectedValue';
                           }}
@@ -236,7 +236,7 @@ const SpentTimeDetail: React.FC = () => {
                     <span className="text-nowrap">Add filter</span>
                     <Select
                       value="selectedValue"
-                      className="h-6 text-xs text-black max-w-[204px] w-full font-medium border border-primary-border rounded-none mr-2 "
+                      className="h-6 text-xs text-black max-w-[204px] w-full font-medium border border-gray-300 rounded-none mr-2 "
                       onChange={() => {
                         return 'selectedValue';
                       }}
@@ -249,7 +249,7 @@ const SpentTimeDetail: React.FC = () => {
               </>
             )}
           </fieldset>
-          <fieldset className="flex text-xs text-[#484848] py-2 px-3">
+          <fieldset className="flex text-xs text-black-500 py-2 px-3">
             <legend
               className="flex items-center cursor-pointer"
               onClick={() => toggleState(setIsOptions)}
@@ -269,7 +269,7 @@ const SpentTimeDetail: React.FC = () => {
                   </div>
                   <Select
                     size={10}
-                    className="h-full w-[150px] text-13 border border-[#d7d7d7]"
+                    className="h-full w-[150px] text-13 border border-gray-350"
                     multiple
                     value={Array.isArray(selectedValue) ? selectedValue : []}
                     onChange={handleMultiSelect}
@@ -281,13 +281,13 @@ const SpentTimeDetail: React.FC = () => {
                 </div>
                 <div className="flex flex-col gap-0.5 mx-1">
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 py-0.5 px-1.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 py-0.5 px-1.5"
                     type="button"
                     value="→"
                     onClick={moveRight}
                   />
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 py-0.5 px-1.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 py-0.5 px-1.5"
                     type="button"
                     value="←"
                     onClick={moveLeft}
@@ -299,7 +299,7 @@ const SpentTimeDetail: React.FC = () => {
                   </div>
                   <Select
                     size={10}
-                    className="h-full w-[150px] text-13 border border-[#d7d7d7]"
+                    className="h-full w-[150px] text-13 border border-gray-350"
                     multiple
                     value={Array.isArray(selectedValue) ? selectedValue : []}
                     onChange={handleMultiSelect}
@@ -311,26 +311,26 @@ const SpentTimeDetail: React.FC = () => {
                 </div>
                 <div className="flex flex-col gap-0.5 ml-1">
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="⇈"
                     onClick={moveTop}
                   />
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="↑"
                     onClick={moveUp}
                   />
 
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="↓"
                     onClick={moveDown}
                   />
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="⇊"
                     onClick={moveBottom}
@@ -346,27 +346,27 @@ const SpentTimeDetail: React.FC = () => {
               className="flex items-center gap-1 text-xs cursor-pointer text-primaryText hover:text-hoverText hover:underline"
             >
               <Image src={images.check} alt="check" />
-              <span className="text-[#169] hover:underline hover:text-[#c61a1a]">
+              <span className="text-blue-800 hover:underline hover:text-red-500">
                 Apply
               </span>
             </span>
             <span className="flex items-center gap-1 text-xs cursor-pointer text-primaryText hover:text-hoverText hover:underline">
               <Image src={images.reload} alt="reload" />
-              <span className="text-[#169] hover:underline hover:text-[#c61a1a]">
+              <span className="text-blue-800 hover:underline hover:text-red-500">
                 Clear
               </span>
             </span>
           </div>
-          <ul className="flex items-center gap-2 text-xs font-semibold text-[#484848] px-2 border-b">
+          <ul className="flex items-center gap-2 text-xs font-semibold text-black-500 px-2 border-b">
             <li
               onClick={() => setTabPage(0)}
-              className={`relative top-[0.5px] border-t-1 border-x-1  rounded-tl-md rounded-tr-md p-1 z-100 cursor-pointer ${tabPage === 0 ? 'bg-[#fff]' : 'bg-[#f6f6f6] text-[#999] hover:bg-[#ffffdd]'}`}
+              className={`relative top-[0.5px] border-t-1 border-x-1  rounded-tl-md rounded-tr-md p-1 z-100 cursor-pointer ${tabPage === 0 ? 'bg-white' : 'bg-gray-50 text-gray-800 hover:bg-yellow-100'}`}
             >
               Detail
             </li>
             <li
               onClick={() => setTabPage(1)}
-              className={`relative top-[0.5px] border-t-1 border-x-1  rounded-tl-md rounded-tr-md p-1 z-100 cursor-pointer ${tabPage === 1 ? 'bg-[#fff]' : 'bg-[#f6f6f6] text-[#999] hover:bg-[#ffffdd]'}`}
+              className={`relative top-[0.5px] border-t-1 border-x-1  rounded-tl-md rounded-tr-md p-1 z-100 cursor-pointer ${tabPage === 1 ? 'bg-white' : 'bg-gray-50 text-gray-800 hover:bg-yellow-100'}`}
             >
               Report
             </li>

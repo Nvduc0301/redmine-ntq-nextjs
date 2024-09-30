@@ -50,14 +50,14 @@ const renderSection = (
   onClick?: () => void
 ) => (
   <>
-    <hr className="border-[#ddd]" />
+    <hr className="border-gray-550" />
     <div className="py-2 text-start">
       <div className="flex items-center justify-between">
         <h3 className="font-bold text-xs">{title}</h3>
         {isLink && (
           <button
             onClick={onClick}
-            className="text-[#1c63d5] cursor-pointer text-sm hover:underline hover:text-red-500"
+            className="text-blue-700 cursor-pointer text-sm hover:underline hover:text-red-500"
           >
             {content}
           </button>
@@ -72,7 +72,7 @@ const renderLink = (to: string, text: string, index: number) => (
   <Link
     key={index}
     href={to}
-    className="text-header font-bold text-[#1c63d5] hover:text-red-500 hover:underline"
+    className="text-header font-bold text-blue-700 hover:text-red-500 hover:underline"
   >
     {' '}
     {text}{' '}
@@ -275,7 +275,7 @@ const ModalDetail: React.FC<IDragProps> = ({
             {showRelatedIssueForm && (
               <form className="flex items-center text-13 gap-1 mt-2">
                 <select
-                  className="border border-solid border-[#d7d7d7] p-1 rounded"
+                  className="border border-solid border-gray-350 p-1 rounded"
                   aria-label="Category"
                 >
                   {OPTION_DIALOG.map((option) => (
@@ -287,10 +287,10 @@ const ModalDetail: React.FC<IDragProps> = ({
                 <input
                   type="text"
                   placeholder="Input text"
-                  className="w-full border border-solid border-[#d7d7d7] p-1 rounded"
+                  className="w-full border border-solid border-gray-350 p-1 rounded"
                 />
                 <button
-                  className="bg-primary-sub_bg p-1 border-1 border-solid border-[#cccccc]"
+                  className="bg-gray-200 p-1 border-1 border-solid border-gray-700"
                   type="submit"
                   name="submitAndRedirect"
                 >
@@ -299,7 +299,7 @@ const ModalDetail: React.FC<IDragProps> = ({
                 <Link
                   href=""
                   onClick={toggleRelatedIssueForm}
-                  className="text-[#169] hover:text-[#c61a1] hover:underline"
+                  className="text-blue-800 hover:text-red-500 hover:underline"
                 >
                   Cancel
                 </Link>
@@ -307,11 +307,11 @@ const ModalDetail: React.FC<IDragProps> = ({
             )}
           </div>
         </div>
-        <div className="bg-primary-sub_bg flex justify-end items-center gap-2 p-2">
+        <div className="bg-gray-200 flex justify-end items-center gap-2 p-2">
           {buttons.map((button, index) => (
             <button
               key={index}
-              className="bg-white p-2 border-2 rounded text-[#628db6] font-bold text-xs hover:border-blue-100"
+              className="bg-white p-2 border-2 rounded text-blue-300 font-bold text-xs hover:border-blue-100"
               onClick={button.onClick}
             >
               {button.label}

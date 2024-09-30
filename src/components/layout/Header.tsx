@@ -79,7 +79,7 @@ const Header: React.FC<HeaderProps> = () => {
               <button
                 key={project.id}
                 onClick={() => handleNavigation(project.slug)}
-                className={`hover:underline text-xs duration-150 list-none px-3 py-1 font-bold ${slug === project.slug ? 'bg-primary-sub_bg text-[#555]' : 'bg-blue-200'}`}
+                className={`hover:underline text-xs duration-150 list-none px-3 py-1 font-bold ${slug === project.slug ? 'bg-gray-200 text-gray-500' : 'bg-blue-200'}`}
               >
                 {project.name}
               </button>

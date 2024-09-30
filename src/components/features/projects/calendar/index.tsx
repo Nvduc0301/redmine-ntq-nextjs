@@ -83,7 +83,7 @@ const CalendarPage: React.FC = () => {
                   </div>
                   <select
                     id="operators_status_id"
-                    className="border border-primary-border w-16 h-6 text-xs"
+                    className="border border-gray-300 w-16 h-6 text-xs"
                   >
                     {statusOptions.map((option) => (
                       <option
@@ -104,7 +104,7 @@ const CalendarPage: React.FC = () => {
                     </label>
                     <select
                       id="add_filter_select"
-                      className="border border-primary-border w-32 h-6 text-xs"
+                      className="border border-gray-300 w-32 h-6 text-xs"
                     >
                       {filterOptions.map((option) => (
                         <option
@@ -126,7 +126,7 @@ const CalendarPage: React.FC = () => {
                   <label htmlFor="month">Month</label>
                   <Select
                     value="selectedValue"
-                    className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+                    className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
                     onChange={() => {
                       return 'selectedValue';
                     }}
@@ -138,7 +138,7 @@ const CalendarPage: React.FC = () => {
                   <label htmlFor="Year">Year</label>
                   <Select
                     value="selectedValue"
-                    className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+                    className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
                     onChange={() => {
                       return 'selectedValue';
                     }}
@@ -148,11 +148,11 @@ const CalendarPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-1 ">
-                  <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+                  <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-600 cursor-pointer text-primaryText hover:text-hoverText ">
                     <Image src={images.check} alt="check" />
                     <span>Apply</span>
                   </span>
-                  <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+                  <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-600 cursor-pointer text-primaryText hover:text-hoverText ">
                     <Image src={images.reload} alt="reload" />
                     <span>Clear</span>
                   </span>
@@ -161,14 +161,14 @@ const CalendarPage: React.FC = () => {
               <div className="">
                 <Link
                   href="/projects/fresher-_-reactjs-fresher/issues/calendar?month=7&year=2024"
-                  className="text-[#169] hover:underline hover:text-[#c61a1a]"
+                  className="text-blue-800 hover:underline hover:text-red-600"
                 >
                   « July
                 </Link>
                 <span>|</span>
                 <Link
                   href="/projects/fresher-_-reactjs-fresher/issues/calendar?month=9&year=2024"
-                  className="text-[#169] hover:underline hover:text-[#c61a1a]"
+                  className="text-blue-800 hover:underline hover:text-red-600"
                 >
                   September »
                 </Link>
@@ -176,7 +176,7 @@ const CalendarPage: React.FC = () => {
             </div>
           </div>
           <table className="min-w-full divide-y divide-gray-200 border border-gray-300 table-auto">
-            <thead className="bg-[#eeeeee] h-7">
+            <thead className="bg-gray-200 h-7">
               <tr>
                 <th className="w-7"></th>
                 {DAYS_OF_WEEK.map((day) => (
@@ -197,7 +197,7 @@ const CalendarPage: React.FC = () => {
                 }, [] as moment.Moment[][])
                 .map((weekDays, weekIndex) => (
                   <tr key={weekIndex}>
-                    <td className="bg-primary-sub_bg p-1 text-right align-top">
+                    <td className="bg-gray-200 p-1 text-right align-top">
                       {weekDays[0].clone().startOf('week').format('W')}
                     </td>
                     {weekDays.map((currentDay, dayIndex) => {

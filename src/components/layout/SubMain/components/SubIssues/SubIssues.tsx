@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
 
 const SubIssues = () => {
   return (
     <div>
-      <h3 className="text-sm text-[#666] font-medium mt-3.5 mb-2.5">Issues</h3>
+      <h3 className="text-sm text-black-200 font-medium mt-3.5 mb-2.5">
+        Issues
+      </h3>
       <ul className="text-xs">
         <li>
           <a
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues?set_filter=1"
           >
@@ -16,7 +18,7 @@ const SubIssues = () => {
         </li>
         <li>
           <a
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues/report"
           >
@@ -26,7 +28,7 @@ const SubIssues = () => {
 
         <li>
           <a
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues/calendar"
           >
@@ -35,7 +37,7 @@ const SubIssues = () => {
         </li>
         <li>
           <a
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues/gantt"
           >
@@ -44,10 +46,15 @@ const SubIssues = () => {
         </li>
       </ul>
 
-      <h3 className="text-sm text-[#666] font-medium mt-3.5 mb-2.5">Custom queries</h3>
+      <h3 className="text-sm text-black-200 font-medium mt-3.5 mb-2.5">
+        Custom queries
+      </h3>
       <ul>
         <li>
-          <a className="text-xs text-[#169] hover:underline hover:text-[#c61a1a]" href="/projects/fresher-_-reactjs-fresher/issues?query_id=3229">
+          <a
+            className="text-xs text-blue-800 hover:underline hover:text-red-600"
+            href="/projects/fresher-_-reactjs-fresher/issues?query_id=3229"
+          >
             Ticket open by subProject
           </a>
         </li>

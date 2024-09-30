@@ -26,7 +26,7 @@ const ApplyButton: React.FC = () => {
 
   return (
     <button
-      className="border border-[#cccccc] border-[1px] text-[#222222] bg-[#f2f2f2] text-13 mt-2.5 w-12 hover:bg-[#c3c2c2]"
+      className="border border-gray-700 text-black-700 bg-gray-250 text-13 mt-2.5 w-12 hover:bg-gray-450"
       onClick={applyChanges}
     >
       Apply

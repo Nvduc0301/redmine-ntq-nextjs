@@ -4,11 +4,11 @@ import React from 'react';
 const SubWiki = () => {
   return (
     <div>
-      <h3 className="text-sm text-[#666] font-medium mt-3.5 mb-2.5">Wiki</h3>
+      <h3 className="text-sm text-black-200 font-medium mt-3.5 mb-2.5">Wiki</h3>
       <ul className="text-xs">
         <li>
           <Link
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues?set_filter=1"
           >
@@ -17,7 +17,7 @@ const SubWiki = () => {
         </li>
         <li>
           <Link
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues/report"
           >
@@ -27,7 +27,7 @@ const SubWiki = () => {
 
         <li>
           <Link
-            className="text-[#169] hover:underline hover:text-[#c61a1a]"
+            className="text-blue-800 hover:underline hover:text-red-600"
             rel="noreferrer noopener"
             href="/projects/fresher-_-reactjs-fresher/issues/calendar"
           >

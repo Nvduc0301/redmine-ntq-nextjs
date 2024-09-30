@@ -123,7 +123,7 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
       <div className="text-start mb-2">
         <Link
           href="#"
-          className="font-semibold text-blue-500 hover:underline hover:text-primary-red"
+          className="font-semibold text-blue-500 hover:underline hover:text-red-500"
           rel="noreferrer noopener"
         >
           {tableName} <span>{`(${displayedData.length})`}</span>
@@ -136,13 +136,13 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
           </div>
         ) : (
           <table className="min-w-full divide-gray-200 border border-gray-300">
-            <thead className="bg-primary-sub_bg h-7">
+            <thead className="bg-gray-200 h-7">
               <tr>
                 {tableHeaders.map((header) => (
                   <th
                     key={header.key}
                     scope="col"
-                    className="p-1 text-xs border border-primary-border"
+                    className="p-1 text-xs border border-gray-300"
                   >
                     {header.label}
                   </th>
@@ -164,16 +164,16 @@ const TableIssue: React.FC<{ id: string }> = ({ id }) => {
                     className={`hover:bg-yellow-50 ${rowBgColor}`}
                     onDoubleClick={(e) => onDoubleClick(issue, e)}
                   >
-                    <td className="p-1 text-center text-xs border border-primary-border hover:underline">
+                    <td className="p-1 text-center text-xs border border-gray-300 hover:underline">
                       {issue.id}
                     </td>
-                    <td className="p-1 text-center text-xs border border-primary-border hover:underline">
+                    <td className="p-1 text-center text-xs border border-gray-300 hover:underline">
                       {issue.project?.name}
                     </td>
-                    <td className="p-1 text-center text-xs border border-primary-border hover:underline">
+                    <td className="p-1 text-center text-xs border border-gray-300 hover:underline">
                       {issue.tracker?.name}
                     </td>
-                    <td className="p-1 text-center text-xs border border-primary-border hover:underline">
+                    <td className="p-1 text-center text-xs border border-gray-300 hover:underline">
                       {issue.subject}
                     </td>
                   </tr>

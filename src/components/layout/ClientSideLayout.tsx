@@ -18,7 +18,7 @@ const ClientSideLayout: React.FC<ClientSideLayoutProps> = ({ children }) => {
   return (
     <div className="flex justify-between mt-2">
       <main
-        className={`${isProjectPath ? 'w-3/4' : 'w-full'} p-2 border-1 border-solid border-primary-border bg-white h-full min-h-615`}
+        className={`${isProjectPath ? 'w-3/4' : 'w-full'} p-2 border-1 border-solid border-gray-300 bg-white h-full min-h-615`}
       >
         {children}
       </main>

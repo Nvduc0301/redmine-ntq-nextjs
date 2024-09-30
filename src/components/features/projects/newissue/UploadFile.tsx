@@ -20,11 +20,11 @@ const FileUpload: React.FC<FileUploadProps> = ({
 }) => {
   return (
     <div>
-      <label className="text-primary-text_gray text-xs font-semibold mb-2 mr-1">
+      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1">
         Files
       </label>
       <span className="text-xs">
-        <div className="mt-4 max-w-[50%]">
+        <div className="mt-4 max-w-1/2">
           {files.map((fileObj, index) => (
             <div key={index} className="mb-2 p-2 rounded-md flex items-center">
               <span
@@ -70,7 +70,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
             multiple
             onChange={handleFileChange}
           />
-          <label className="inline-block px-3 py-0.5 border border-black rounded cursor-pointer bg-primary-sub_bg">
+          <label className="inline-block px-3 py-0.5 border border-black rounded cursor-pointer bg-gray-200">
             Chọn tệp
           </label>
           <label>

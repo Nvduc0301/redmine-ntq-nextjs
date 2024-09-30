@@ -31,7 +31,7 @@ const SubRoadmap = () => {
 
   return (
     <div className="ml-5">
-      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">
+      <h3 className="text-xs text-black-200 font-semibold mt-3.5 mb-2.5">
         Roadmap
       </h3>
       <div className="mt-2 text-xs">
@@ -40,14 +40,14 @@ const SubRoadmap = () => {
         <ShowClosedCheckbox />
       </div>
       <ApplyButton />
-      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">
+      <h3 className="text-xs text-black-200 font-semibold mt-3.5 mb-2.5">
         Versions
       </h3>
       {openVersions.map((version) => (
         <a
           key={version.id}
           rel="noreferrer noopener"
-          className="text-blue-300 hover:underline hover:text-[#b2290f] block text-xs"
+          className="text-blue-300 hover:underline hover:text-red-600 block text-xs"
         >
           {version.name}
         </a>
@@ -57,7 +57,7 @@ const SubRoadmap = () => {
           <a
             key={version.id}
             rel="noreferrer noopener"
-            className="text-blue-300 hover:underline hover:text-[#b2290f] block text-xs"
+            className="text-blue-300 hover:underline hover:text-red-600 block text-xs"
           >
             {version.name}
           </a>
@@ -72,14 +72,14 @@ const SubRoadmap = () => {
         ) : (
           <Image src={images.arrow_downgrey} alt="Arrow down" />
         )}
-        <p className="text-xs text-[#999]">Completed versions</p>
+        <p className="text-xs text-gray-800">Completed versions</p>
       </a>
       {!showClosed &&
         isOpenArrow &&
         closedVersions.map((version) => (
           <a
             key={version.id}
-            className="text-blue-300 hover:underline hover:text-[#b2290f] block text-xs pt-2"
+            className="text-blue-300 hover:underline hover:text-red-600 block text-xs pt-2"
           >
             {version.name}
           </a>

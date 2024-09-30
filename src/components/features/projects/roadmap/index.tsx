@@ -106,7 +106,7 @@ const RoadmapPage: React.FC<RoadmapProps> = (props) => {
 
   return (
     <div>
-      <h2 className="text-[#555] text-lg text-5 font-semibold mb-2 flex items-center justify-between">
+      <h2 className="text-gray-500 text-lg text-5 font-semibold mb-2 flex items-center justify-between">
         Roadmap
         <a className="flex items-center">
           <Image src={images.add} className="mr-1" alt="Add" />
@@ -139,19 +139,19 @@ const RoadmapPage: React.FC<RoadmapProps> = (props) => {
                     src={images.imagePackage}
                     alt="Package"
                   />
-                  <p className="text-[#169] hover:underline hover:text-[#b2290f] block text-base ml-1">
+                  <p className="text-blue-800 hover:underline hover:text-red-600 block text-base ml-1">
                     {projectVersion.name}
                   </p>
                 </h3>
                 <div className="text-sm mt-3 mb-2 flex items-center">
-                  <strong className="text-[#484848] text-5 font-bold pr-1.5">
+                  <strong className="text-black-500 text-5 font-bold pr-1.5">
                     days late
                   </strong>
-                  <p className="text-[#484848] text-xs">
+                  <p className="text-black-500 text-xs">
                     {projectVersion.due_date}
                   </p>
                 </div>
-                <p className="mb-3 text-xs text-[#484848]">
+                <p className="mb-3 text-xs text-black-500">
                   {projectVersion.description}
                 </p>
                 {versionData && versionData.issues.length > 0 ? (
@@ -162,17 +162,17 @@ const RoadmapPage: React.FC<RoadmapProps> = (props) => {
                           <tbody className="w-full">
                             <tr className="flex">
                               <td
-                                className="border border-[#cccccc] bg-[#d3edd3] h-4"
+                                className="border border-gray-700 bg-green-300 h-4"
                                 style={{ width: `${percentCompleted}%` }}
                               ></td>
                               <td
-                                className="border border-[#cccccc] bg-[#eeeeee] h-4"
+                                className="border border-gray-700 bg-gray-200 h-4"
                                 style={{ width: `${100 - percentCompleted}%` }}
                               ></td>
                             </tr>
                           </tbody>
                         </table>
-                        <div className="text-xs text-[#484848] pl-1">
+                        <div className="text-xs text-black-500 pl-1">
                           {Math.round(percentCompleted)}%
                         </div>
                       </div>
@@ -189,7 +189,7 @@ const RoadmapPage: React.FC<RoadmapProps> = (props) => {
                     />
                   </div>
                 ) : (
-                  <p className="text-xs text-[#484848]">
+                  <p className="text-xs text-black-500">
                     No issues for this version.
                   </p>
                 )}

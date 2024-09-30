@@ -1,57 +1,13 @@
 import React, { useRef } from 'react';
 import images from '~/assets/img';
 import {
-  ButtonData,
-  customFront,
-  customText,
-  textName,
-  textValue,
-} from '~/types/NewIssue';
-const textColor = 'text-primary-text_gray';
-const labelStyle = `${textColor} text-xs font-semibold mb-2 mr-1 `;
+  BUTTON_DATA,
+  CUSTOM_FRONT,
+  CUSTOM_TEXT,
+  TEXT_NAME,
+  TEXT_VALUE,
+} from './const';
 
-const buttonData: ButtonData[] = [
-  {
-    id: 1,
-    backgroundImage: images.newissue_strong,
-    formatText: textName.Strong,
-  },
-  {
-    id: 2,
-    backgroundImage: images.newissue_italic,
-    formatText: textName.Italic,
-  },
-  {
-    id: 3,
-    backgroundImage: images.newissue_underline,
-    formatText: textName.Underline,
-  },
-  {
-    id: 4,
-    backgroundImage: images.newissue_delete,
-    formatText: textName.Delete,
-  },
-  {
-    id: 5,
-    backgroundImage: images.newissue_inlinecode,
-    formatText: textName.InlineCode,
-  },
-  { id: 6, backgroundImage: images.newissue_heading1, formatText: textName.H1 },
-  { id: 7, backgroundImage: images.newissue_heading2, formatText: textName.H2 },
-  { id: 8, backgroundImage: images.newissue_heading3, formatText: textName.H3 },
-  { id: 9, backgroundImage: images.newissue_ul, formatText: textName.ListDot },
-  { id: 10, backgroundImage: images.newissue_ol, formatText: textName.ListNum },
-  { id: 11, backgroundImage: images.newissue_bq, formatText: textName.Quote },
-  {
-    id: 12,
-    backgroundImage: images.newissue_bq_remove,
-    formatText: textName.RemoveQuote,
-  },
-  { id: 13, backgroundImage: images.newissue_pre, formatText: textName.Pre },
-  { id: 14, backgroundImage: images.newissue_link, formatText: textName.Link },
-  { id: 15, backgroundImage: images.newissue_img, formatText: textName.Image },
-  { id: 16, backgroundImage: images.newissue_help, formatText: '' },
-];
 interface DescriptionInputProps {
   description: string;
   setDescription: (value: string) => void;
@@ -69,15 +25,15 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
   ) => {
     let prefix = '';
 
-    if ([textName.H1, textName.H2, textName.H3].includes(formatText)) {
+    if ([TEXT_NAME.H1, TEXT_NAME.H2, TEXT_NAME.H3].includes(formatText)) {
       return `${format}${currentLine.replace(/^(h1\.|h2\.|h3\.)\s*/, '')}`;
     }
 
-    if ([textName.ListDot, textName.ListNum].includes(formatText)) {
-      prefix = formatText === textName.ListDot ? '* ' : '# ';
+    if ([TEXT_NAME.ListDot, TEXT_NAME.ListNum].includes(formatText)) {
+      prefix = formatText === TEXT_NAME.ListDot ? '* ' : '# ';
     } else if (
-      formatText === textName.Quote ||
-      formatText === textName.RemoveQuote
+      formatText === TEXT_NAME.Quote ||
+      formatText === TEXT_NAME.RemoveQuote
     ) {
       return currentLine.startsWith('>')
         ? currentLine.replace(/^>\s*/, '')
@@ -96,10 +52,10 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
     currentLineEnd: number,
     currentLine: string
   ): string => {
-    if (customFront.includes(formatText)) {
+    if (CUSTOM_FRONT.includes(formatText)) {
       const updatedLine = applyFormat(currentLine, formatText, format);
       return `${TextValueChange.slice(0, currentLineStart)}${updatedLine}${TextValueChange.slice(currentLineEnd === -1 ? TextValueChange.length : currentLineEnd)}`;
-    } else if (customText.includes(formatText)) {
+    } else if (CUSTOM_TEXT.includes(formatText)) {
       const middleIndex = format.length / 2;
       return `${TextValueChange.slice(0, startPos)}${format.slice(0, middleIndex)}${TextValueChange.slice(startPos, endPos)}${format.slice(middleIndex)}${TextValueChange.slice(endPos)}`;
     } else {
@@ -120,7 +76,7 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
         currentLineStart,
         currentLineEnd === -1 ? TextValueChange.length : currentLineEnd
       );
-      const format = textValue[formatText as keyof typeof textValue];
+      const format = TEXT_VALUE[formatText as keyof typeof TEXT_VALUE];
       TextValueChange = updateTextValueChange(
         TextValueChange,
         formatText,
@@ -133,7 +89,7 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
       );
       setDescription(TextValueChange);
       const formatLength =
-        textValue[formatText as keyof typeof textValue]?.length;
+        TEXT_VALUE[formatText as keyof typeof TEXT_VALUE]?.length;
       const cursorPos = startPos + formatLength / 2;
       setTimeout(() => {
         textarea.selectionStart = cursorPos;
@@ -147,8 +103,10 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
     <div className="mb-2">
       <span>
         <div className="flex flex-wrap gap-2.5">
-          <label className={labelStyle}>Description</label>
-          {buttonData.map((button) => (
+          <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 ">
+            Description
+          </label>
+          {BUTTON_DATA.map((button) => (
             <button
               key={button.id}
               style={{ backgroundImage: `url(${button.backgroundImage})` }}
@@ -159,7 +117,7 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
         </div>
         <div>
           <textarea
-            className=" p-1 border border-primary-border w-full h-[170px]"
+            className=" p-1 border border-gray-300 w-full h-[170px]"
             ref={textareaRef}
             value={description}
             onChange={(e) => setDescription(e.target.value)}

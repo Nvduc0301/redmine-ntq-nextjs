@@ -42,13 +42,13 @@ const WikiPage: React.FC = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-2.5 ">
-        <h2 className="text-xl text-[#555] font-medium">Wiki</h2>
+        <h2 className="text-xl text-gray-500 font-medium">Wiki</h2>
         <div className="flex items-center gap-1 text-11">
           {BUTTON_WIKI.map((link, index) => (
             <Link
               key={index}
               href={link.href}
-              className="flex items-center gap-1 text-[#169] hover:underline hover:text-[#b2290f]"
+              className="flex items-center gap-1 text-blue-800 hover:underline hover:text-red-600"
             >
               <Image src={link.imgSrc} alt={link.text} />
               <span>{link.text}</span>
@@ -59,7 +59,7 @@ const WikiPage: React.FC = () => {
       <div className="">
         <div className="flex items-center gap-1 text-xs">
           <Link
-            className="flex item-center gap-1 text-[#169] hover:underline hover:text-[#b2290f]"
+            className="flex item-center gap-1 text-blue-800 hover:underline hover:text-red-600"
             href="/attachments/download/43934/12345.jpg"
           >
             <Image src={images.attachment} alt="attachment" />
@@ -74,13 +74,13 @@ const WikiPage: React.FC = () => {
           >
             <Image src={images.preview} alt="preview" />
           </Link>
-          <span className="text-[#888]">
+          <span className="text-black-300">
             Dung Nguyen Van 6 (Internship), 07/15/2024 02:04 PM
           </span>
         </div>
         <div className="flex items-center gap-1 text-xs">
           <Link
-            className="flex item-center gap-1 text-[#169] hover:underline hover:text-[#b2290f]"
+            className="flex item-center gap-1 text-blue-800 hover:underline hover:text-red-600"
             href="/attachments/download/43934/12345.jpg"
           >
             <Image src={images.attachment} alt="attachment" />
@@ -95,12 +95,12 @@ const WikiPage: React.FC = () => {
           >
             <Image src={images.preview} alt="preview" />
           </Link>
-          <span className="text-[#888]">
+          <span className="text-black-300">
             Son (internship) Nguyen Hoang Huu, 07/29/2024 09:41 AM
           </span>
         </div>
 
-        <div className="flex items-center gap-1 w-fit m-2.5 p-1.5 border border-[#ccc]">
+        <div className="flex items-center gap-1 w-fit m-2.5 p-1.5 border border-gray-700">
           <Link
             href="/attachments/43934/12345.jpg"
             className=""
@@ -120,7 +120,7 @@ const WikiPage: React.FC = () => {
         </div>
 
         <Link
-          className="flex item-center gap-1 my-3 text-xs text-[#169] hover:underline hover:text-[#b2290f]"
+          className="flex item-center gap-1 my-3 text-xs text-blue-800 hover:underline hover:text-red-600"
           href="#"
           onClick={() => setShowUpload(true)}
         >
@@ -135,12 +135,12 @@ const WikiPage: React.FC = () => {
               handleFileChange={handleFileChange}
             />
             <button
-              className="border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2] "
+              className="border  bg-gray-200 text-13 mt-2.5 mr-1 p-1 hover:bg-gray-450 "
               type="submit"
             >
               Add
             </button>
-            <button className="border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2] ">
+            <button className=" border bg-gray-200 text-13 mt-2.5 mr-1 p-1 hover:bg-gray-450 ">
               Cancel
             </button>
           </>

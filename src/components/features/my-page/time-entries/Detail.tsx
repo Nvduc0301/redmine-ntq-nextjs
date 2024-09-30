@@ -118,13 +118,13 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>
-            <th className=" p-1 text-xs border border-primary-border">
+            <th className=" p-1 text-xs border border-gray-300">
               <Image src={images.check} alt={IMAGE_ALTS.CHECK} />
             </th>
             {MENU_HEADER_TABLE.map((header) => (
               <th
                 key={header.id}
-                className="text-[#169] hover:underline hover:text-[#c61a1a] p-1 text-xs border border-primary-border cursor-pointer"
+                className="text-blue-800 hover:underline hover:text-red-500 p-1 text-xs border border-gray-300 cursor-pointer"
                 onClick={header.label === HEADERS.DATE ? handleSort : undefined}
               >
                 {header.label}
@@ -145,7 +145,7 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
                 )}
               </th>
             ))}
-            <th className="p-1 text-xs border border-primary-border"></th>
+            <th className="p-1 text-xs border border-gray-300"></th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 h-6">
@@ -154,21 +154,21 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
 
             return (
               <tr
-                className={`${index % 2 === 0 ? 'bg-[#f6f7f9]' : 'bg-[#fff]'} hover:bg-[#ffffdd]`}
+                className={`${index % 2 === 0 ? 'bg-gray-150' : 'bg-white'} hover:bg-yellow-100`}
                 key={item.id}
               >
-                <td className="p-1 text-center text-xs border border-primary-border">
+                <td className="p-1 text-center text-xs border border-gray-300">
                   <input type="checkbox" />
                 </td>
                 {MENU_HEADER_TABLE.map((header) => (
                   <td
                     key={header.id}
-                    className="p-1 text-start text-xs border border-primary-border"
+                    className="p-1 text-start text-xs border border-gray-300"
                   >
                     {renderCellContent(header, item, issue)}
                   </td>
                 ))}
-                <td className="flex justify-center items-end pb-3 gap-1 p-1 text-xs border border-primary-border ">
+                <td className="flex justify-center items-end pb-3 gap-1 p-1 text-xs border border-gray-300 ">
                   <a href="" className="h-full" rel="noreferrer noopener">
                     <Image src={images.edit} alt={IMAGE_ALTS.EDIT} />
                   </a>
@@ -181,7 +181,7 @@ const Detail: React.FC<DetailProps> = ({ selectedColumns, data }) => {
           })}
         </tbody>
       </table>
-      <div className="text-11 text-[#484848] my-2">
+      <div className="text-11 text-black-500 my-2">
         (1-{data.length})/{data.length}
       </div>
 

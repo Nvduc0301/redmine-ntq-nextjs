@@ -171,7 +171,7 @@ const ActivityPage: React.FC<ActivityProps> = (props) => {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-1 text-[#555]">Activity</h2>
+      <h2 className="text-lg font-semibold mb-1 text-gray-500">Activity</h2>
       {loading ? (
         <div className="flex justify-center items-center h-24">
           <RingLoader color="#34d2c8" speedMultiplier={2} />
@@ -187,7 +187,7 @@ const ActivityPage: React.FC<ActivityProps> = (props) => {
             <>
               {groupByDate(data, filters).map(({ date, items }) => (
                 <div key={date} className="mb-4">
-                  <h2 className="font-semibold mb-2 text-[#555]">
+                  <h2 className="font-semibold mb-2 text-gray-500">
                     {formatDate(date)}
                   </h2>
                   <div className="ml-6 my-3">
@@ -210,25 +210,25 @@ const ActivityPage: React.FC<ActivityProps> = (props) => {
                           }
                         />
                         <Image
-                          className="border border-primary-border mr-3 ml-1.5 p-0.5"
+                          className="border border-gray-300 mr-3 ml-1.5 p-0.5"
                           src={images.avatar}
                           alt={IMAGE_ALT_TEXT.AVATAR}
                         />
                         <div className="flex flex-col justify-center items-start">
                           <div className="flex items-end gap-1">
-                            <span className="text-10 text-[#777]">
+                            <span className="text-10 text-gray-800">
                               {formatTime(item.created_on)}
                             </span>
                             {item.type === FILTERS.ISSUES ? (
                               <a
-                                className="text-xs text-[#169] font-medium cursor-pointer hover:underline hover:text-[#b2290f]"
+                                className="text-xs text-blue-800 font-medium cursor-pointer hover:underline hover:text-red-600"
                                 href={`/issues/${item.id}`}
                               >
                                 {item.trackerName} #{item.id} ({item.statusName}
                                 ): {item.subject}
                               </a>
                             ) : item.type === FILTERS.TIME_ENTRIES ? (
-                              <span className="text-xs text-[#169] font-medium">
+                              <span className="text-xs text-blue-800 font-medium">
                                 {(item.hours ?? 0).toFixed(2)} hours
                                 {item.id ? (
                                   <>
@@ -241,23 +241,23 @@ const ActivityPage: React.FC<ActivityProps> = (props) => {
                                 )}
                               </span>
                             ) : item.type === FILTERS.WIKI ? (
-                              <span className="text-xs text-[#169] font-medium">
+                              <span className="text-xs text-blue-800 font-medium">
                                 <Link href="/projects/fresher-_-reactjs-fresher/wiki/Wiki/1">
                                   Wiki edit: {item.title} (#{item.version})
                                 </Link>
                               </span>
                             ) : (
-                              <span className="text-xs text-[#169] font-medium">
+                              <span className="text-xs text-blue-800 font-medium">
                                 Nodata
                               </span>
                             )}
                           </div>
-                          <span className="text-11 italic text-[#808080]">
+                          <span className="text-11 italic text-black-400">
                             {item.description}
                           </span>
                           <a
                             href={`/users/${item.author.id}`}
-                            className="text-11 text-[#169] cursor-pointer hover:underline hover:text-[#b2290f]"
+                            className="text-11 text-blue-800 cursor-pointer hover:underline hover:text-red-600"
                           >
                             {item.author.name}
                           </a>
@@ -273,7 +273,7 @@ const ActivityPage: React.FC<ActivityProps> = (props) => {
           )}
 
           <Link
-            className="text-xs text-[#169] hover:underline hover:text-red-400 mt-3"
+            className="text-xs text-blue-800 hover:underline hover:text-red-400 mt-3"
             href="/projects/fresher-_-reactjs-fresher/activity?from=2024-07-02"
             title="From 06/03/2024 to 07/02/2024"
           >
@@ -282,7 +282,7 @@ const ActivityPage: React.FC<ActivityProps> = (props) => {
           <div className="flex items-center gap-1 justify-end text-11 mb-2">
             <span>Also available in:</span>
             <Link
-              className="flex items-center gap-1 text-[#169] hover:underline hover:text-red-400"
+              className="flex items-center gap-1 text-blue-800 hover:underline hover:text-red-400"
               href=""
               rel="noreferrer noopener"
             >

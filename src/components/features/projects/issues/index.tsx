@@ -244,14 +244,14 @@ const IssuesPage = () => {
 
   return (
     <div>
-      <h1 className="text-[#555] text-xl font-semibold mb-3">Issues</h1>
+      <h1 className="text-gray-500 text-xl font-semibold mb-3">Issues</h1>
       {loading ? (
         <div className="flex justify-center items-center my-4">
           <RingLoader color="#34d2c8" />
         </div>
       ) : (
         <>
-          <fieldset className="flex text-xs text-[#484848] py-2 px-3 border-t">
+          <fieldset className="flex text-xs text-black-500 py-2 px-3 border-t">
             <legend
               className="flex items-center cursor-pointer"
               onClick={() => toggleState(setIsFilters)}
@@ -276,7 +276,7 @@ const IssuesPage = () => {
                       <td className="flex items-center gap-1 w-4/12">
                         <Select
                           value="selectedValue"
-                          className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+                          className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
                           onChange={() => {
                             return 'selectedValue';
                           }}
@@ -293,7 +293,7 @@ const IssuesPage = () => {
                     <span className="text-nowrap">Add filter</span>
                     <Select
                       value="selectedValue"
-                      className="h-6 text-xs text-black max-w-52 w-full font-medium border border-primary-border rounded-none mr-2 min-w-[210px] "
+                      className="h-6 text-xs text-black max-w-52 w-full font-medium border border-gray-300 rounded-none mr-2 min-w-[210px] "
                       onChange={() => {
                         return 'selectedValue';
                       }}
@@ -306,7 +306,7 @@ const IssuesPage = () => {
               </>
             )}
           </fieldset>
-          <fieldset className="flex text-xs text-[#484848] py-2 px-3">
+          <fieldset className="flex text-xs text-black-500 py-2 px-3">
             <legend
               className="flex items-center cursor-pointer"
               onClick={() => toggleState(setIsOptions)}
@@ -327,7 +327,7 @@ const IssuesPage = () => {
                   </div>
                   <Select
                     size={10}
-                    className="h-full w-[150px] text-13 border border-[#d7d7d7]"
+                    className="h-full w-[150px] text-13 border border-gray-350"
                     multiple
                     value={Array.isArray(selectedValue) ? selectedValue : []}
                     onChange={handleMultiSelect}
@@ -339,13 +339,13 @@ const IssuesPage = () => {
                 </div>
                 <div className="flex flex-col gap-0.5 mx-1">
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 py-0.5 px-1.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 py-0.5 px-1.5"
                     type="button"
                     value="→"
                     onClick={moveRight}
                   />
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 py-0.5 px-1.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 py-0.5 px-1.5"
                     type="button"
                     value="←"
                     onClick={moveLeft}
@@ -357,7 +357,7 @@ const IssuesPage = () => {
                   </div>
                   <Select
                     size={10}
-                    className="h-full w-[150px] text-13 border border-[#d7d7d7]"
+                    className="h-full w-[150px] text-13 border border-gray-350"
                     multiple
                     value={Array.isArray(selectedValue) ? selectedValue : []}
                     onChange={handleMultiSelect}
@@ -369,26 +369,26 @@ const IssuesPage = () => {
                 </div>
                 <div className="flex flex-col gap-0.5 ml-1">
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="⇈"
                     onClick={moveTop}
                   />
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="↑"
                     onClick={moveUp}
                   />
 
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="↓"
                     onClick={moveDown}
                   />
                   <input
-                    className="bg-[#f2f2f2] text-[#222] border border-[#cccccc] w-8 px-1.5 py-0.5"
+                    className="bg-gray-250 text-black-700 border border-gray-700 w-8 px-1.5 py-0.5"
                     type="button"
                     value="⇊"
                     onClick={moveBottom}
@@ -400,16 +400,16 @@ const IssuesPage = () => {
           <div className="flex items-center gap-1 my-4 ">
             <span
               onClick={handleApply}
-              className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText "
+              className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-500 cursor-pointer text-primaryText hover:text-hoverText "
             >
               <Image src={images.check} alt="check" />
               <span>Apply</span>
             </span>
-            <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+            <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-500 cursor-pointer text-primaryText hover:text-hoverText ">
               <Image src={images.reload} alt="reload" />
               <span>Clear</span>
             </span>
-            <span className="flex items-center gap-1 text-xs text-[#169] hover:underline hover:text-[#c61a1a] cursor-pointer text-primaryText hover:text-hoverText ">
+            <span className="flex items-center gap-1 text-xs text-blue-800 hover:underline hover:text-red-500 cursor-pointer text-primaryText hover:text-hoverText ">
               <Image src={images.save} alt="reload" />
               <span>Save</span>
             </span>
@@ -433,7 +433,7 @@ const IssuesPage = () => {
               onClick={() => bringToFront(modalData.issue.id)}
             />
           ))}
-          <div className="text-11 text-[#484848] my-2">
+          <div className="text-11 text-black-500 my-2">
             (1-{issues.length})/{issues.length}
           </div>
 

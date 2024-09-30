@@ -14,3 +14,18 @@ export const EXCLUDEDPATHS = [
   '/projects/fresher-_-reactjs-fresher/newissue',
   '/projects/fresher-_-reactjs-fresher/new_versions',
 ];
+
+//MODAL
+
+export const STATUS_OPTIONS = [
+  { label: 'Open', value: 'open' },
+  { label: 'Closed', value: 'closed' },
+  { label: 'Locked', value: 'locked' },
+];
+
+export const SHARING_OPTIONS = [
+  { label: 'Not shared', value: 'none' },
+  { label: 'With subprojects', value: 'descendants' },
+  { label: 'With project hierarchy', value: 'hierarchy' },
+  { label: 'With project tree', value: 'tree' },
+];

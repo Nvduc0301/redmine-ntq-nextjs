@@ -6,24 +6,7 @@ import Image from 'next/image';
 import images from '~/assets/img';
 import { CreateVersion } from '~/services/VersionService ';
 import moment from 'moment';
-
-const textSize = 'text-xs';
-const label = 'text-right font-bold block text-gray-700 w-1/3 pr-4';
-const buttonStyle =
-  'border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2] ';
-
-const statusOptions = [
-  { label: 'Open', value: 'open' },
-  { label: 'Closed', value: 'closed' },
-  { label: 'Locked', value: 'locked' },
-];
-
-const sharingOptions = [
-  { label: 'Not shared', value: 'none' },
-  { label: 'With subprojects', value: 'descendants' },
-  { label: 'With project hierarchy', value: 'hierarchy' },
-  { label: 'With project tree', value: 'tree' },
-];
+import { SHARING_OPTIONS, STATUS_OPTIONS } from '~/const/MagicConstant';
 
 type ModalCreateVersionProps = {
   onClose: () => void;
@@ -69,7 +52,7 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
         <div className="flex justify-between items-center m-1 bg-blue-100">
           <h2
             style={{ marginRight: 'auto' }}
-            className={`${textSize} p-2 text-white font-bold`}
+            className={`text-xs p-2 text-white font-bold`}
           >
             New version
           </h2>
@@ -80,15 +63,15 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="detail p-4">
           {errors.name && (
-            <p className="text-red-500 text-sm w-full border-primary-borderError bg-primary-bgError border-2 ps-4 mb-4">
+            <p className="text-red-500 text-sm w-full border-red-300 bg-orange-100 border-2 ps-4 mb-4">
               {errors.name.message}
             </p>
           )}
-          <div className="border p-2 bg-primary-bg_gray">
+          <div className="border p-2 bg-gray-400">
             <div className="flex items-center mb-2">
               <div className="w-full">
                 <div className="flex items-center">
-                  <label className={label}>
+                  <label className="text-right font-bold block text-gray-700 w-1/3 pr-4">
                     Name
                     <span className="text-red-700"> *</span>
                   </label>
@@ -105,7 +88,9 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
               </div>
             </div>
             <div className="flex items-center mb-2">
-              <label className={label}>Description</label>
+              <label className="text-right font-bold block text-gray-700 w-1/3 pr-4">
+                Description
+              </label>
               <input
                 type="text"
                 {...register('description')}
@@ -113,13 +98,15 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
               />
             </div>
             <div className="flex items-center mb-2">
-              <label className={label}>Status</label>
+              <label className="text-right font-bold block text-gray-700 w-1/3 pr-4">
+                Status
+              </label>
               <select
                 {...register('status')}
                 className="w-2/3 border rounded p-1 text-sm w-1/5"
                 defaultValue={1}
               >
-                {statusOptions.map((option) => (
+                {STATUS_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -127,7 +114,9 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
               </select>
             </div>
             <div className="flex items-center mb-2">
-              <label className={label}>Wiki page</label>
+              <label className="text-right font-bold block text-gray-700 w-1/3 pr-4">
+                Wiki page
+              </label>
               <input
                 type="text"
                 {...register('wiki_page_title')}
@@ -135,7 +124,9 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
               />
             </div>
             <div className="flex items-center mb-2">
-              <label className={label}>Date</label>
+              <label className="text-right font-bold block text-gray-700 w-1/3 pr-4">
+                Date
+              </label>
               <div className="relative flex items-center ">
                 <Controller
                   control={control}
@@ -149,7 +140,7 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
                         <input
                           type="text"
                           name="due_date"
-                          className="border border-primary-border w-full h-6 text-xs pl-2"
+                          className="border border-gray-300 w-full h-6 text-xs pl-2"
                           placeholder="Due Date"
                         />
                       }
@@ -171,14 +162,16 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
               </div>
             </div>
             <div className="flex items-center mb-2">
-              <label className={label}>Sharing</label>
+              <label className="text-right font-bold block text-gray-700 w-1/3 pr-4">
+                Sharing
+              </label>
               <div className="flex items-center w-2/3">
                 <select
                   {...register('sharing')}
                   className="border rounded p-1 text-sm w-2/4"
                   defaultValue={1}
                 >
-                  {sharingOptions.map((option) => (
+                  {SHARING_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
@@ -188,10 +181,16 @@ const ModalCreateVersion: React.FC<ModalCreateVersionProps> = ({
             </div>
           </div>
           <div className="flex justify-end ">
-            <button type="submit" className={buttonStyle}>
+            <button
+              type="submit"
+              className="border bg-gray-200 text-13 mt-2.5 mr-1 p-1 hover:bg-gray-450 "
+            >
               Create
             </button>
-            <button className={buttonStyle} onClick={onClose}>
+            <button
+              className="border bg-gray-200 text-13 mt-2.5 mr-1 p-1 hover:bg-gray-450 "
+              onClick={onClose}
+            >
               Cancel
             </button>
           </div>

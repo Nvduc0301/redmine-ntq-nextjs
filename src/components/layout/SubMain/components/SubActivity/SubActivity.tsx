@@ -57,12 +57,12 @@ const SubActivity: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3 className="text-[#666] text-sm mt-3.5 mb-2.5">Activity</h3>
+      <h3 className="text-black-200 text-sm mt-3.5 mb-2.5">Activity</h3>
       <ul className="text-xs">
         {ACTIVITY_ITEMS.map((item: ActivityItem) => (
           <li
             key={item.id}
-            className="flex items-center gap-1.5 text-[#169] cursor-pointer hover:underline hover:text-[#b2290f]"
+            className="flex items-center gap-1.5 text-blue-800 cursor-pointer hover:underline hover:text-red-600"
           >
             <input
               type="checkbox"
@@ -81,7 +81,7 @@ const SubActivity: React.FC = () => {
         ))}
       </ul>
       <input
-        className="hover:bg-[#ccccbb] text-xs text-[#222222] bg-[#f2f2f2] border border-[#cccccc] py-0.5 px-1.5 my-3"
+        className="hover:bg-green-200 text-xs text-black-700 bg-gray-250 border border-gray-700 py-0.5 px-1.5 my-3"
         type="submit"
         value="Apply"
       />

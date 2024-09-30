@@ -22,24 +22,24 @@ const RelatedIssues: React.FC<IssueTableProps> = ({
 
   return (
     <table className="mt-3 w-full">
-      <caption className="text-xs text-left text-[#484848] mb-2">
+      <caption className="text-xs text-left text-black-500 mb-2">
         Related Issues
       </caption>
       <tbody>
         {filteredIssues.length > 0 ? (
           filteredIssues.map((issue) => (
             <tr key={issue.id}>
-              <td className="flex items-center border border-[#cccccc] max-w-full">
-                <a className="text-blue-300 hover:underline hover:text-[#b2290f] text-xs">
+              <td className="flex items-center border border-gray-700 max-w-full">
+                <a className="text-blue-300 hover:underline hover:text-red-600 text-xs">
                   {issue.tracker.name} #{issue.id}
                 </a>
-                <div className="text-xs text-[#484848]">: {issue.subject}</div>
+                <div className="text-xs text-black-500">: {issue.subject}</div>
               </td>
             </tr>
           ))
         ) : (
           <tr>
-            <td className="text-xs text-[#484848] text-center" colSpan={2}>
+            <td className="text-xs text-black-500 text-center" colSpan={2}>
               No issues available.
             </td>
           </tr>

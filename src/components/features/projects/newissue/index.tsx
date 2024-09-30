@@ -34,8 +34,6 @@ import { statusOptions } from '~/utils/MetaData';
 import DescriptionInput from './EditText';
 import { FileObj, GroupMemberSelect, Versions } from './types';
 
-const labelDataStyle = `text-primary-text_gray text-xs font-semibold mb-2 mr-1 w-28`;
-
 const NewIssuePage: React.FC = () => {
   const router = useRouter();
 
@@ -162,22 +160,22 @@ const NewIssuePage: React.FC = () => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <>
-          <h2 className="text-primary-text_gray text-lg text-5 font-semibold mb-2">
+          <h2 className="text-gray-500 text-lg text-5 font-semibold mb-2">
             New issue
           </h2>
           {errors.subject && (
-            <p className="text-red-500 text-sm w-full border-primary-borderError bg-primary-bgError border-2 ps-4 mb-4">
+            <p className="text-red-500 text-sm w-full border-red-300 bg-orange-100 border-2 ps-4 mb-4">
               {String(errors.subject.message)}
             </p>
           )}
           <div className="bg-gray-50 text-gray-700 leading-6 border border-gray-200  pl-36 pr-24">
             <p className="mb-2 mt-2">
-              <label className="text-primary-text_gray text-xs font-semibold mb-2">
+              <label className="text-gray-500 text-xs font-semibold mb-2">
                 Tracker<span className="text-red-700"> * </span>
               </label>
               <select
                 {...register('tracker_id', { required: true })}
-                className="border border-primary-border w-16 h-6 text-xs"
+                className="border border-gray-300 w-16 h-6 text-xs"
               >
                 {statusOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -188,12 +186,12 @@ const NewIssuePage: React.FC = () => {
             </p>
 
             <div className="mb-2 flex">
-              <p className="text-primary-text_gray text-xs font-semibold mb-2 mr-1">
+              <p className="text-gray-500 text-xs font-semibold mb-2 mr-1">
                 Subject<span className="text-red-700 ms-1">*</span>
               </p>
               <input
                 type="text"
-                className="border border-primary-border w-full p-1 h-6 text-xs"
+                className="border border-gray-300 w-full p-1 h-6 text-xs"
                 {...register('subject', {
                   required: "Subject can't be blank",
                   validate: (value) =>
@@ -210,12 +208,12 @@ const NewIssuePage: React.FC = () => {
                 <div className="flex justify-between mr-[180px]">
                   <div className="w-1/3">
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Status
                         <span className="text-red-700"> *</span>
                       </label>
                       <select
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                         {...register('status_id')}
                       >
                         {optionsForStatus.map((opt) => (
@@ -226,13 +224,13 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Priority
                         <span className="text-red-700"> *</span>
                       </label>
                       <select
                         {...register('priority_id')}
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                       >
                         {optionsForPriority.map((opt) => (
                           <option key={opt.value} value={opt.value}>
@@ -242,11 +240,13 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>Assignee</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        Assignee
+                      </label>
 
                       <select
                         {...register('assigned_to_id')}
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                       >
                         {assignee?.Membership.map((opt, index) => (
                           <option key={index} value={opt.value}>
@@ -256,10 +256,12 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>Target version</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        Target version
+                      </label>
                       <select
                         {...register('fixed_version_id')}
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                       >
                         {version?.map((opt, index) => (
                           <option key={index} value={opt.value}>
@@ -277,12 +279,14 @@ const NewIssuePage: React.FC = () => {
                   </div>
                   <div className="w-1/3">
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>Parent task</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        Parent task
+                      </label>
                       <div className="relative flex items-center">
                         <input
                           {...register('parent_issue_id')}
                           type="text"
-                          className="border border-primary-border w-full h-6 text-xs pl-8"
+                          className="border border-gray-300 w-full h-6 text-xs pl-8"
                           placeholder="Search..."
                         />
                         <Image
@@ -293,7 +297,9 @@ const NewIssuePage: React.FC = () => {
                       </div>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>Start date</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        Start date
+                      </label>
                       <div className="relative flex items-center">
                         <Controller
                           name="start_date"
@@ -309,7 +315,7 @@ const NewIssuePage: React.FC = () => {
                               customInput={
                                 <input
                                   type="text"
-                                  className="border border-primary-border w-full h-6 text-xs pl-2"
+                                  className="border border-gray-300 w-full h-6 text-xs pl-2"
                                   placeholder="Start Date"
                                 />
                               }
@@ -332,7 +338,9 @@ const NewIssuePage: React.FC = () => {
                     </div>
 
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>due date</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        due date
+                      </label>
                       <div className="relative flex items-center">
                         <Controller
                           control={control}
@@ -348,7 +356,7 @@ const NewIssuePage: React.FC = () => {
                                 <input
                                   type="text"
                                   name="due_date"
-                                  className="border border-primary-border w-full h-6 text-xs pl-2"
+                                  className="border border-gray-300 w-full h-6 text-xs pl-2"
                                   placeholder="Due Date"
                                 />
                               }
@@ -370,22 +378,26 @@ const NewIssuePage: React.FC = () => {
                       </div>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>Estimate time</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        Estimate time
+                      </label>
                       <div className="relative flex items-center">
                         <input
                           type="text"
                           {...register('estimated_hours')}
-                          className="p-1 border border-primary-border w-full h-6 text-xs flex-1"
+                          className="p-1 border border-gray-300 w-full h-6 text-xs flex-1"
                         />
                         <span className="ml-2 text-xs">Hours</span>
                       </div>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>% Done</label>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
+                        % Done
+                      </label>
                       <div className="relative flex items-center">
                         <select
                           {...register('done_ratio')}
-                          className="border border-primary-border w-16 h-6 text-xs flex-1"
+                          className="border border-gray-300 w-16 h-6 text-xs flex-1"
                         >
                           {ratio.map((opt) => (
                             <option key={opt.value} value={opt.value}>
@@ -400,14 +412,14 @@ const NewIssuePage: React.FC = () => {
                 <div className="flex justify-between mr-[180px]">
                   <div className="w-1/3">
                     <div className="mb-2 flex">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Bug Type
                         <span className="text-red-700">*</span>
                       </label>
                       <select
                         defaultValue={defaultValueForBugType}
                         // {...register("custom_field_values[12]")}
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                       >
                         {optionsForBugType.map((opt) => (
                           <option key={opt.value} value={opt.value}>
@@ -417,14 +429,14 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Severity
                         <span className="text-red-700">*</span>
                       </label>
                       <select
                         defaultValue={defatultValueForSeverity}
                         // {...register("custom_field_values[13]")}
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                       >
                         {optionsForSeverity.map((opt) => (
                           <option key={opt.value} value={opt.value}>
@@ -434,14 +446,14 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         QC Activity
                         <span className="text-red-700">*</span>
                       </label>
                       <select
                         defaultValue={defaultValueForQc}
                         // {...register("custom_field_values[23]")}
-                        className="border border-primary-border w-auto h-6 text-xs flex-grow"
+                        className="border border-gray-300 w-auto h-6 text-xs flex-grow"
                       >
                         {optionsForQC.map((opt) => (
                           <option key={opt.value} value={opt.value}>
@@ -453,13 +465,13 @@ const NewIssuePage: React.FC = () => {
                   </div>
                   <div className="w-1/3">
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Cause Category <span className="text-red-700"> * </span>
                       </label>
                       <select
                         defaultValue={[defaultValueForOptions]}
                         // {...register("custom_field_values[25]")}
-                        className="border border-primary-border w-3/4 h-20 text-xs p-1 rounded-md"
+                        className="border border-gray-300 w-3/4 h-20 text-xs p-1 rounded-md"
                         multiple
                       >
                         {selectOptions.map((option) => (
@@ -470,12 +482,12 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Is Degrade? <span className="text-red-700"> * </span>
                       </label>
                       <select
                         // {...register("custom_field_values[62]")}
-                        className="border border-primary-border w-3/4 h-6 text-xs"
+                        className="border border-gray-300 w-3/4 h-6 text-xs"
                       >
                         {IsDegree.map((option) => (
                           <option key={option.value} value={option.value}>
@@ -485,14 +497,14 @@ const NewIssuePage: React.FC = () => {
                       </select>
                     </div>
                     <div className="mb-2 flex items-center">
-                      <label className={labelDataStyle}>
+                      <label className="text-gray-500 text-xs font-semibold mb-2 mr-1 w-28">
                         Reopen counter <span className="text-red-700"> * </span>
                       </label>
                       <input
                         type="text"
                         defaultValue={0}
                         // {...register("custom_field_values[63]")}
-                        className="border border-primary-border w-1/4 h-6 text-xs p-1"
+                        className="border border-gray-300 w-1/4 h-6 text-xs p-1"
                       />
                     </div>
                   </div>
@@ -530,7 +542,7 @@ const NewIssuePage: React.FC = () => {
                 </div>
                 <a className="flex items-center">
                   <Image src={images.add} className="w-4 h-3 pr-1" alt="add" />
-                  <p className="text-blue-300 hover:underline hover:text-[#b2290f] text-[0.6rem]">
+                  <p className="text-blue-300 hover:underline hover:text-[#b2290f] text-10">
                     Search for watchers to add
                   </p>
                 </a>
@@ -538,17 +550,17 @@ const NewIssuePage: React.FC = () => {
             </div>
           </div>
           <button
-            className="border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2]"
+            className="border  bg-gray-200 text-13 mt-2.5 mr-1 p-1 hover:bg-gray-450"
             type="submit"
           >
             Create
           </button>
-          <button className="border border bg-primary-sub_bg text-13 mt-2.5 mr-1 p-1 hover:bg-[#c3c2c2]">
+          <button className=" border bg-gray-200 text-13 mt-2.5 mr-1 p-1 hover:bg-gray-450">
             Create and continue
           </button>
         </>
       </form>
-      <a className="text-blue-300 hover:underline hover:text-primary-red text-xs">
+      <a className="text-blue-300 hover:underline hover:text-red-500 text-xs">
         Preview
       </a>
       <Preview description={description} />

@@ -31,7 +31,7 @@ const SubOverview = () => {
   );
   return (
     <>
-      <h3 className="text-xs text-[#666] font-semibold mt-3.5 mb-2.5">
+      <h3 className="text-xs text-black-200 font-semibold mt-3.5 mb-2.5">
         Spent time
       </h3>
       {loading ? (
@@ -42,27 +42,27 @@ const SubOverview = () => {
         <>
           <p className="flex  items-center gap-1 text-xs">
             <Image src={images.time} alt="time" />
-            <span className="text-[#484848]">
+            <span className="text-black-500">
               {totalHours.toFixed(2)} hours
             </span>
           </p>
           <p className="my-3 text-xs">
             <Link
-              className="text-blue-300 hover:underline hover:text-[#b2290f]"
+              className="text-blue-300 hover:underline hover:text-red-600"
               href="/projects/fresher-_-reactjs-fresher/time_entries/new"
             >
               Log time
             </Link>{' '}
             |
             <Link
-              className="text-blue-300 hover:underline hover:text-[#b2290f]"
+              className="text-blue-300 hover:underline hover:text-red-600"
               href="/projects/fresher-_-reactjs-fresher/time_entries"
             >
               Details
             </Link>{' '}
             |
             <Link
-              className="text-blue-300 hover:underline hover:text-[#b2290f]"
+              className="text-blue-300 hover:underline hover:text-red-600"
               href="/projects/fresher-_-reactjs-fresher/time_entries/report"
             >
               Report

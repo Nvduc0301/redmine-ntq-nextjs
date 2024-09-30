@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image';
 import { Project } from '~/types/Project';
 
 export type Versions = {
@@ -26,4 +27,10 @@ export type GroupMemberSelect = {
 export type FileObj = {
   file: File;
   description: string;
+};
+
+export type ButtonData = {
+  id: number;
+  backgroundImage: StaticImageData;
+  formatText: string;
 };

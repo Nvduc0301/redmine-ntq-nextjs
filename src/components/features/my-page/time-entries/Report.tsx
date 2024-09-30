@@ -6,11 +6,11 @@ import { OPTIONS_ADD, OPTIONS_TIME } from './const';
 
 const Report = () => {
   return (
-    <div className="flex items-center text-xs gap-1 my-3 text-primary-text">
+    <div className="flex items-center text-xs gap-1 my-3 text-gray-600">
       <label>Details:</label>
       <Select
         value="selectedValue"
-        className="h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+        className="h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
         onChange={() => {
           return 'selectedValue';
         }}
@@ -21,7 +21,7 @@ const Report = () => {
       <label>Add:</label>
       <Select
         value="selectedValue"
-        className="min-w-[210px] h-6 text-xs text-black font-medium border border-primary-border rounded-none"
+        className="min-w-[210px] h-6 text-xs text-black font-medium border border-gray-300 rounded-none"
         onChange={() => {
           return 'selectedValue';
         }}

@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
                     onClick={() =>
                       handleNavigation(project?.identifier, project.name)
                     }
-                    className="text-[#169] hover:underline hover:text-[#b2290f]"
+                    className="text-blue-800 hover:underline hover:text-red-600"
                   >
                     {project.name}
                   </button>

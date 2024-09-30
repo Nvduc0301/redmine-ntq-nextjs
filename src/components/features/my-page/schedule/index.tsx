@@ -25,14 +25,14 @@ const Schedule: React.FC = () => {
 
   return (
     <>
-      <p className="text-start mb-2 font-bold text-[#505050]">Calendar</p>
+      <p className="text-start mb-2 font-bold text-gray-600">Calendar</p>
       {loadingSchedule ? (
         <div className="flex justify-center items-center h-24">
           <RingLoader color="#34d2c8" speedMultiplier={2} />
         </div>
       ) : (
         <table className="min-w-full divide-y divide-gray-200 border border-gray-300 table-auto">
-          <thead className="bg-primary-sub_bg h-7">
+          <thead className="bg-gray-200 h-7">
             <tr>
               <th className="w-7"></th>
               {DAYS_OF_WEEK.map((day) => (
@@ -44,7 +44,7 @@ const Schedule: React.FC = () => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200 ">
             <tr>
-              <td className="bg-primary-sub_bg p-1 text-right align-top">
+              <td className="bg-gray-200 p-1 text-right align-top">
                 {getStartOfWeek().week()}
               </td>
               {issuesSchedule?.week?.map((data, index) => {
